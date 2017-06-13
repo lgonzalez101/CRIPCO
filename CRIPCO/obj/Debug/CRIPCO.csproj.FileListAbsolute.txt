@@ -159,6 +159,6 @@ C:\Users\betty\Documents\GitHub\CRIPCO\CRIPCO\bin\Microsoft.Owin.Security.OAuth.
 C:\Users\betty\Documents\GitHub\CRIPCO\CRIPCO\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\betty\Documents\GitHub\CRIPCO\CRIPCO\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\betty\Documents\GitHub\CRIPCO\CRIPCO\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\betty\Documents\GitHub\CRIPCO\CRIPCO\obj\Debug\CRIPCO.csprojResolveAssemblyReference.cache
 C:\Users\betty\Documents\GitHub\CRIPCO\CRIPCO\obj\Debug\CRIPCO.dll
 C:\Users\betty\Documents\GitHub\CRIPCO\CRIPCO\obj\Debug\CRIPCO.pdb
+C:\Users\betty\Documents\GitHub\CRIPCO\CRIPCO\obj\Debug\CRIPCO.csprojResolveAssemblyReference.cache

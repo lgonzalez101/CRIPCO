@@ -81,6 +81,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -196,6 +198,63 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BD\Area.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\AspNetRoles.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\AspNetUserClaims.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\AspNetUserLogins.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\AspNetUsers.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\Cita.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\C__MigrationHistory.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\Especialidad.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\Expediente.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\Horario.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\ModelCripco.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCripco.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\ModelCripco.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\ModelCripco.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCripco.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BD\Persona.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\PersonaEspecialidad.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\Sala.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\sysdiagrams.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -5571,6 +5630,16 @@
     <Content Include="assets\plugins\switchery\switchery.js" />
     <Content Include="assets\plugins\switchery\switchery.min.css" />
     <Content Include="assets\plugins\switchery\switchery.min.js" />
+    <Content Include="BD\ModelCripco.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCripco.edmx</DependentUpon>
+      <LastGenOutput>ModelCripco.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BD\ModelCripco.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCripco.edmx</DependentUpon>
+      <LastGenOutput>ModelCripco.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -6378,6 +6447,13 @@
     <Content Include="assets\plugins\summernote\font\summernote.eot" />
     <Content Include="assets\plugins\summernote\font\summernote.ttf" />
     <Content Include="assets\plugins\summernote\font\summernote.woff" />
+    <EntityDeploy Include="BD\ModelCripco.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelCripco.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="BD\ModelCripco.edmx.diagram">
+      <DependentUpon>ModelCripco.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -6433,7 +6509,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\plugins\DataTables\extensions\FixedColumns\examples\integration\" />
-    <Folder Include="BD\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -6445,6 +6520,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
