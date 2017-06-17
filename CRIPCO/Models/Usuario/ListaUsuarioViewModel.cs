@@ -10,20 +10,20 @@ namespace CRIPCO.Models.Usuario
     {
         public int Id { get; set; }
 
-        [Display(Name = "Tipo de Usuario")]
-        public string TipoUsuario { get; set; }
+        [Display(Name = "Perfil")]
+        public string Perfil { get; set; }
 
         [Display(Name = "Usuario")]
         public string UserName { get; set; }
 
         [Display(Name = "Nombre")]
-        public string FirstName { get; set; }
+        public string Nombre { get; set; }
 
         [Display(Name = "Apellido")]
-        public string LastName { get; set; }
+        public string Apellido { get; set; }
 
         [Display(Name="Fecha de Nacimiento")]
-        public DateTime? BirthDate { get; set; }
+        public DateTime? FechaNac { get; set; }
 
         [Display(Name = "Correo Electronico")]
         public string Email { get; set; }

@@ -15,13 +15,13 @@ namespace CRIPCO.BD
     public partial class Expediente
     {
         public int ExpedienteID { get; set; }
-        public Nullable<int> CitaID { get; set; }
+        public int CitaID { get; set; }
         public string Comentario { get; set; }
         public string Documento { get; set; }
         public string CreadoPor { get; set; }
-        public Nullable<System.DateTime> FechaCreado { get; set; }
+        public System.DateTime FechaCreado { get; set; }
         public string ModificadoPor { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public bool Activo { get; set; }
     
         public virtual Cita Cita { get; set; }
     }

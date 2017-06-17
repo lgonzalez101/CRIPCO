@@ -26,8 +26,18 @@ namespace CRIPCO
                 "~/assets/plugins/jquery-jvectormap/jquery-jvectormap.css",
                 "~/assets/plugins/bootstrap-calendar/css/bootstrap_calendar.css",
                 "~/assets/plugins/gritter/css/jquery.gritter.css",
-                "~/assets/plugins/morris/morris.css",
-                "~/assets/plugins/pace/pace.min.js"
+
+                 "~/assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css",
+                 "~/assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css",
+
+                 "~/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css",
+                 "~/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css",
+                 "~/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css",
+                 "~/assets/plugins/bootstrap-select/bootstrap-select.min.css",
+                 "~/assets/plugins/bootstrap-daterangepicker/daterangepicker.css",
+                 "~/assets/plugins/select2/dist/css/select2.min.css",
+                 "~/assets/plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
+              
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/ColorAdmin").Include(
@@ -37,15 +47,31 @@ namespace CRIPCO
                        "~/assets/plugins/bootstrap/js/bootstrap.min.js",
                        "~/assets/plugins/slimscroll/jquery.slimscroll.min.js",
                        "~/assets/plugins/jquery-cookie/jquery.cookie.js",
+                       "~/assets/plugins/masked-input/masked-input.min.js",
 
-                       "~/assets/plugins/morris/raphael.min.js",
-                       "~/assets/plugins/morris/morris.js",
+                       "~/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js",
+                       "~/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js",
+                       "~/assets/plugins/bootstrap-select/bootstrap-select.min.js",
+                       "~/assets/plugins/bootstrap-daterangepicker/moment.js",
+                       "~/assets/plugins/bootstrap-daterangepicker/daterangepicker.js",
+                       "~/assets/plugins/select2/dist/js/select2.min.js",
+                       "~/assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
+    
+
+                      
+                     
                        "~/assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js",
                        "~/assets/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js",
                        "~/assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js",
                        "~/assets/plugins/gritter/js/jquery.gritter.js",
-                       "~/assets/js/dashboard-v2.min.js",
-                       "~/assets/js/apps.min.js"
+                      
+                       "~/assets/js/apps.min.js",
+
+                       "~/assets/plugins/DataTables/media/js/jquery.dataTables.min.js",
+                       "~/assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js",
+                      "~/assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"
+
+                    
 
                        ));
 

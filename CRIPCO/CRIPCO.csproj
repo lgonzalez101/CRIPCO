@@ -199,63 +199,64 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BD\Area.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\AspNetRoles.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\AspNetUserClaims.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\AspNetUserLogins.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\AspNetUsers.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Cita.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\C__MigrationHistory.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Especialidad.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Expediente.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Horario.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\ModelCripco.Context.cs">
+    <Compile Include="BD\ModelHCF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelCripco.Context.tt</DependentUpon>
+      <DependentUpon>ModelHCF.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\ModelCripco.cs">
+    <Compile Include="BD\ModelHCF.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\ModelCripco.Designer.cs">
+    <Compile Include="BD\ModelHCF.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelCripco.edmx</DependentUpon>
+      <DependentUpon>ModelHCF.edmx</DependentUpon>
     </Compile>
     <Compile Include="BD\Persona.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\PersonaEspecialidad.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Sala.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\sysdiagrams.cs">
-      <DependentUpon>ModelCripco.tt</DependentUpon>
+      <DependentUpon>ModelHCF.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -273,6 +274,33 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\alertify\.gitignore" />
+    <Content Include="assets\alertify\example\assets\css\main.css" />
+    <Content Include="assets\alertify\example\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\alertify\example\assets\img\banner.jpg" />
+    <Content Include="assets\alertify\example\assets\img\dialogs.png" />
+    <Content Include="assets\alertify\example\assets\img\treehouse.png" />
+    <Content Include="assets\alertify\example\assets\img\webdev.png" />
+    <Content Include="assets\alertify\example\assets\js\lib\sh\shBrushJScript.js" />
+    <Content Include="assets\alertify\example\assets\js\lib\sh\shCore.css" />
+    <Content Include="assets\alertify\example\assets\js\lib\sh\shCore.js" />
+    <Content Include="assets\alertify\example\assets\js\lib\sh\shCoreDefault.css" />
+    <Content Include="assets\alertify\example\index.html" />
+    <Content Include="assets\alertify\Gruntfile.js" />
+    <Content Include="assets\alertify\lib\alertify.js" />
+    <Content Include="assets\alertify\lib\alertify.min.js" />
+    <Content Include="assets\alertify\src\alertify.js" />
+    <Content Include="assets\alertify\test\index.html" />
+    <Content Include="assets\alertify\test\qunit\qunit.css" />
+    <Content Include="assets\alertify\test\qunit\qunit.js" />
+    <Content Include="assets\alertify\test\specs\alert.test.js" />
+    <Content Include="assets\alertify\test\specs\confirm.test.js" />
+    <Content Include="assets\alertify\test\specs\global.test.js" />
+    <Content Include="assets\alertify\test\specs\log.test.js" />
+    <Content Include="assets\alertify\test\specs\prompt.test.js" />
+    <Content Include="assets\alertify\themes\alertify.bootstrap.css" />
+    <Content Include="assets\alertify\themes\alertify.core.css" />
+    <Content Include="assets\alertify\themes\alertify.default.css" />
     <Content Include="assets\crossbrowserjs\excanvas.min.js" />
     <Content Include="assets\crossbrowserjs\html5shiv.js" />
     <Content Include="assets\crossbrowserjs\respond.min.js" />
@@ -5630,15 +5658,15 @@
     <Content Include="assets\plugins\switchery\switchery.js" />
     <Content Include="assets\plugins\switchery\switchery.min.css" />
     <Content Include="assets\plugins\switchery\switchery.min.js" />
-    <Content Include="BD\ModelCripco.Context.tt">
+    <Content Include="BD\ModelHCF.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelCripco.edmx</DependentUpon>
-      <LastGenOutput>ModelCripco.Context.cs</LastGenOutput>
+      <DependentUpon>ModelHCF.edmx</DependentUpon>
+      <LastGenOutput>ModelHCF.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="BD\ModelCripco.tt">
+    <Content Include="BD\ModelHCF.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelCripco.edmx</DependentUpon>
-      <LastGenOutput>ModelCripco.cs</LastGenOutput>
+      <DependentUpon>ModelHCF.edmx</DependentUpon>
+      <LastGenOutput>ModelHCF.cs</LastGenOutput>
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -6447,13 +6475,22 @@
     <Content Include="assets\plugins\summernote\font\summernote.eot" />
     <Content Include="assets\plugins\summernote\font\summernote.ttf" />
     <Content Include="assets\plugins\summernote\font\summernote.woff" />
-    <EntityDeploy Include="BD\ModelCripco.edmx">
+    <EntityDeploy Include="BD\ModelHCF.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelCripco.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelHCF.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="BD\ModelCripco.edmx.diagram">
-      <DependentUpon>ModelCripco.edmx</DependentUpon>
+    <Content Include="BD\ModelHCF.edmx.diagram">
+      <DependentUpon>ModelHCF.edmx</DependentUpon>
     </Content>
+    <Content Include="assets\alertify\.travis.yml" />
+    <Content Include="assets\alertify\bower.json" />
+    <Content Include="assets\alertify\Contributors.md" />
+    <Content Include="assets\alertify\example\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\alertify\example\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\alertify\example\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\alertify\example\assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\alertify\package.json" />
+    <Content Include="assets\alertify\README.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -6509,6 +6546,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\plugins\DataTables\extensions\FixedColumns\examples\integration\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

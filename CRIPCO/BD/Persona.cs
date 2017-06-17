@@ -27,14 +27,12 @@ namespace CRIPCO.BD
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Identidad { get; set; }
-        public Nullable<System.DateTime> FechaNac { get; set; }
+        public System.DateTime FechaNac { get; set; }
         public string Telefono { get; set; }
-        public string Perfil { get; set; }
-        public string Estado { get; set; }
         public string CreadoPor { get; set; }
-        public Nullable<System.DateTime> FechaCreado { get; set; }
+        public System.DateTime FechaCreado { get; set; }
         public string ModificadoPor { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public bool Activo { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

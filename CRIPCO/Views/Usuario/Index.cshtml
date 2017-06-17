@@ -3,5 +3,177 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <!-- begin col-2 -->
+    <!-- end col-2 -->
+    <!-- begin col-10 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand" data-original-title="" title="" data-init="true"><i class="fa fa-expand"></i></a>
+                    @*<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>*@
+     
+                </div>
+                <h4 class="panel-title"> Usuarios</h4>
+            </div>
 
+            <div class="panel-body">
+                <table class="table table-bordered table-responsive table-hover" id="IdTabla" style="width: 100%;">
+                    <thead>
+                        <tr>                        
+                            <th>Cuenta de Usuario</th>
+                            <th>Nombre</th>
+                            <th> Apellido</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Correo Electronico</th>
+                            <th>Perfil </th>
+                            <th> Estado </th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-10 -->
+</div>
+
+
+@section Scripts {
+
+    <script>
+
+    function MostrarEditarCuenta(id)
+    {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Usuario/EditarCuentaUsuario",
+            type: 'get',
+            data: { Id: id },
+            success: function (data) {
+                $("#MyModalTitle").html("Editar Cuenta de Usuario");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                ShowboxError(textStatus, "Error"); alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+    }
+
+    function MostrarEditarInfo(id) {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Usuario/EditarInfoUsuario",
+            type: 'get',
+            data: { Id: id },
+            success: function (data) {
+                $("#MyModalTitle").html("Editar Informacion Personal");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                ShowboxError(textStatus, "Error"); alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+    }
+
+
+    function MostrarResetContrasena(id)
+    {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Usuario/ResetContrasena",
+            type: 'get',
+            data: { Id: id },
+            success: function (data) {
+                $("#MyModalTitle").html("Editar Contraseña");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                ShowboxError(textStatus, "Error"); alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+
+
+    }
+
+
+
+
+    $(document).ready(function () {
+
+    //    $("#IdTabla").dataTable();
+        
+        $("#IdTabla").dataTable({
+        responsive: true,
+        ajax: {
+            url: "@Url.Action("ListarUsuarios", "Usuario")",
+            type: "GET",
+            dataSrc: function (data) {
+                return data;
+            }
+        },   
+        columns: [
+            {
+                data: null,
+                render: function (data) {
+                    var opciones = '<div class="btn-group display-inline pull-left text-align-left">' + '<button class="btn btn-xs btn-info dropdown-toggle ';
+                    opciones += 'data-toggle="dropdown" aria-expanded="false"> Opciones <i class="fa fa-caret-down fa-lg"></i> </button><ul class="dropdown-menu dropdown-menu-xs pull-right">';
+                    opciones += ('<li><a href="javascript:void(0);" onclick="MostrarEditarCuenta(!' + data.Id + '!)"><i class="fa fa-pencil fa-lg fa-fw"></i> Editar Cuenta</a></li>').replace(new RegExp("!", 'g'), "'");
+                    opciones += ('<li><a href="javascript:void(0);" onclick="MostrarEditarInfo(!' + data.Id + '!)"><i class="fa fa-pencil fa-lg fa-fw"></i> Editar Perfil</a></li>').replace(new RegExp("!", 'g'), "'");
+                    opciones += ('<li><a href="javascript:void(0);" onclick="MostrarResetContrasena(!' + data.Id + '!)"><i class="fa fa-pencil fa-lg fa-fw"></i> Cambiar Contraseña</a></li>').replace(new RegExp("!", 'g'), "'");
+                    opciones += ('<li><a href="javascript:void(0);" onclick="Eliminar(!' + data.Id + '!)"><i class="fa fa-ban fa-lg fa-fw"></i> Eliminar</a></li>').replace(new RegExp("!", 'g'), "'");;
+                    opciones += '</ul></div>';
+                    return opciones;
+                }
+            },
+            {
+                data: "UserName"
+            },
+            {
+                data: "Nombre"
+            },
+            {
+                data: "Apellido"
+            },
+
+            {
+                data: null,
+                render: function (data) {
+                    return moment(data.FechaNac).format("DD/MM/YYYY");
+                }
+            },
+            {
+                data: "Email"
+            },
+            {
+                data: "Perfil"
+            },
+            {
+                data: null,
+                render: function (data) {
+                     return data.Estado ? '<span class="center-block padding-5 label label-success"><i class="fa fa-check"></i></span>' : '<span class="center-block padding-5 label label-danger"><i class="fa fa-trash"></i></span>';
+                }
+            },
+
+
+        ]
+    });
+
+
+    })
+    </script>
+
+}

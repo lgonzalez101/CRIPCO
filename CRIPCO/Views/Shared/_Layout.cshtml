@@ -5,7 +5,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>CRIPCO PROJECT</title>
+    <title>CRIPCO PLANNER</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -47,7 +47,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a href="index.html" class="navbar-brand">
-                        CRIPCO PROJECT
+                        CRIPCO PLANNER
                     </a>
                 </div>
                 <!-- end mobile sidebar expand / collapse button -->
@@ -180,6 +180,19 @@
                         </ul>
 
                     </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret pull-right"></b><i class="material-icons">person</i> <span>Gestion de Usuarios</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("Index","Usuario")" title="Home"><span>Usuarios</span></a></li>
+                            <li><a href="@Url.Action("CrearUsuario","Usuario")" title="Home"><span>Crear Usuario</span></a></li>
+                            <li><a href="@Url.Action("Index","Role")" title="Home"><span>Roles</span></a></li>
+                           
+                        </ul>
+
+                    </li>
+                    <li><a href="@Url.Action("Index","Horario")" title="Home"><i class="material-icons">home</i> <span>Horario</span></a></li>
                                      
                     <!-- begin sidebar minify button -->
                     <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
@@ -273,12 +286,13 @@
 
     @Scripts.Render("~/bundles/ColorAdmin")
     @Scripts.Render("~/bundles/personalized")
+
     @RenderSection("scripts", required: false)
 
     <script>
 		$(document).ready(function() {
 			App.init();
-			DashboardV2.init();
+			//DashboardV2.init();
 		});
     </script>
 
