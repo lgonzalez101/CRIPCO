@@ -22,6 +22,15 @@
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Sala" Relationship="Self.FK_Sala_Area" FromRole="Area" ToRole="Sala" />
   </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
   <EntityType Name="AspNetUserClaims">
     <Key>
       <PropertyRef Name="Id" />
@@ -62,7 +71,7 @@
     <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
     <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_AspNetUsers" FromRole="AspNetUsers" ToRole="Persona" />
-    <NavigationProperty Name="AspNetRoles" Relationship="CripcoModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
   </EntityType>
   <EntityType Name="Cita">
     <Key>
@@ -100,7 +109,7 @@
     <Property Name="ExpedienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CitaID" Type="Int32" Nullable="false" />
     <Property Name="Comentario" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Documento" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Documento" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -313,9 +322,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+  </Association>
   <EntityContainer Name="CripcoEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
     <EntitySet Name="Area" EntityType="Self.Area" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
@@ -371,23 +385,9 @@
       <End Role="Persona" EntitySet="Persona" />
       <End Role="PersonaEspecialidad" EntitySet="PersonaEspecialidad" />
     </AssociationSet>
-    <EntitySet Name="AspNetRoles" EntityType="CripcoModel.AspNetRoles" />
-    <AssociationSet Name="AspNetUserRoles" Association="CripcoModel.AspNetUserRoles">
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="AspNetRoles">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="AspNetUsers" Relationship="CripcoModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
-  </EntityType>
-  <Association Name="AspNetUserRoles">
-    <End Type="CripcoModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
-    <End Type="CripcoModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
-  </Association>
 </Schema>

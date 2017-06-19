@@ -1,0 +1,144 @@
+﻿@model CRIPCO.Models.Horario.CrearHorarioViewModel
+
+
+
+<div class="panel">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#default-tab-1" data-toggle="tab" aria-expanded="false">Horario Simple</a></li>
+        <li class=""><a href="#default-tab-2" data-toggle="tab" aria-expanded="false">Rango de Horarios</a></li>    
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="default-tab-1">
+            <h4 class="m-t-10 text-primary text-center"><i class="fa fa-clock-o"></i> Seleccione el Dia y la Hora: </h4>
+            <hr />
+            <div class="form-group">
+                <div class="row" id="HorarioSimple">
+                        <div id="FechaInicio"></div>
+                </div>
+            </div>
+            <hr />
+
+
+            <p class="text-right m-b-0">
+                <a href="javascript:;" onclick="CrearHorarioSimple()" class="btn btn-success">Guardar Horario</a>
+            </p>
+        </div>
+        <div class="tab-pane fade" id="default-tab-2">
+            <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+            </blockquote>
+            <h4>Lorem ipsum dolor sit amet</h4>
+            <p>
+                Nullam ac sapien justo. Nam augue mauris, malesuada non magna sed, feugiat blandit ligula.
+                In tristique tincidunt purus id iaculis. Pellentesque volutpat tortor a mauris convallis,
+                sit amet scelerisque lectus adipiscing.
+            </p>
+        </div>
+      
+    </div>
+</div>
+
+<script>
+
+    var mydatetimepicker = $("#FechaInicio").datetimepicker({
+        inline: true,
+        sideBySide: true,
+        format: 'dd/MM/yy H'
+    });
+
+    $(document).ready(function () {
+
+        $("#HorarioSimple .datepicker").attr("class", "datepicker col-md-7");
+        $("#HorarioSimple .timepicker").attr("class", "timepicker col-md-5");
+
+    });
+
+    function CrearHorarioSimple()
+    {
+        var dtp = mydatetimepicker.data('DateTimePicker');
+        var obj = { FechaInicio: moment(dtp.date()).format("DD/MM/YY HH:mm") };
+        
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Horario/CrearHorarioSimple",
+            type: 'POST',
+            data: { model: obj  },
+            success: function (data) {
+                //if (data.Estado) {
+                //    ShowNotification(data.Estado, data.Titulo, data.Mensaje);
+                //    new $.fn.dataTable.Api("#IdTabla").ajax.reload();
+                //    $("#MyModal").modal("hide");
+                //} else ShowNotification(data.Estado, data.Titulo, data.Mensaje);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus + " : problemas de red")
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+
+
+    }
+
+</script>
+
+
+
+
+
+
+
+@*@using (Html.BeginForm())
+    {
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdUsuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HoraInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HoraInicio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HoraFinal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HoraFinal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HoraFinal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@

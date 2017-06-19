@@ -28,6 +28,7 @@
     </Key>
     <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" />
     <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
   </EntityType>
   <EntityType Name="AspNetUserClaims">
@@ -69,8 +70,8 @@
     <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_AspNetUsers" FromRole="AspNetUsers" ToRole="Persona" />
     <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-    <NavigationProperty Name="Persona" Relationship="GCModel.FK_Persona_AspNetUsers" FromRole="AspNetUsers" ToRole="Persona" />
   </EntityType>
   <EntityType Name="Cita">
     <Key>
@@ -85,9 +86,9 @@
     <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Horario" Relationship="Self.FK_Cita_Horario" FromRole="Cita" ToRole="Horario" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_Cita_Persona" FromRole="Cita" ToRole="Persona" />
     <NavigationProperty Name="Sala" Relationship="Self.FK_Cita_Sala" FromRole="Cita" ToRole="Sala" />
     <NavigationProperty Name="Expediente" Relationship="Self.FK_Expediente_Cita" FromRole="Cita" ToRole="Expediente" />
-    <NavigationProperty Name="Persona" Relationship="GCModel.FK_Cita_Persona" FromRole="Cita" ToRole="Persona" />
   </EntityType>
   <EntityType Name="Especialidad">
     <Key>
@@ -108,7 +109,7 @@
     <Property Name="ExpedienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CitaID" Type="Int32" Nullable="false" />
     <Property Name="Comentario" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Documento" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Documento" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -128,7 +129,27 @@
     <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Horario" FromRole="Horario" ToRole="Cita" />
-    <NavigationProperty Name="Persona" Relationship="GCModel.FK_Horario_Persona" FromRole="Horario" ToRole="Persona" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_Horario_Persona" FromRole="Horario" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="PersonaID" />
+    </Key>
+    <Property Name="PersonaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdAspnetUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Identidad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaNac" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Persona_AspNetUsers" FromRole="Persona" ToRole="AspNetUsers" />
+    <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Persona" FromRole="Persona" ToRole="Cita" />
+    <NavigationProperty Name="Horario" Relationship="Self.FK_Horario_Persona" FromRole="Persona" ToRole="Horario" />
+    <NavigationProperty Name="PersonaEspecialidad" Relationship="Self.FK_PersonaEspecialidad_Persona" FromRole="Persona" ToRole="PersonaEspecialidad" />
   </EntityType>
   <EntityType Name="PersonaEspecialidad">
     <Key>
@@ -138,7 +159,7 @@
     <Property Name="PersonaID" Type="Int32" />
     <Property Name="EspecialidadID" Type="Int32" />
     <NavigationProperty Name="Especialidad" Relationship="Self.FK_PersonaEspecialidad_Especialidad" FromRole="PersonaEspecialidad" ToRole="Especialidad" />
-    <NavigationProperty Name="Persona" Relationship="GCModel.FK_PersonaEspecialidad_Persona" FromRole="PersonaEspecialidad" ToRole="Persona" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_PersonaEspecialidad_Persona" FromRole="PersonaEspecialidad" ToRole="Persona" />
   </EntityType>
   <EntityType Name="Sala">
     <Key>
@@ -205,6 +226,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Persona_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="IdAspnetUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Cita_Horario">
     <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
     <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
@@ -214,6 +247,18 @@
       </Principal>
       <Dependent Role="Cita">
         <PropertyRef Name="HorarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cita_Persona">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="PersonaID" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="PersonaPacienteID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -253,11 +298,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Horario_Persona">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="PersonaID" />
+      </Principal>
+      <Dependent Role="Horario">
+        <PropertyRef Name="PersonaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonaEspecialidad_Persona">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+    <End Role="PersonaEspecialidad" Type="Self.PersonaEspecialidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="PersonaID" />
+      </Principal>
+      <Dependent Role="PersonaEspecialidad">
+        <PropertyRef Name="PersonaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="AspNetUserRoles">
     <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="CripcoEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GCEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
     <EntitySet Name="Area" EntityType="Self.Area" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
@@ -268,6 +337,7 @@
     <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
     <EntitySet Name="Expediente" EntityType="Self.Expediente" />
     <EntitySet Name="Horario" EntityType="Self.Horario" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" />
     <EntitySet Name="PersonaEspecialidad" EntityType="Self.PersonaEspecialidad" />
     <EntitySet Name="Sala" EntityType="Self.Sala" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -283,8 +353,16 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
     </AssociationSet>
+    <AssociationSet Name="FK_Persona_AspNetUsers" Association="Self.FK_Persona_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
     <AssociationSet Name="FK_Cita_Horario" Association="Self.FK_Cita_Horario">
       <End Role="Horario" EntitySet="Horario" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cita_Persona" Association="Self.FK_Cita_Persona">
+      <End Role="Persona" EntitySet="Persona" />
       <End Role="Cita" EntitySet="Cita" />
     </AssociationSet>
     <AssociationSet Name="FK_Cita_Sala" Association="Self.FK_Cita_Sala">
@@ -299,94 +377,17 @@
       <End Role="Especialidad" EntitySet="Especialidad" />
       <End Role="PersonaEspecialidad" EntitySet="PersonaEspecialidad" />
     </AssociationSet>
+    <AssociationSet Name="FK_Horario_Persona" Association="Self.FK_Horario_Persona">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Horario" EntitySet="Horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonaEspecialidad_Persona" Association="Self.FK_PersonaEspecialidad_Persona">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="PersonaEspecialidad" EntitySet="PersonaEspecialidad" />
+    </AssociationSet>
     <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
-    <EntitySet Name="Persona" EntityType="GCModel.Persona" />
-    <AssociationSet Name="FK_Persona_AspNetUsers" Association="GCModel.FK_Persona_AspNetUsers">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="Persona" EntitySet="Persona" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cita_Persona" Association="GCModel.FK_Cita_Persona">
-      <End Role="Persona" EntitySet="Persona" />
-      <End Role="Cita" EntitySet="Cita" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Horario_Persona" Association="GCModel.FK_Horario_Persona">
-      <End Role="Persona" EntitySet="Persona" />
-      <End Role="Horario" EntitySet="Horario" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PersonaEspecialidad_Persona" Association="GCModel.FK_PersonaEspecialidad_Persona">
-      <End Role="Persona" EntitySet="Persona" />
-      <End Role="PersonaEspecialidad" EntitySet="PersonaEspecialidad" />
-    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Persona">
-    <Key>
-      <PropertyRef Name="PersonaID" />
-    </Key>
-    <Property Name="PersonaID" Type="Int32" Nullable="false" />
-    <Property Name="IdAspnetUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Identidad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="FechaNac" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="CreadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="ModificadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Activo" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="AspNetUsers" Relationship="GCModel.FK_Persona_AspNetUsers" FromRole="Persona" ToRole="AspNetUsers" />
-    <NavigationProperty Name="Cita" Relationship="GCModel.FK_Cita_Persona" FromRole="Persona" ToRole="Cita" />
-    <NavigationProperty Name="Horario" Relationship="GCModel.FK_Horario_Persona" FromRole="Persona" ToRole="Horario" />
-    <NavigationProperty Name="PersonaEspecialidad" Relationship="GCModel.FK_PersonaEspecialidad_Persona" FromRole="Persona" ToRole="PersonaEspecialidad" />
-  </EntityType>
-  <Association Name="FK_Persona_AspNetUsers">
-    <End Type="GCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
-    <End Type="GCModel.Persona" Role="Persona" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Persona">
-        <PropertyRef Name="IdAspnetUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Cita_Persona">
-    <End Type="GCModel.Persona" Role="Persona" Multiplicity="1" />
-    <End Type="GCModel.Cita" Role="Cita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Persona">
-        <PropertyRef Name="PersonaID" />
-      </Principal>
-      <Dependent Role="Cita">
-        <PropertyRef Name="PersonaPacienteID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Horario_Persona">
-    <End Type="GCModel.Persona" Role="Persona" Multiplicity="1" />
-    <End Type="GCModel.Horario" Role="Horario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Persona">
-        <PropertyRef Name="PersonaID" />
-      </Principal>
-      <Dependent Role="Horario">
-        <PropertyRef Name="PersonaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PersonaEspecialidad_Persona">
-    <End Type="GCModel.Persona" Role="Persona" Multiplicity="0..1" />
-    <End Type="GCModel.PersonaEspecialidad" Role="PersonaEspecialidad" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Persona">
-        <PropertyRef Name="PersonaID" />
-      </Principal>
-      <Dependent Role="PersonaEspecialidad">
-        <PropertyRef Name="PersonaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

@@ -159,8 +159,8 @@
                             <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
                             <li><a href="javascript:;">Calendar</a></li>
                             <li><a href="javascript:;">Setting</a></li>
-                            <li class="divider"></li>
-                            <li><a href="javascript:;">Log Out</a></li>
+                            <li class="divider"></li>    
+                            <li><a href="@Url.Action("LogOff", "Account")">Cerrar Sesion</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -189,7 +189,7 @@
                             <div class="info">
                                 <b class="caret pull-right"></b>
                                @User.Identity.Name
-                                <small>Tipo de Usuario</small>
+                                <small>.....</small>
                             </div>
                         </a>
                     </li>
@@ -203,9 +203,9 @@
                 <!-- end sidebar user -->
                 <!-- begin sidebar nav -->
                 <ul class="nav">                 
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret pull-right"></b><i class="material-icons">home</i> <span>Inicio</span>
+                    <li class="has-sub active">
+                        <a href="/Home/Index">
+                           <i class="material-icons">home</i> <span>Inicio</span>
                         </a>
                         @*<ul class="sub-menu">
                             <li><a href="@Url.Action("Index","Home")" title="Home"><span>Inicio</span></a></li>
@@ -214,20 +214,28 @@
                         </ul>*@
 
                     </li>
+                    @if (User.IsInRole("Administrador"))
+                    {
+                        
+                
                     <li class="has-sub">
                         <a href="javascript:;">
                             <b class="caret pull-right"></b><i class="material-icons">person</i> <span>Gestion de Usuarios</span>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="@Url.Action("Index","Usuario")" title="Home"><span>Usuarios</span></a></li>
-                            <li><a href="@Url.Action("CrearUsuario","Usuario")" title="Home"><span>Crear Usuario</span></a></li>
-                            <li><a href="@Url.Action("Index","Role")" title="Home"><span>Tipo de Usuarios</span></a></li>
+                            <li><a href="@Url.Action("Index","Usuario")" title="Lista de Usuarios"><span>Usuarios</span></a></li>
+                            <li><a href="@Url.Action("CrearUsuario","Usuario")" title="Crear"><span>Crear Usuario</span></a></li>
+                            <li><a href="@Url.Action("Index","Role")" title="Tipos"><span>Tipo de Usuarios</span></a></li>
                            
                         </ul>
-
                     </li>
-                    <li><a href="@Url.Action("Index","Horario")" title="Home"><i class="material-icons">home</i> <span>Horario</span></a></li>
-                                     
+                    }
+@if (User.IsInRole("Doctor"))
+{
+    <li><a href="@Url.Action("Index","Horario")" title="Horarios"><i class="material-icons">access_alarm</i> <span>Horarios</span></a></li>
+
+}
+                              
                     <!-- begin sidebar minify button -->
                     <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
                     <!-- end sidebar minify button -->
@@ -247,7 +255,7 @@
         </div>
         <!-- end #content -->
         <!-- begin theme-panel -->
-        <div class="theme-panel">
+        @*<div class="theme-panel">
             <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
             <div class="theme-panel-content">
                 <h5 class="m-t-0">Color Theme</h5>
@@ -311,7 +319,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
         <!-- end theme-panel -->
         <!-- begin scroll to top btn -->
         <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
@@ -322,7 +330,7 @@
     @Scripts.Render("~/bundles/personalized")
 
     @RenderSection("scripts", required: false)
-
+    
     <script>
 		$(document).ready(function() {
 			App.init();

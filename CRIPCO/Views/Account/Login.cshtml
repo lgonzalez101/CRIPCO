@@ -12,7 +12,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>Color Admin | Login Page</title>
+    <title>CRIPCO PLANNER</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -71,8 +71,8 @@
                     {
                         @Html.ValidationSummary(true, "", new { @class = "control-label text-danger padding-10 text-center" })
                          <div class="form-group m-b-15">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                             @*<input type="text" class="form-control input-lg" placeholder="Email Address" required />*@
                         </div>
                         <div class="form-group m-b-15">
@@ -88,15 +88,15 @@
                                 </label>
                             </div>*@
                         <div class="login-buttons">
-                            <button type="submit" class="btn btn-info btn-block btn-lg">Sign me in</button>
+                            <button type="submit" class="btn btn-info btn-block btn-lg">Iniciar Sesion</button>
                         </div>
-                        <div class="m-t-20 m-b-40 p-b-40 text-inverse">
+                        @*<div class="m-t-20 m-b-40 p-b-40 text-inverse">
                             Not a member yet? Click <a href="register_v3.html">here</a> to register.
                         </div>
                         <hr />
                         <p class="text-center">
                             &copy; Color Admin All Right Reserved 2015
-                        </p>
+                        </p>*@
 
                     }
 

@@ -17,7 +17,7 @@ namespace CRIPCO.BD
         public int ExpedienteID { get; set; }
         public int CitaID { get; set; }
         public string Comentario { get; set; }
-        public string Documento { get; set; }
+        public byte[] Documento { get; set; }
         public string CreadoPor { get; set; }
         public System.DateTime FechaCreado { get; set; }
         public string ModificadoPor { get; set; }

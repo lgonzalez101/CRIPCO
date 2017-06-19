@@ -104,7 +104,7 @@
     <Property Name="ExpedienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CitaID" Type="int" Nullable="false" />
     <Property Name="Comentario" Type="varchar" MaxLength="1000" Nullable="false" />
-    <Property Name="Documento" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Documento" Type="varbinary(max)" Nullable="false" />
     <Property Name="CreadoPor" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="FechaCreado" Type="date" Nullable="false" />
     <Property Name="ModificadoPor" Type="varchar" MaxLength="100" Nullable="false" />

@@ -27,6 +27,7 @@ namespace CRIPCO.BD
     
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Area> Area { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
@@ -38,6 +39,5 @@ namespace CRIPCO.BD
         public virtual DbSet<PersonaEspecialidad> PersonaEspecialidad { get; set; }
         public virtual DbSet<Sala> Sala { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
     }
 }

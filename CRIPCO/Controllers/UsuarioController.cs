@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace CRIPCO.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class UsuarioController : BaseController
     {
         private ApplicationUserManager _userManager;

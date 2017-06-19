@@ -31,5 +31,14 @@ namespace CRIPCO.Controllers
             };
 
         }
+
+        public int ObtenerIdUsuario()
+        {
+            using (var context = new CRIPCO.BD.CripcoEntities())
+            {
+                return context.Persona.FirstOrDefault(x => x.AspNetUsers.UserName == User.Identity.Name)?.PersonaID??0;
+
+            }
+        }
     }
 }

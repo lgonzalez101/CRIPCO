@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace CRIPCO.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class RoleController : Controller
     {
         // GET: Role
