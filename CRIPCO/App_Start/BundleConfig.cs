@@ -57,9 +57,6 @@ namespace CRIPCO
                        "~/assets/plugins/select2/dist/js/select2.min.js",
                        "~/assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
     
-
-                      
-                     
                        "~/assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js",
                        "~/assets/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js",
                        "~/assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js",
@@ -69,9 +66,8 @@ namespace CRIPCO
 
                        "~/assets/plugins/DataTables/media/js/jquery.dataTables.min.js",
                        "~/assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js",
-                      "~/assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"
-
-                    
+                       "~/assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js",
+                       "~/assets/Layout.js "
 
                        ));
 

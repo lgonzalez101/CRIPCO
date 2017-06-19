@@ -54,6 +54,9 @@ namespace CRIPCO.Models.Usuario
         public string ConfirmPassword { get; set; }
 
         public string IdAspNetUser { get; set; }
+
+        [Required]
+        [Display(Name = "Tipo de Usuario")]
         public string RoleUsuario { get; set; }
     }
 }

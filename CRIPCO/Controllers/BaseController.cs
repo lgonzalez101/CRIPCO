@@ -9,11 +9,7 @@ namespace CRIPCO.Controllers
 {
     public class BaseController : Controller
     {
-        // GET: Base
-        public ActionResult Index()
-        {
-            return View();
-        }
+
 
         public MensajeRespuestaViewModel  EnviarResultado(bool resultado, string Titulo)
         {
@@ -21,6 +17,16 @@ namespace CRIPCO.Controllers
             {
                 Titulo = Titulo,
                 Mensaje = resultado ? "Accion exitosa" : "Error",
+                Estado = resultado
+            };
+        }
+
+        public MensajeRespuestaViewModel EnviarResultado(bool resultado, string Titulo, string MensajeExitoso, string MensajeError)
+        {
+            return new MensajeRespuestaViewModel
+            {
+                Titulo = Titulo,
+                Mensaje = resultado ? MensajeExitoso : MensajeError,
                 Estado = resultado
             };
 

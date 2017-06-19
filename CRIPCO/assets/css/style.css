@@ -2895,6 +2895,7 @@ fieldset[disabled] .btn-white,
 .panel-default > .panel-heading {
     background: #fafafa;
 }
+.panel-final > .panel-heading,
 .panel-inverse > .panel-heading,
 .panel-success > .panel-heading,
 .panel-warning > .panel-heading,
@@ -2903,6 +2904,7 @@ fieldset[disabled] .btn-white,
 .panel-info > .panel-heading {
     color: #fff;
 }
+.panel-final > .panel-heading { background: #616161; }
 .panel-inverse > .panel-heading { background: #212121; }
 .panel-success > .panel-heading { background: #009688; }
 .panel-warning > .panel-heading { background: #FF9800; }

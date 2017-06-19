@@ -5,6 +5,7 @@ using CRIPCO.Models.Usuario;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -140,7 +141,7 @@ namespace CRIPCO.Controllers
                 usuario.Telefono = model.Telefono;
                 usuario.Identidad = model.Identidad;
                 usuario.ModificadoPor = User.Identity.Name;
-                
+                context.Entry(usuario).State = EntityState.Modified;
                 var result = context.SaveChanges() > 0;
                 return Json(new MensajeRespuestaViewModel
                 {
@@ -165,7 +166,7 @@ namespace CRIPCO.Controllers
                     UserName = usuario.AspNetUsers.UserName,
                     Email = usuario.AspNetUsers.Email,
                     IdAspNetUser = usuario.IdAspnetUser,
-                    RoleUsuario = context.AspNetRoles.FirstOrDefault(x => x.Name == roles.FirstOrDefault()).Id,                 
+                    RoleUsuario = usuario.AspNetUsers.AspNetRoles.FirstOrDefault()?.Id??"",                 
                 });
 
             }
@@ -183,10 +184,10 @@ namespace CRIPCO.Controllers
                     usuario.AspNetUsers.UserName = model.UserName;
                     usuario.AspNetUsers.Email = model.Email;
                     context.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
-                    var roles = await UserManager.GetRolesAsync(model.IdAspNetUser);
-                    await UserManager.RemoveFromRolesAsync(model.IdAspNetUser, roles.ToArray());
-                    var result2 = await UserManager.AddToRoleAsync(model.IdAspNetUser, context.AspNetRoles.Find(model.RoleUsuario).Name);
-
+                    var roles = await UserManager.GetRolesAsync(usuario.AspNetUsers.Id);
+                    await UserManager.RemoveFromRolesAsync(usuario.AspNetUsers.Id, roles.ToArray());
+                    var result2 = await UserManager.AddToRoleAsync(usuario.AspNetUsers.Id, context.AspNetRoles.Find(model.RoleUsuario).Name);
+                   
                     var result = context.SaveChanges() > 0;
                     return Json(new MensajeRespuestaViewModel
                     {
@@ -225,6 +226,34 @@ namespace CRIPCO.Controllers
                     Estado = result
                 }, JsonRequestBehavior.AllowGet);
 
+            }
+        }
+
+        [HttpGet]
+        public ActionResult ResetContrasena(int Id)
+        {
+            using (var context = new CripcoEntities())
+            {
+                return PartialView(new CambiarContrasenaViewModel { IdUser = Id });
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> ResetContrasena(CambiarContrasenaViewModel model)
+        {
+            using (var context = new CripcoEntities())
+            {
+                var User = context.Persona.Find(model.IdUser);
+                string code = await UserManager.GeneratePasswordResetTokenAsync(User.IdAspnetUser);
+                var result = await UserManager.ResetPasswordAsync(User.IdAspnetUser, code, model.NewPassword);
+
+                return Json(new MensajeRespuestaViewModel
+                {
+                    Titulo = "Cambiar Contrasena",
+                    Mensaje = result.Succeeded ? "Se cambio Satisfactoriamente" : "Error al cambiar la contrasena",
+                    Estado = result.Succeeded
+                }, JsonRequestBehavior.AllowGet);
             }
         }
 

@@ -268,6 +268,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Roles\CrearRolViewModel.cs" />
+    <Compile Include="Models\Usuario\CambiarContrasenaViewModel.cs" />
     <Compile Include="Models\Usuario\CrearUsuarioViewModel.cs" />
     <Compile Include="Models\Usuario\ListaUsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -353,6 +354,7 @@
     <Content Include="assets\img\profile-cover.jpg" />
     <Content Include="assets\img\profile_bg.jpg" />
     <Content Include="assets\img\sidebar_cover.jpg" />
+    <Content Include="assets\img\Success.ico" />
     <Content Include="assets\img\transparent\black-0.1.png" />
     <Content Include="assets\img\transparent\black-0.2.png" />
     <Content Include="assets\img\transparent\black-0.3.png" />
@@ -469,6 +471,7 @@
     <Content Include="assets\js\ui-modal-notification.demo.min.js" />
     <Content Include="assets\js\ui-tree.demo.js" />
     <Content Include="assets\js\ui-tree.demo.min.js" />
+    <Content Include="assets\Layout.js" />
     <Content Include="assets\plugins\bootstrap-calendar\css\bootstrap_calendar.css" />
     <Content Include="assets\plugins\bootstrap-calendar\example\index.html" />
     <Content Include="assets\plugins\bootstrap-calendar\example\lib\css\bootstrap-responsive.css" />
@@ -6542,6 +6545,9 @@
     <Content Include="Views\Usuario\CrearUsuario.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\CrearRol.cshtml" />
+    <Content Include="Views\Usuario\EditarInfoUsuario.cshtml" />
+    <Content Include="Views\Usuario\EditarCuentaUsuario.cshtml" />
+    <Content Include="Views\Usuario\ResetContrasena.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

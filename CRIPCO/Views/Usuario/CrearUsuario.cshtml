@@ -6,12 +6,10 @@
 
 
 <div class="row">
-    <!-- begin col-2 -->
-    <!-- end col-2 -->
-    <!-- begin col-10 -->
+
     <div class="col-md-12 ui-sortable">
         <!-- begin panel -->
-        <div class="panel panel-success">
+        <div class="panel panel-final">
             <div class="panel-heading">
                 <div class="panel-heading-btn">
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand" data-original-title="" title="" data-init="true"><i class="fa fa-expand"></i></a>
@@ -68,6 +66,15 @@
                                 @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
                             </div>
                         </div>
+                        <hr />
+                      
+                        <div class="form-group">
+                           @Html.LabelFor(model => model.RoleUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.RoleUsuario, new SelectList(ViewBag.ListaTipoUsuario, "Value", "Text"), "", new { @class = "form-control select2", style = "width:100%;" })
+                                @Html.ValidationMessageFor(model => model.RoleUsuario, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -104,9 +111,9 @@
                      
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <a href="/Usuario/Index" class="btn btn-default"><i class="fa fa-arrow-left"></i> </a>
-                                <input type="submit" value="Crear Usuario" class="btn btn-success" />
-                     <button type="button" id="test">test</button>
+                                <a href="/Usuario/Index" class="btn btn-default btn-lg "><i class="fa fa-arrow-left"></i> </a>
+                                <a class="btn btn-success btn-lg" onclick="CrearUsuario()"> Crear Usuario</a>
+
                             </div>
                         </div>
                     </div>
@@ -119,9 +126,7 @@
     <!-- end col-10 -->
 </div>
 
-<div>
-    @Html.ActionLink("Volver", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -131,36 +136,30 @@
         $("#Telefono").mask("9999-9999");
         $("#Identidad").mask("9999-9999-99999");
 
+        $("#RoleUsuario").select2();
 
-
-
-        $("#test").click(function () {
-
-          
-            $.gritter.add({
-                title: '<i class="fa fa-check fa-2x text-success fa-fw" ></i>    Mensaje a mostrar',
-                //text: "Exito",
-                //image: "~/assets/img/user-2.jpg",
-                sticky: false,
-                time: "",
-                class_name: "my-sticky-class"
-            });
+        function CrearUsuario() {
          
-          //  var mens = '<form class="form-horizontal form-bordered"><div class="form-group"><label class="control-label col-md-4"><i class="fa fa-times fa-3x text-danger fa-fw" ></i></label> <div class="col-md-8">' +
-          //      '<span>Mensaje a mostrar</span>  </div></div>';
-            var mens = '<label class="control-label col-md-4"><i class="fa fa-times fa-3x text-danger fa-fw" ></i></label><label class="control-label col-md-8"><span>Mensaje a mostrar</span></label>';
-        $.gritter.add({
-            title: '<i class="fa fa-times fa-2x text-danger fa-fw" ></i>  Mensaje a mostrar',
-            //text: "Exito",
-            //image: "~/assets/img/user-2.jpg",
-            sticky: false,
-            time: "",
-            class_name: "my-sticky-class"
-        });
+            if (!$("form").valid()) { return false; }
 
-        return false
-      
-        });
+            LoadWaitNotification();
+            $.ajax({
+                url: "/Usuario/CrearUsuario",
+                type: 'POST',
+                dataType: 'json',
+                data: $('form').serialize(),
+                success: function (data) {
+                 ShowNotification(data.Estado, data.Titulo, data.Mensaje )
+                        
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus + ": Problemas con la red");
+                    UnloadWaitNotification();
+                },
+                complete: function () { UnloadWaitNotification(); }
+            });
+        };
+
       
      
     </script>

@@ -18,6 +18,34 @@
 
 </head>
 <body>
+
+
+    <div id="MyModal" class="modal fade" role="dialog" data-backdrop='static' data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> <big>&times;</big></button>
+                    <h4 class="modal-title" id="MyModalTitle">Modal Header</h4>
+                </div>
+                <div class="modal-body" id="MyModalBody">
+                    <p>Some text in the modal.</p>
+                </div>
+                @*<div class="modal-footer" id="MyModalFooter">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>*@
+            </div>
+
+        </div>
+    </div>
+    <div class="modal" id="modalWaitingTime" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="">
+        <div class="modal-dialog" role="document" style="margin-top: 15%;">
+            <div class="modal-body text-center">
+                <center><img src="~/assets/img/logo.png" class="status2" style="color: #fff;" /></center>
+                <h5><span style="color: #fff;">Procesando Consulta...</span></h5>
+            </div>
+        </div>
+
+    </div>
     <!-- begin #page-loader -->
     <div id="page-loader">
         <div class="material-loader">

@@ -4,9 +4,7 @@
 }
 
 <div class="row">
-    <!-- begin col-2 -->
-    <!-- end col-2 -->
-    <!-- begin col-10 -->
+
     <div class="col-md-12 ui-sortable">
         <!-- begin panel -->
         <div class="panel panel-success">
@@ -23,6 +21,7 @@
                 <table class="table table-bordered table-responsive table-hover" id="IdTabla" style="width: 100%;">
                     <thead>
                         <tr>                        
+                            <th>Acciones</th>
                             <th>Cuenta de Usuario</th>
                             <th>Nombre</th>
                             <th> Apellido</th>
@@ -30,7 +29,7 @@
                             <th>Correo Electronico</th>
                             <th>Perfil </th>
                             <th> Estado </th>
-                            <th>Acciones</th>
+                          
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -60,7 +59,7 @@
                 $("#MyModal").modal("show");
             },
             error: function (xhr, textStatus, errorThrown) {
-                ShowboxError(textStatus, "Error"); alert(textStatus);
+                alert(textStatus);
                 UnloadWaitNotification();
             },
             complete: function () { UnloadWaitNotification(); }
@@ -79,13 +78,12 @@
                 $("#MyModal").modal("show");
             },
             error: function (xhr, textStatus, errorThrown) {
-                ShowboxError(textStatus, "Error"); alert(textStatus);
+              alert("Error con la red");
                 UnloadWaitNotification();
             },
             complete: function () { UnloadWaitNotification(); }
         });
     }
-
 
     function MostrarResetContrasena(id)
     {
@@ -100,7 +98,7 @@
                 $("#MyModal").modal("show");
             },
             error: function (xhr, textStatus, errorThrown) {
-                ShowboxError(textStatus, "Error"); alert(textStatus);
+                alert(textStatus);
                 UnloadWaitNotification();
             },
             complete: function () { UnloadWaitNotification(); }
@@ -109,13 +107,13 @@
 
     }
 
+    function DeshabilitarUsuario()
+    {
 
 
-
+    }
     $(document).ready(function () {
-
-    //    $("#IdTabla").dataTable();
-        
+    
         $("#IdTabla").dataTable({
         responsive: true,
         ajax: {
@@ -129,13 +127,12 @@
             {
                 data: null,
                 render: function (data) {
-                    var opciones = '<div class="btn-group display-inline pull-left text-align-left">' + '<button class="btn btn-xs btn-info dropdown-toggle ';
-                    opciones += 'data-toggle="dropdown" aria-expanded="false"> Opciones <i class="fa fa-caret-down fa-lg"></i> </button><ul class="dropdown-menu dropdown-menu-xs pull-right">';
-                    opciones += ('<li><a href="javascript:void(0);" onclick="MostrarEditarCuenta(!' + data.Id + '!)"><i class="fa fa-pencil fa-lg fa-fw"></i> Editar Cuenta</a></li>').replace(new RegExp("!", 'g'), "'");
-                    opciones += ('<li><a href="javascript:void(0);" onclick="MostrarEditarInfo(!' + data.Id + '!)"><i class="fa fa-pencil fa-lg fa-fw"></i> Editar Perfil</a></li>').replace(new RegExp("!", 'g'), "'");
-                    opciones += ('<li><a href="javascript:void(0);" onclick="MostrarResetContrasena(!' + data.Id + '!)"><i class="fa fa-pencil fa-lg fa-fw"></i> Cambiar Contraseña</a></li>').replace(new RegExp("!", 'g'), "'");
-                    opciones += ('<li><a href="javascript:void(0);" onclick="Eliminar(!' + data.Id + '!)"><i class="fa fa-ban fa-lg fa-fw"></i> Eliminar</a></li>').replace(new RegExp("!", 'g'), "'");;
-                    opciones += '</ul></div>';
+                    var opciones = '<div class="btn-group m-r-5 m-b-5 "><a href="javascript:;" data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" aria-expanded="false">Opciones <span class="caret"></span></a><ul class="dropdown-menu">';
+                    opciones += ('<li><a href="javascript:void(0);" onclick="MostrarEditarCuenta(!' + data.Id + '!)"> Editar Cuenta</a></li>').replace(new RegExp("!", 'g'), "'");
+                    opciones += ('<li><a href="javascript:void(0);" onclick="MostrarEditarInfo(!' + data.Id + '!)"> Editar Perfil</a></li>').replace(new RegExp("!", 'g'), "'");
+                    opciones += ('<li><a href="javascript:void(0);" onclick="MostrarResetContrasena(!' + data.Id + '!)"> Cambiar Contraseña</a></li>').replace(new RegExp("!", 'g'), "'");
+                    opciones += ('<li><a href="javascript:void(0);" onclick="DeshabilitarUsuario(!' + data.Id + '!)">Deshabilitar</li>').replace(new RegExp("!", 'g'), "'");
+                   opciones += '</ul></div>';
                     return opciones;
                 }
             },
@@ -174,6 +171,7 @@
 
 
     })
+     
     </script>
 
 }
