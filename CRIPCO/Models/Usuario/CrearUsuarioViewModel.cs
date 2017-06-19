@@ -58,5 +58,7 @@ namespace CRIPCO.Models.Usuario
         [Required]
         [Display(Name = "Tipo de Usuario")]
         public string RoleUsuario { get; set; }
+
+        public bool Estado { get; set; }
     }
 }

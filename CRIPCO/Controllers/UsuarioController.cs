@@ -26,6 +26,7 @@ namespace CRIPCO.Controllers
         public ActionResult Index()
         {
             return View();
+            var name = User.Identity.Name;
         }
 
         public ActionResult ListarUsuarios()
@@ -62,7 +63,7 @@ namespace CRIPCO.Controllers
         {
             using (var context = new CripcoEntities())
             {
-                ViewBag.ListaTipoUsuario = context.AspNetRoles.Select(x => new SelectListItem { Value = x.Id, Text = x.Name }).ToList();
+                ViewBag.ListaTipoUsuario = context.AspNetRoles.Where(x=>x.Activo??false).Select(x => new SelectListItem { Value = x.Id, Text = x.Name }).ToList();
                 return View(new CrearUsuarioViewModel { FechaNac = DateTime.Now });
             }
            
@@ -157,7 +158,7 @@ namespace CRIPCO.Controllers
         {
             using (var context = new CripcoEntities())
             {
-                ViewBag.ListaTipoUsuario = context.AspNetRoles.Select(x => new SelectListItem { Value = x.Id, Text = x.Name }).ToList();
+                ViewBag.ListaTipoUsuario = context.AspNetRoles.Where(x=>x.Activo??false).Select(x => new SelectListItem { Value = x.Id, Text = x.Name }).ToList();
                 var usuario = context.Persona.Find(Id);
                 var roles = await UserManager.GetRolesAsync(usuario.IdAspnetUser);
                 return PartialView(new CrearUsuarioViewModel
@@ -166,7 +167,8 @@ namespace CRIPCO.Controllers
                     UserName = usuario.AspNetUsers.UserName,
                     Email = usuario.AspNetUsers.Email,
                     IdAspNetUser = usuario.IdAspnetUser,
-                    RoleUsuario = usuario.AspNetUsers.AspNetRoles.FirstOrDefault()?.Id??"",                 
+                    RoleUsuario = usuario.AspNetUsers.AspNetRoles.FirstOrDefault()?.Id??"",  
+                    Estado = usuario.Activo               
                 });
 
             }
@@ -183,6 +185,7 @@ namespace CRIPCO.Controllers
                     var usuario = context.Persona.Find(model.Id);
                     usuario.AspNetUsers.UserName = model.UserName;
                     usuario.AspNetUsers.Email = model.Email;
+                    usuario.Activo = model.Estado;
                     context.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
                     var roles = await UserManager.GetRolesAsync(usuario.AspNetUsers.Id);
                     await UserManager.RemoveFromRolesAsync(usuario.AspNetUsers.Id, roles.ToArray());

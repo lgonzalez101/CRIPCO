@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GCModelStoreContainer" CdmEntityContainer="CripcoEntities">
+  <EntityContainerMapping StorageEntityContainer="CripcoModelStoreContainer" CdmEntityContainer="CripcoEntities">
     <EntitySetMapping Name="C__MigrationHistory">
-      <EntityTypeMapping TypeName="GCModel.C__MigrationHistory">
+      <EntityTypeMapping TypeName="CripcoModel.C__MigrationHistory">
         <MappingFragment StoreEntitySet="__MigrationHistory">
           <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
           <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Area">
-      <EntityTypeMapping TypeName="GCModel.Area">
+      <EntityTypeMapping TypeName="CripcoModel.Area">
         <MappingFragment StoreEntitySet="Area">
           <ScalarProperty Name="AreaID" ColumnName="AreaID" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -23,16 +23,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="GCModel.AspNetRoles">
-        <MappingFragment StoreEntitySet="AspNetRoles">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserClaims">
-      <EntityTypeMapping TypeName="GCModel.AspNetUserClaims">
+      <EntityTypeMapping TypeName="CripcoModel.AspNetUserClaims">
         <MappingFragment StoreEntitySet="AspNetUserClaims">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -42,7 +34,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserLogins">
-      <EntityTypeMapping TypeName="GCModel.AspNetUserLogins">
+      <EntityTypeMapping TypeName="CripcoModel.AspNetUserLogins">
         <MappingFragment StoreEntitySet="AspNetUserLogins">
           <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
           <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -51,7 +43,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="GCModel.AspNetUsers">
+      <EntityTypeMapping TypeName="CripcoModel.AspNetUsers">
         <MappingFragment StoreEntitySet="AspNetUsers">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -69,7 +61,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Cita">
-      <EntityTypeMapping TypeName="GCModel.Cita">
+      <EntityTypeMapping TypeName="CripcoModel.Cita">
         <MappingFragment StoreEntitySet="Cita">
           <ScalarProperty Name="CitaID" ColumnName="CitaID" />
           <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
@@ -83,7 +75,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Especialidad">
-      <EntityTypeMapping TypeName="GCModel.Especialidad">
+      <EntityTypeMapping TypeName="CripcoModel.Especialidad">
         <MappingFragment StoreEntitySet="Especialidad">
           <ScalarProperty Name="EspecialidadID" ColumnName="EspecialidadID" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -95,7 +87,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Expediente">
-      <EntityTypeMapping TypeName="GCModel.Expediente">
+      <EntityTypeMapping TypeName="CripcoModel.Expediente">
         <MappingFragment StoreEntitySet="Expediente">
           <ScalarProperty Name="ExpedienteID" ColumnName="ExpedienteID" />
           <ScalarProperty Name="CitaID" ColumnName="CitaID" />
@@ -109,7 +101,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Horario">
-      <EntityTypeMapping TypeName="GCModel.Horario">
+      <EntityTypeMapping TypeName="CripcoModel.Horario">
         <MappingFragment StoreEntitySet="Horario">
           <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
           <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
@@ -123,7 +115,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Persona">
-      <EntityTypeMapping TypeName="GCModel.Persona">
+      <EntityTypeMapping TypeName="CripcoModel.Persona">
         <MappingFragment StoreEntitySet="Persona">
           <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
           <ScalarProperty Name="IdAspnetUser" ColumnName="IdAspnetUser" />
@@ -132,8 +124,6 @@
           <ScalarProperty Name="Identidad" ColumnName="Identidad" />
           <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
           <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Perfil" ColumnName="Perfil" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
           <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
           <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
@@ -142,7 +132,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PersonaEspecialidad">
-      <EntityTypeMapping TypeName="GCModel.PersonaEspecialidad">
+      <EntityTypeMapping TypeName="CripcoModel.PersonaEspecialidad">
         <MappingFragment StoreEntitySet="PersonaEspecialidad">
           <ScalarProperty Name="PersonaEspecialidadID" ColumnName="PersonaEspecialidadID" />
           <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
@@ -151,7 +141,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Sala">
-      <EntityTypeMapping TypeName="GCModel.Sala">
+      <EntityTypeMapping TypeName="CripcoModel.Sala">
         <MappingFragment StoreEntitySet="Sala">
           <ScalarProperty Name="SalaID" ColumnName="SalaID" />
           <ScalarProperty Name="AreaID" ColumnName="AreaID" />
@@ -165,7 +155,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="GCModel.sysdiagrams">
+      <EntityTypeMapping TypeName="CripcoModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -175,12 +165,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="AspNetUserRoles" TypeName="GCModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-      <EndProperty Name="AspNetRoles">
-        <ScalarProperty Name="Id" ColumnName="RoleId" />
-      </EndProperty>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="CripcoModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="CripcoModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
       <EndProperty Name="AspNetUsers">
         <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

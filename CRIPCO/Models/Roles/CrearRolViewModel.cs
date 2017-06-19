@@ -10,7 +10,12 @@ namespace CRIPCO.Models.Roles
     {
         [Required]
         [StringLength(50)]
-        [Display(Name = "Nombre de Rol")]
+        [Display(Name = "Tipo de Usuario")]
         public string Nombre { get; set; }
+
+        public string Id { get; set; }
+        public bool Estado { get; set; }
+        public bool EsEditar { get; set; }
+
     }
 }

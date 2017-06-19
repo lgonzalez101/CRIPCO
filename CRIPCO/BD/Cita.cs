@@ -30,9 +30,9 @@ namespace CRIPCO.BD
         public bool Activo { get; set; }
     
         public virtual Horario Horario { get; set; }
+        public virtual Persona Persona { get; set; }
         public virtual Sala Sala { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expediente> Expediente { get; set; }
-        public virtual Persona Persona { get; set; }
     }
 }

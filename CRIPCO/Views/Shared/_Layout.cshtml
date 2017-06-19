@@ -40,8 +40,14 @@
     <div class="modal" id="modalWaitingTime" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="">
         <div class="modal-dialog" role="document" style="margin-top: 15%;">
             <div class="modal-body text-center">
-                <center><img src="~/assets/img/logo.png" class="status2" style="color: #fff;" /></center>
-                <h5><span style="color: #fff;">Procesando Consulta...</span></h5>
+                @*<center><img src="~/assets/img/logo.png" class="status2" style="color: #fff;" /></center>
+                <h5><span style="color: #fff;">Procesando Consulta...</span></h5>*@
+                <div class="material-loader">
+                    <svg class="circular" viewBox="25 25 50 50" style="color: #fff;">
+                        <circle style="color: #fff;" class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                    </svg>
+                    <div class="message" style="color: #fff;">Cargando...</div>
+                </div>
             </div>
         </div>
 
@@ -145,7 +151,7 @@
                     <li class="dropdown navbar-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="~/assets/img/user-6.jpg" alt="" />
-                            <span class="hidden-xs">Hola, Nombre de Usuario</span>
+                            <span class="hidden-xs">Hola, @User.Identity.Name</span>
                         </a>
                         <ul class="dropdown-menu animated fadeInLeft">
                             <li class="arrow"></li>
@@ -182,7 +188,7 @@
                             </div>
                             <div class="info">
                                 <b class="caret pull-right"></b>
-                                Nombre de Usuario
+                               @User.Identity.Name
                                 <small>Tipo de Usuario</small>
                             </div>
                         </a>
@@ -199,13 +205,13 @@
                 <ul class="nav">                 
                     <li class="has-sub">
                         <a href="javascript:;">
-                            <b class="caret pull-right"></b><i class="material-icons">home</i> <span>Home</span>
+                            <b class="caret pull-right"></b><i class="material-icons">home</i> <span>Inicio</span>
                         </a>
-                        <ul class="sub-menu">
+                        @*<ul class="sub-menu">
                             <li><a href="@Url.Action("Index","Home")" title="Home"><span>Inicio</span></a></li>
                             <li><a href="@Url.Action("Index","Home")" title="Home"><span>Inicio2</span></a></li>
                             <li><a href="@Url.Action("Index","Home")" title="Home"><span>Inicio3</span></a></li>
-                        </ul>
+                        </ul>*@
 
                     </li>
                     <li class="has-sub">
@@ -215,7 +221,7 @@
                         <ul class="sub-menu">
                             <li><a href="@Url.Action("Index","Usuario")" title="Home"><span>Usuarios</span></a></li>
                             <li><a href="@Url.Action("CrearUsuario","Usuario")" title="Home"><span>Crear Usuario</span></a></li>
-                            <li><a href="@Url.Action("Index","Role")" title="Home"><span>Roles</span></a></li>
+                            <li><a href="@Url.Action("Index","Role")" title="Home"><span>Tipo de Usuarios</span></a></li>
                            
                         </ul>
 

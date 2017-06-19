@@ -9,7 +9,7 @@
 
     <div class="col-md-12 ui-sortable">
         <!-- begin panel -->
-        <div class="panel panel-final">
+        <div class="panel panel-success">
             <div class="panel-heading">
                 <div class="panel-heading-btn">
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand" data-original-title="" title="" data-init="true"><i class="fa fa-expand"></i></a>
@@ -111,8 +111,8 @@
                      
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <a href="/Usuario/Index" class="btn btn-default btn-lg "><i class="fa fa-arrow-left"></i> </a>
-                                <a class="btn btn-success btn-lg" onclick="CrearUsuario()"> Crear Usuario</a>
+                                <a href="/Usuario/Index" class="btn btn-default"><i class="fa fa-arrow-left"></i> </a>
+                                <a class="btn btn-success" onclick="CrearUsuario()"> Crear Usuario</a>
 
                             </div>
                         </div>
@@ -149,8 +149,11 @@
                 dataType: 'json',
                 data: $('form').serialize(),
                 success: function (data) {
-                 ShowNotification(data.Estado, data.Titulo, data.Mensaje )
-                        
+                    ShowNotification(data.Estado, data.Titulo, data.Mensaje)
+                    if (data.Estado) {
+                        document.location.href = '/Usuario/Index';
+                    }
+                  
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert(textStatus + ": Problemas con la red");

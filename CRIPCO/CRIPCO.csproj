@@ -199,72 +199,75 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BD\Area.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\AspNetRoles.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\AspNetUserClaims.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\AspNetUserLogins.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\AspNetUsers.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Cita.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\C__MigrationHistory.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Especialidad.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Expediente.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Horario.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\ModelHCF.Context.cs">
+    <Compile Include="BD\ModelCripco.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelHCF.Context.tt</DependentUpon>
+      <DependentUpon>ModelCripco.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\ModelHCF.cs">
+    <Compile Include="BD\ModelCripco.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\ModelHCF.Designer.cs">
+    <Compile Include="BD\ModelCripco.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelHCF.edmx</DependentUpon>
+      <DependentUpon>ModelCripco.edmx</DependentUpon>
     </Compile>
     <Compile Include="BD\Persona.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\PersonaEspecialidad.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Sala.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\sysdiagrams.cs">
-      <DependentUpon>ModelHCF.tt</DependentUpon>
+      <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GetInfoUsuario.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Base\MensajeRespuestaViewModel.cs" />
+    <Compile Include="Models\Horario\CrearHorarioViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Roles\CrearRolViewModel.cs" />
@@ -5661,15 +5664,15 @@
     <Content Include="assets\plugins\switchery\switchery.js" />
     <Content Include="assets\plugins\switchery\switchery.min.css" />
     <Content Include="assets\plugins\switchery\switchery.min.js" />
-    <Content Include="BD\ModelHCF.Context.tt">
+    <Content Include="BD\ModelCripco.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelHCF.edmx</DependentUpon>
-      <LastGenOutput>ModelHCF.Context.cs</LastGenOutput>
+      <DependentUpon>ModelCripco.edmx</DependentUpon>
+      <LastGenOutput>ModelCripco.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="BD\ModelHCF.tt">
+    <Content Include="BD\ModelCripco.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelHCF.edmx</DependentUpon>
-      <LastGenOutput>ModelHCF.cs</LastGenOutput>
+      <DependentUpon>ModelCripco.edmx</DependentUpon>
+      <LastGenOutput>ModelCripco.cs</LastGenOutput>
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -6478,13 +6481,6 @@
     <Content Include="assets\plugins\summernote\font\summernote.eot" />
     <Content Include="assets\plugins\summernote\font\summernote.ttf" />
     <Content Include="assets\plugins\summernote\font\summernote.woff" />
-    <EntityDeploy Include="BD\ModelHCF.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelHCF.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="BD\ModelHCF.edmx.diagram">
-      <DependentUpon>ModelHCF.edmx</DependentUpon>
-    </Content>
     <Content Include="assets\alertify\.travis.yml" />
     <Content Include="assets\alertify\bower.json" />
     <Content Include="assets\alertify\Contributors.md" />
@@ -6494,6 +6490,13 @@
     <Content Include="assets\alertify\example\assets\fonts\FontAwesome.otf" />
     <Content Include="assets\alertify\package.json" />
     <Content Include="assets\alertify\README.md" />
+    <EntityDeploy Include="BD\ModelCripco.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelCripco.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="BD\ModelCripco.edmx.diagram">
+      <DependentUpon>ModelCripco.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -6544,10 +6547,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\CrearUsuario.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Usuario\CrearRol.cshtml" />
     <Content Include="Views\Usuario\EditarInfoUsuario.cshtml" />
     <Content Include="Views\Usuario\EditarCuentaUsuario.cshtml" />
     <Content Include="Views\Usuario\ResetContrasena.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Crear.cshtml" />
+    <Content Include="Views\Role\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
