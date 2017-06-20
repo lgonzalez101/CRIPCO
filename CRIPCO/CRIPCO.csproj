@@ -271,6 +271,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Base\MensajeRespuestaViewModel.cs" />
     <Compile Include="Models\Calendario\CalendarioViewModel.cs" />
+    <Compile Include="Models\Cita\CitaModelo.cs" />
     <Compile Include="Models\Horario\CrearHorarioViewModel.cs" />
     <Compile Include="Models\Horario\ListaHorarioViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
