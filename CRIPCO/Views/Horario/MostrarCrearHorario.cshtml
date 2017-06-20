@@ -65,11 +65,11 @@
             type: 'POST',
             data: { model: obj  },
             success: function (data) {
-                //if (data.Estado) {
-                //    ShowNotification(data.Estado, data.Titulo, data.Mensaje);
-                //    new $.fn.dataTable.Api("#IdTabla").ajax.reload();
-                //    $("#MyModal").modal("hide");
-                //} else ShowNotification(data.Estado, data.Titulo, data.Mensaje);
+                ShowNotification(data.Estado, data.Titulo, data.Mensaje);
+                if (data.Estado) {                  
+                    new $.fn.dataTable.Api("#IdTabla").ajax.reload();
+                    $("#MyModal").modal("hide");
+                } 
             },
             error: function (xhr, textStatus, errorThrown) {
                 alert(textStatus + " : problemas de red")

@@ -203,7 +203,7 @@
                 <!-- end sidebar user -->
                 <!-- begin sidebar nav -->
                 <ul class="nav">                 
-                    <li class="has-sub active">
+                    <li class="has-sub">
                         <a href="/Home/Index">
                            <i class="material-icons">home</i> <span>Inicio</span>
                         </a>
@@ -215,9 +215,7 @@
 
                     </li>
                     @if (User.IsInRole("Administrador"))
-                    {
-                        
-                
+                    {               
                     <li class="has-sub">
                         <a href="javascript:;">
                             <b class="caret pull-right"></b><i class="material-icons">person</i> <span>Gestion de Usuarios</span>
@@ -229,13 +227,37 @@
                            
                         </ul>
                     </li>
-                    }
-@if (User.IsInRole("Doctor"))
-{
-    <li><a href="@Url.Action("Index","Horario")" title="Horarios"><i class="material-icons">access_alarm</i> <span>Horarios</span></a></li>
 
-}
-                              
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret pull-right"></b><i class="material-icons">business_center</i> <span>Administracion</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("Index","Usuario")" title="Sala"><span>Salas</span></a></li>
+                            <li><a href="@Url.Action("Index","Usuario")" title="Area"><span>Areas</span></a></li>
+                        </ul>
+                    </li>
+                    }
+                    @if (User.IsInRole("Doctor"))
+                    {
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b><i class="material-icons">access_alarm</i> <span>Horarios</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Index","Horario")" title="Horarios"> <span>Ver Horarios</span></a></li>
+                                <li><a href="@Url.Action("Index","Horario")" title="Calendario"> <span>Calendario</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b><i class="material-icons">assignment_ind</i> <span>Expedientes</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Index","Horario")" title="Horarios"> <span>Ver Expedientes</span></a></li>
+                            </ul>
+                        </li>
+                    }    
                     <!-- begin sidebar minify button -->
                     <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
                     <!-- end sidebar minify button -->
