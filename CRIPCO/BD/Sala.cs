@@ -11,7 +11,8 @@ namespace CRIPCO.BD
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Sala
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,11 +23,14 @@ namespace CRIPCO.BD
     
         public int SalaID { get; set; }
         public Nullable<int> AreaID { get; set; }
+        [Required]
         public string Nombre { get; set; }
+        [Required]
         public string Tipo { get; set; }
         public string CreadoPor { get; set; }
         public Nullable<System.DateTime> FechaCreado { get; set; }
         public string ModificadoPor { get; set; }
+        [Required]
         public Nullable<bool> Activo { get; set; }
     
         public virtual Area Area { get; set; }

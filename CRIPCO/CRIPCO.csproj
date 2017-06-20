@@ -256,11 +256,13 @@
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorarioController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SalaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -6557,6 +6559,16 @@
     <Content Include="Views\Role\Editar.cshtml" />
     <Content Include="Views\Horario\Index.cshtml" />
     <Content Include="Views\Horario\MostrarCrearHorario.cshtml" />
+    <Content Include="Views\Area\Create.cshtml" />
+    <Content Include="Views\Area\Delete.cshtml" />
+    <Content Include="Views\Area\Details.cshtml" />
+    <Content Include="Views\Area\Edit.cshtml" />
+    <Content Include="Views\Area\Index.cshtml" />
+    <Content Include="Views\Sala\Create.cshtml" />
+    <Content Include="Views\Sala\Delete.cshtml" />
+    <Content Include="Views\Sala\Details.cshtml" />
+    <Content Include="Views\Sala\Edit.cshtml" />
+    <Content Include="Views\Sala\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
