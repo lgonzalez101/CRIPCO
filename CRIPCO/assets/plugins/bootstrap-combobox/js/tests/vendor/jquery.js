@@ -7437,7 +7437,7 @@ var
 	 */
 	prefilters = {},
 
-	/* Transports bindings
+	/* Transports 
 	 * 1) key is the dataType
 	 * 2) the catchall symbol "*" can be used
 	 * 3) selection will start with transport dataType and THEN go to "*" if needed
