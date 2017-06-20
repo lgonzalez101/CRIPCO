@@ -270,6 +270,7 @@
     <Compile Include="Helpers\GetInfoUsuario.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Base\MensajeRespuestaViewModel.cs" />
+    <Compile Include="Models\Calendario\CalendarioViewModel.cs" />
     <Compile Include="Models\Horario\CrearHorarioViewModel.cs" />
     <Compile Include="Models\Horario\ListaHorarioViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -6569,6 +6570,7 @@
     <Content Include="Views\Sala\Details.cshtml" />
     <Content Include="Views\Sala\Edit.cshtml" />
     <Content Include="Views\Sala\Index.cshtml" />
+    <Content Include="Views\Home\VerHorariosDelDia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

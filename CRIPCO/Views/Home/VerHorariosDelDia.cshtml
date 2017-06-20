@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CRIPCO.Models.Horario.ListaHorarioViewModel>
+
+
+
+<h1 class="page-header">@DateTime.Now.ToLongDateString().ToUpper() @*<small class="">header small text goes here...</small>*@</h1>
+
+    <div class="row">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                if (item.Reservado)
+                {
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-stats bg-red">
+                            <div class="stats-icon"><i class="fa fa-clock-o"></i></div>
+                            <div class="stats-info">
+                                <h4>RESERVADO</h4>
+                                <p>@item.Fecha.ToShortTimeString()</p>
+                            </div>
+                            <div class="stats-link">
+                                <a href="javascript:;" onclick="VerDetalles(@item.Id)">Ver Detalles <i class="fa fa-arrow-circle-o-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-stats bg-green">
+                            <div class="stats-icon"><i class="fa fa-clock-o"></i></div>
+                            <div class="stats-info">
+                                <h4>DISPONIBLE</h4>
+                                <p>@item.Fecha.ToShortTimeString()</p>
+                            </div>
+                            <div class="stats-link">
+                                <a href="javascript:;" onclick="VerDetalles(@item.Id)">Ver Detalles <i class="fa fa-arrow-circle-o-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+    </div>
+
+
+
+<script>
+
+   function VerDetalles(id)
+    {
+               $("#MyModalTitle").html("Detalles de Cita");
+               $("#MyModalBody").html("Informacion pendiente");
+               $("#MyModal").modal("show");
+
+       // LoadWaitNotification();
+        //$.ajax({
+        //    url: "/Home/VerDetallesHorario",
+        //    type: 'get',
+        //    data: { Id: id },
+        //    success: function (data) {
+        //        $("#MyModalTitle").html("Editar Area");
+        //        $("#MyModalBody").html(data);
+        //        $("#MyModal").modal("show");
+        //    },
+        //    error: function (xhr, textStatus, errorThrown) {
+        //        alert(textStatus);
+        //        UnloadWaitNotification();
+        //    },
+        //    complete: function () { UnloadWaitNotification(); }
+        //});
+   }
+
+    </script>

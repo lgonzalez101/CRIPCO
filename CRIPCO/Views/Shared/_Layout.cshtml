@@ -155,10 +155,10 @@
                         </a>
                         <ul class="dropdown-menu animated fadeInLeft">
                             <li class="arrow"></li>
-                            <li><a href="javascript:;">Edit Profile</a></li>
+                            @*<li><a href="javascript:;">Edit Profile</a></li>
                             <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
-                            <li><a href="javascript:;">Calendar</a></li>
-                            <li><a href="javascript:;">Setting</a></li>
+                            <li><a href="javascript:;">Calendar</a></li>*@
+                            <li><a href="javascript:;">Perfil</a></li>
                             <li class="divider"></li>    
                             <li><a href="@Url.Action("LogOff", "Account")">Cerrar Sesion</a></li>
                         </ul>
@@ -245,8 +245,8 @@
                                 <b class="caret pull-right"></b><i class="material-icons">access_alarm</i> <span>Horarios</span>
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="@Url.Action("Index","Horario")" title="Horarios"> <span>Ver Horarios</span></a></li>
-                                <li><a href="@Url.Action("Index","Horario")" title="Calendario"> <span>Calendario</span></a></li>
+                                <li><a href="@Url.Action("Index","Horario")" title="Horarios"> <span>Lista de Horarios</span></a></li>
+                                @*<li><a href="@Url.Action("Index","Horario")" title="Calendario"> <span>Calendario</span></a></li>*@
                             </ul>
                         </li>
                         <li class="has-sub">
