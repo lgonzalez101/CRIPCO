@@ -23,7 +23,7 @@ namespace CRIPCO.BD
         public int HorarioID { get; set; }
         public int PersonaID { get; set; }
         public System.DateTime Hora { get; set; }
-        public string Estado { get; set; }
+        public bool Reservado { get; set; }
         public string CreadoPor { get; set; }
         public System.DateTime FechaCreado { get; set; }
         public string ModificadoPor { get; set; }

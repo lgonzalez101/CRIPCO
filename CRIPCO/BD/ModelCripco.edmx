@@ -121,8 +121,8 @@
           </Key>
           <Property Name="HorarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PersonaID" Type="int" Nullable="false" />
-          <Property Name="Hora" Type="date" Nullable="false" />
-          <Property Name="Estado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Hora" Type="datetime" Nullable="false" />
+          <Property Name="Reservado" Type="bit" Nullable="false" />
           <Property Name="CreadoPor" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="FechaCreado" Type="date" Nullable="false" />
           <Property Name="ModificadoPor" Type="varchar" MaxLength="100" Nullable="false" />
@@ -531,8 +531,8 @@
           </Key>
           <Property Name="HorarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PersonaID" Type="Int32" Nullable="false" />
-          <Property Name="Hora" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reservado" Type="Boolean" Nullable="false" />
           <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -919,7 +919,7 @@
                 <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
                 <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Reservado" ColumnName="Reservado" />
                 <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
                 <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
                 <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
