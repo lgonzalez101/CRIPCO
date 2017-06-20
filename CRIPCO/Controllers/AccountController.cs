@@ -71,7 +71,7 @@ namespace CRIPCO.Controllers
             if (!ModelState.IsValid) return View(model);
             var user = await UserManager.FindByNameAsync(model.UserName);
             if (user == null) { ModelState.AddModelError("", "Usuario Invalido"); return View(model); }
-
+            if(!VerificarUsuarioEstaHabilitado(user.Id)) { ModelState.AddModelError("", "Usuario Deshabilitado"); return View(model); }
             var LoginResult = await SignInManager.PasswordSignInAsync(model.UserName.Trim(), model.Password.Trim(), model.RememberMe, shouldLockout: false);
             if (LoginResult == SignInStatus.Success)
             {
@@ -81,9 +81,22 @@ namespace CRIPCO.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Contrasena Invalida");
+                ModelState.AddModelError("", "Contraseña Invalida");
                 return View(model);
             }
+        }
+
+        public bool VerificarUsuarioEstaHabilitado(string IdAspNetUser)
+        {
+            using (var context = new CRIPCO.BD.CripcoEntities())
+            {
+                var usuario = context.Persona.FirstOrDefault(x => x.IdAspnetUser == IdAspNetUser);
+                if (usuario == null) return false;
+
+                if (usuario.Activo && usuario.AspNetUsers.AspNetRoles.FirstOrDefault()?.Activo==true) return true;
+                else return false;
+            }
+               
         }
 
         //

@@ -26,15 +26,6 @@
             </p>
         </div>
         <div class="tab-pane fade" id="default-tab-2">
-                
-            @*<div class="input-group" id="default-daterange">
-                <input type="text" name="default-daterange" class="form-control" value="" placeholder="click to select the date range">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
-                </span>
-            </div>*@
-     
-
             <div class="row row-space-10">
                 <div class="col-md-6">
                     <label>Fecha Inicial</label>
@@ -60,8 +51,7 @@
             <p class="text-right m-b-0">
                 <a href="javascript:;" onclick="CrearHorarioRango()" class="btn btn-success">Guardar Horario</a>
             </p>
-       
-
+      
         </div>
       
     </div>
@@ -109,31 +99,10 @@
         $("#RangoHoraInicio").data("DateTimePicker").maxDate(a.date)
     });
 
-
-    $(document).ready(function () {
-       
+    $(document).ready(function () {      
         $("#HorarioSimple .datepicker").attr("class", "datepicker col-md-7");
-        $("#HorarioSimple .timepicker").attr("class", "timepicker col-md-5");
-      
-        //$("#default-daterange").daterangepicker({
-        //    timePicker: true,
-        //    alwaysShowCalendars : true,
-        //    opens: "center",
-        //    format: "MM/DD/YYYY",
-        //    separator: " to ",
-        //    startDate: moment().subtract(29, "days"),
-        //    endDate: moment(),
-        //    minDate: new Date(),
-        //    //   maxDate: "12/31/2018"
-        //}, function (a, b) {
-        //    $("#default-daterange input").val(a.format("MMMM D, YYYY") + " - " + b.format("MMMM D, YYYY"))
-        //});
-
-      
-
+        $("#HorarioSimple .timepicker").attr("class", "timepicker col-md-5"); 
     });
-
-
 
     function CrearHorarioSimple() {
         var obj = { FechaInicio: moment(FechaInicioSimple.data('DateTimePicker').date()).format("DD/MM/YY HH:mm") };
@@ -165,8 +134,7 @@
             FechaInicio: moment(RangoFechaInicial.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
             FechaFinal: moment(RangoFechaFinal.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
             HoraInicio: moment(RangoHoraInicial.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
-            HoraFinal: moment(RangoHoraFinal.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
-           
+            HoraFinal: moment(RangoHoraFinal.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),         
         };
 
         LoadWaitNotification();
@@ -191,63 +159,3 @@
 
     }
 </script>
-
-
-
-
-
-
-
-@*@using (Html.BeginForm())
-    {
-
-        <div class="form-horizontal">
-
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.IdUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.IdUsuario, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IdUsuario, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HoraInicio, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HoraInicio, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HoraFinal, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HoraFinal, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HoraFinal, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }*@

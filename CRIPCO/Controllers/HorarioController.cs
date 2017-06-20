@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace CRIPCO.Controllers
 {
-    [Authorize(Roles = "Doctor, Administrador")]
+    [Authorize(Roles = "Doctor")]
     public class HorarioController : BaseController
     {
         // GET: Horario
@@ -117,7 +117,6 @@ namespace CRIPCO.Controllers
                         }
                         return true;
                     }
-
                 }
                 return false;
             }
@@ -134,10 +133,6 @@ namespace CRIPCO.Controllers
             }
 
         }
-
-
-
-
 
     }
 }
