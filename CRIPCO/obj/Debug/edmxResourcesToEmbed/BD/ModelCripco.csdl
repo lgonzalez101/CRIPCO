@@ -122,8 +122,8 @@
     </Key>
     <Property Name="HorarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PersonaID" Type="Int32" Nullable="false" />
-    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Reservado" Type="Boolean" Nullable="false" />
     <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />

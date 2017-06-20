@@ -7,7 +7,7 @@
 
     <div class="col-md-12 ui-sortable">
         <!-- begin panel -->
-        <div class="panel panel-success">
+        <div class="panel panel-inverse">
             <div class="panel-heading">
                 <div class="panel-heading-btn">
                     <a href="javascript:;" onclick="MostrarCrear()" class="btn btn-xs btn-primary" data-original-title="Crear Horario" title="Crear Usuario"><i class="fa fa-plus"></i> Crear Horario</a>
@@ -63,7 +63,7 @@
     }
 
     function CambiarEstado(Id)
-    {
+    { 
         LoadWaitNotification();
         $.ajax({
             url: "/Horario/CambiarEstado",
@@ -100,7 +100,7 @@ $(document).ready(function () {
                 data: null,
                 render: function (data) {
                     var opciones = '<div class="btn-group m-r-5 m-b-5 "><a href="javascript:;" data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" aria-expanded="false">Acciones <span class="caret"></span></a><ul class="dropdown-menu">';
-                    opciones += ('<li><a href="javascript:void(0);" onclick="CambiarEstado(!' + data.Id + '!)"> Cambiar Estado</a></li>').replace(new RegExp("!", 'g'), "'");
+                    opciones +=  ('<li><a href="javascript:void(0);" onclick="CambiarEstado(!' + data.Id + '!)">'+(data.Estado?'Deshabilitar':'Habilitar')+'</a></li>').replace(new RegExp("!", 'g'), "'");
                     opciones +=data.Reservado ? ('<li><a href="javascript:void(0);" onclick="VerCita(!' + data.IdCita + '!)"> Ver Cita</a></li>').replace(new RegExp("!", 'g'), "'"):"";
                     opciones += '</ul></div>';
                     return opciones;

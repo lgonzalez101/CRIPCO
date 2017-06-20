@@ -115,7 +115,7 @@
           <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
           <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
           <ScalarProperty Name="Hora" ColumnName="Hora" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Reservado" ColumnName="Reservado" />
           <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
           <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
           <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />

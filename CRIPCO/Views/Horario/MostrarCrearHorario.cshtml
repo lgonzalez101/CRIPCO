@@ -1,9 +1,13 @@
 ﻿@model CRIPCO.Models.Horario.CrearHorarioViewModel
 
-
+<style>
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    background: #337ab7;
+}
+</style>
 
 <div class="panel">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-pills">
         <li class="active"><a href="#default-tab-1" data-toggle="tab" aria-expanded="false">Horario Simple</a></li>
         <li class=""><a href="#default-tab-2" data-toggle="tab" aria-expanded="false">Rango de Horarios</a></li>    
     </ul>
@@ -17,23 +21,47 @@
                 </div>
             </div>
             <hr />
-
-
             <p class="text-right m-b-0">
                 <a href="javascript:;" onclick="CrearHorarioSimple()" class="btn btn-success">Guardar Horario</a>
             </p>
         </div>
         <div class="tab-pane fade" id="default-tab-2">
-            <blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-            </blockquote>
-            <h4>Lorem ipsum dolor sit amet</h4>
-            <p>
-                Nullam ac sapien justo. Nam augue mauris, malesuada non magna sed, feugiat blandit ligula.
-                In tristique tincidunt purus id iaculis. Pellentesque volutpat tortor a mauris convallis,
-                sit amet scelerisque lectus adipiscing.
+                
+            @*<div class="input-group" id="default-daterange">
+                <input type="text" name="default-daterange" class="form-control" value="" placeholder="click to select the date range">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>*@
+     
+
+            <div class="row row-space-10">
+                <div class="col-md-6">
+                    <label>Fecha Inicial</label>
+                    <input type="text" class="form-control" id="RangoFechaInicio" placeholder="Min">
+                </div>
+                <div class="col-md-6">
+                    <label>Fecha Final</label>
+                    <input type="text" class="form-control" id="RangoFechaFinal" placeholder="Max">
+                </div>
+            </div>
+            <hr />
+            <div class="row row-space-10">
+                <div class="col-md-6 text-center">
+                    <label>Hora Inicial</label>
+                    <div id="RangoHoraInicio"></div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <label>Hora Final</label>
+                    <div id="RangoHoraFinal"></div>
+                </div>
+            </div>
+            <hr />
+            <p class="text-right m-b-0">
+                <a href="javascript:;" onclick="CrearHorarioRango()" class="btn btn-success">Guardar Horario</a>
             </p>
+       
+
         </div>
       
     </div>
@@ -41,35 +69,86 @@
 
 <script>
 
-    var mydatetimepicker = $("#FechaInicio").datetimepicker({
+    var FechaInicioSimple = $("#FechaInicio").datetimepicker({
         inline: true,
         sideBySide: true,
         format: 'dd/MM/yy H'
     });
 
-    $(document).ready(function () {
+   var RangoFechaInicial= $("#RangoFechaInicio").datetimepicker({
+        format: 'DD/MM/YYYY',
+        minDate: new Date(),
+        date: new Date()
+    });
 
+   var RangoFechaFinal = $("#RangoFechaFinal").datetimepicker({
+       format: 'DD/MM/YYYY',
+       date: new Date(),
+    });
+    $("#RangoFechaInicio").on("dp.change", function (a) {
+        $("#RangoFechaFinal").data("DateTimePicker").minDate(a.date)
+    });
+   $("#RangoFechaFinal").on("dp.change", function (a) {
+        $("#RangoFechaInicio").data("DateTimePicker").maxDate(a.date)
+    });
+
+    ////////////////////////
+   var RangoHoraInicial = $("#RangoHoraInicio").datetimepicker({
+        format: 'H',
+        inline: true
+    });
+
+   var RangoHoraFinal = $("#RangoHoraFinal").datetimepicker({
+        format: 'H',
+        inline: true
+    });
+    $("#RangoHoraInicio").on("dp.change", function (a) {
+        $("#RangoHoraFinal").data("DateTimePicker").minDate(a.date)
+    });
+    $("#RangoHoraFinal").on("dp.change", function (a) {
+        $("#RangoHoraInicio").data("DateTimePicker").maxDate(a.date)
+    });
+
+
+    $(document).ready(function () {
+       
         $("#HorarioSimple .datepicker").attr("class", "datepicker col-md-7");
         $("#HorarioSimple .timepicker").attr("class", "timepicker col-md-5");
+      
+        //$("#default-daterange").daterangepicker({
+        //    timePicker: true,
+        //    alwaysShowCalendars : true,
+        //    opens: "center",
+        //    format: "MM/DD/YYYY",
+        //    separator: " to ",
+        //    startDate: moment().subtract(29, "days"),
+        //    endDate: moment(),
+        //    minDate: new Date(),
+        //    //   maxDate: "12/31/2018"
+        //}, function (a, b) {
+        //    $("#default-daterange input").val(a.format("MMMM D, YYYY") + " - " + b.format("MMMM D, YYYY"))
+        //});
+
+      
 
     });
 
-    function CrearHorarioSimple()
-    {
-        var dtp = mydatetimepicker.data('DateTimePicker');
-        var obj = { FechaInicio: moment(dtp.date()).format("DD/MM/YY HH:mm") };
-        
+
+
+    function CrearHorarioSimple() {
+        var obj = { FechaInicio: moment(FechaInicioSimple.data('DateTimePicker').date()).format("DD/MM/YY HH:mm") };
+
         LoadWaitNotification();
         $.ajax({
             url: "/Horario/CrearHorarioSimple",
             type: 'POST',
-            data: { model: obj  },
+            data: { model: obj },
             success: function (data) {
                 ShowNotification(data.Estado, data.Titulo, data.Mensaje);
-                if (data.Estado) {                  
+                if (data.Estado) {
                     new $.fn.dataTable.Api("#IdTabla").ajax.reload();
                     $("#MyModal").modal("hide");
-                } 
+                }
             },
             error: function (xhr, textStatus, errorThrown) {
                 alert(textStatus + " : problemas de red")
@@ -81,6 +160,36 @@
 
     }
 
+    function CrearHorarioRango() {
+        var obj = {
+            FechaInicio: moment(RangoFechaInicial.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
+            FechaFinal: moment(RangoFechaFinal.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
+            HoraInicio: moment(RangoHoraInicial.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
+            HoraFinal: moment(RangoHoraFinal.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
+           
+        };
+
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Horario/CrearRangoHorario",
+            type: 'POST',
+            data: { model: obj },
+            success: function (data) {
+                ShowNotification(data.Estado, data.Titulo, data.Mensaje);
+                if (data.Estado) {
+                    new $.fn.dataTable.Api("#IdTabla").ajax.reload();
+                    $("#MyModal").modal("hide");
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus + " : problemas de red")
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+
+
+    }
 </script>
 
 

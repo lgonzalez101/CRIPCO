@@ -116,8 +116,8 @@
     </Key>
     <Property Name="HorarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PersonaID" Type="int" Nullable="false" />
-    <Property Name="Hora" Type="date" Nullable="false" />
-    <Property Name="Estado" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Hora" Type="datetime" Nullable="false" />
+    <Property Name="Reservado" Type="bit" Nullable="false" />
     <Property Name="CreadoPor" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="FechaCreado" Type="date" Nullable="false" />
     <Property Name="ModificadoPor" Type="varchar" MaxLength="100" Nullable="false" />

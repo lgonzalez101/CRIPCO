@@ -52,7 +52,7 @@ namespace CRIPCO
                        "~/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js",
                        "~/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js",
                        "~/assets/plugins/bootstrap-select/bootstrap-select.min.js",
-                       "~/assets/plugins/bootstrap-daterangepicker/moment.js",
+                       "~/assets/plugins/bootstrap-daterangepicker/moment.min.js",
                        "~/assets/plugins/bootstrap-daterangepicker/daterangepicker.js",
                        "~/assets/plugins/select2/dist/js/select2.min.js",
                        "~/assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
