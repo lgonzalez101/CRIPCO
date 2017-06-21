@@ -39,5 +39,7 @@ namespace CRIPCO.BD
         public virtual DbSet<PersonaEspecialidad> PersonaEspecialidad { get; set; }
         public virtual DbSet<Sala> Sala { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+
+        public System.Data.Entity.DbSet<CRIPCO.Models.Expedientes.ExpedientesViewModel> ExpedientesViewModels { get; set; }
     }
 }

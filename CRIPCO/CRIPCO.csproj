@@ -258,6 +258,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ExpedientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorarioController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -271,6 +272,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Base\MensajeRespuestaViewModel.cs" />
     <Compile Include="Models\Calendario\CalendarioViewModel.cs" />
+    <Compile Include="Models\Expedientes\ExpedientesViewModel.cs" />
+    <Compile Include="Models\Expedientes\ListaExpedienteViewModel.cs" />
     <Compile Include="Models\Horario\CrearHorarioViewModel.cs" />
     <Compile Include="Models\Horario\ListaHorarioViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -6571,6 +6574,8 @@
     <Content Include="Views\Sala\Edit.cshtml" />
     <Content Include="Views\Sala\Index.cshtml" />
     <Content Include="Views\Home\VerHorariosDelDia.cshtml" />
+    <Content Include="Views\Expedientes\Index.cshtml" />
+    <Content Include="Views\Expedientes\MostrarCrearExpediente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

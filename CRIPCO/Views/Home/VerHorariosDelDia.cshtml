@@ -34,7 +34,7 @@
                                 <p>@item.Fecha.ToShortTimeString()</p>
                             </div>
                             <div class="stats-link">
-                                <a href="javascript:;" onclick="VerDetalles(@item.Id)">Ver Detalles <i class="fa fa-arrow-circle-o-right"></i></a>
+                                <a href="javascript:;" onclick="">Ver Detalles <i class="fa fa-arrow-circle-o-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -49,10 +49,11 @@
 <script>
 
    function VerDetalles(id)
-    {
-               $("#MyModalTitle").html("Detalles de Cita");
-               $("#MyModalBody").html("Informacion pendiente");
-               $("#MyModal").modal("show");
+   {
+       MostrarCrearExpediente(id);
+               //$("#MyModalTitle").html("Detalles de Cita");
+               //$("#MyModalBody").html("Informacion pendiente");
+               //$("#MyModal").modal("show");
 
        // LoadWaitNotification();
         //$.ajax({
@@ -70,6 +71,28 @@
         //    },
         //    complete: function () { UnloadWaitNotification(); }
         //});
-   }
+    }
+
+
+    function MostrarCrearExpediente(IdHorario)
+    {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Expedientes/MostrarCrearExpediente",
+            type: 'get',
+            data: { Id: IdHorario },
+            success: function (data) {
+                $("#MyModalTitle").html("Crear Expediente");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+
+    }
 
     </script>
