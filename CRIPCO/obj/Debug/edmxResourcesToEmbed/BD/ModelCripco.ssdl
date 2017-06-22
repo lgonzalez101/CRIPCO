@@ -109,6 +109,7 @@
     <Property Name="FechaCreado" Type="date" Nullable="false" />
     <Property Name="ModificadoPor" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="ExtensionDocumento" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Horario">
     <Key>

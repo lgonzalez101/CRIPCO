@@ -12,8 +12,9 @@ namespace CRIPCO.Models.Expedientes
         public int CitaID { get; set; }
         [Required]
         public string Comentario { get; set; }
-        public byte[] Documento { get; set; }
-        public HttpPostedFileBase Documento2 { get; set; }
+      
+        public HttpPostedFileBase Documento { get; set; }
         public bool Activo { get; set; }
+        public string ExtensionArchivo { get; set; }
     }
 }

@@ -88,7 +88,7 @@
     <NavigationProperty Name="Horario" Relationship="Self.FK_Cita_Horario" FromRole="Cita" ToRole="Horario" />
     <NavigationProperty Name="Persona" Relationship="Self.FK_Cita_Persona" FromRole="Cita" ToRole="Persona" />
     <NavigationProperty Name="Sala" Relationship="Self.FK_Cita_Sala" FromRole="Cita" ToRole="Sala" />
-    <NavigationProperty Name="Expediente" Relationship="Self.FK_Expediente_Cita" FromRole="Cita" ToRole="Expediente" />
+    <NavigationProperty Name="Expediente" Relationship="CripcoModel.FK_Expediente_Cita" FromRole="Cita" ToRole="Expediente" />
   </EntityType>
   <EntityType Name="Especialidad">
     <Key>
@@ -101,20 +101,6 @@
     <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="PersonaEspecialidad" Relationship="Self.FK_PersonaEspecialidad_Especialidad" FromRole="Especialidad" ToRole="PersonaEspecialidad" />
-  </EntityType>
-  <EntityType Name="Expediente">
-    <Key>
-      <PropertyRef Name="ExpedienteID" />
-    </Key>
-    <Property Name="ExpedienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CitaID" Type="Int32" Nullable="false" />
-    <Property Name="Comentario" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Documento" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-    <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Activo" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Cita" Relationship="Self.FK_Expediente_Cita" FromRole="Expediente" ToRole="Cita" />
   </EntityType>
   <EntityType Name="Horario">
     <Key>
@@ -274,18 +260,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Expediente_Cita">
-    <End Role="Cita" Type="Self.Cita" Multiplicity="1" />
-    <End Role="Expediente" Type="Self.Expediente" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cita">
-        <PropertyRef Name="CitaID" />
-      </Principal>
-      <Dependent Role="Expediente">
-        <PropertyRef Name="CitaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_PersonaEspecialidad_Especialidad">
     <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
     <End Role="PersonaEspecialidad" Type="Self.PersonaEspecialidad" Multiplicity="*" />
@@ -335,7 +309,6 @@
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
     <EntitySet Name="Cita" EntityType="Self.Cita" />
     <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
-    <EntitySet Name="Expediente" EntityType="Self.Expediente" />
     <EntitySet Name="Horario" EntityType="Self.Horario" />
     <EntitySet Name="Persona" EntityType="Self.Persona" />
     <EntitySet Name="PersonaEspecialidad" EntityType="Self.PersonaEspecialidad" />
@@ -369,10 +342,6 @@
       <End Role="Sala" EntitySet="Sala" />
       <End Role="Cita" EntitySet="Cita" />
     </AssociationSet>
-    <AssociationSet Name="FK_Expediente_Cita" Association="Self.FK_Expediente_Cita">
-      <End Role="Cita" EntitySet="Cita" />
-      <End Role="Expediente" EntitySet="Expediente" />
-    </AssociationSet>
     <AssociationSet Name="FK_PersonaEspecialidad_Especialidad" Association="Self.FK_PersonaEspecialidad_Especialidad">
       <End Role="Especialidad" EntitySet="Especialidad" />
       <End Role="PersonaEspecialidad" EntitySet="PersonaEspecialidad" />
@@ -389,5 +358,37 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="Expediente" EntityType="CripcoModel.Expediente" />
+    <AssociationSet Name="FK_Expediente_Cita" Association="CripcoModel.FK_Expediente_Cita">
+      <End Role="Cita" EntitySet="Cita" />
+      <End Role="Expediente" EntitySet="Expediente" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Expediente">
+    <Key>
+      <PropertyRef Name="ExpedienteID" />
+    </Key>
+    <Property Name="ExpedienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CitaID" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Documento" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="CreadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ModificadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="ExtensionDocumento" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cita" Relationship="CripcoModel.FK_Expediente_Cita" FromRole="Expediente" ToRole="Cita" />
+  </EntityType>
+  <Association Name="FK_Expediente_Cita">
+    <End Type="CripcoModel.Cita" Role="Cita" Multiplicity="1" />
+    <End Type="CripcoModel.Expediente" Role="Expediente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cita">
+        <PropertyRef Name="CitaID" />
+      </Principal>
+      <Dependent Role="Expediente">
+        <PropertyRef Name="CitaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

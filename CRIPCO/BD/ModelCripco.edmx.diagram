@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="CripcoModel.AspNetUsers" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="CripcoModel.Cita" Width="1.5" PointX="9.75" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CripcoModel.Especialidad" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CripcoModel.Expediente" Width="1.5" PointX="12" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CripcoModel.Horario" Width="1.5" PointX="7.5" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CripcoModel.Persona" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CripcoModel.PersonaEspecialidad" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
@@ -26,11 +25,12 @@
         <AssociationConnector Association="CripcoModel.FK_Cita_Horario" ManuallyRouted="false" />
         <AssociationConnector Association="CripcoModel.FK_Cita_Persona" ManuallyRouted="false" />
         <AssociationConnector Association="CripcoModel.FK_Cita_Sala" ManuallyRouted="false" />
-        <AssociationConnector Association="CripcoModel.FK_Expediente_Cita" ManuallyRouted="false" />
         <AssociationConnector Association="CripcoModel.FK_PersonaEspecialidad_Especialidad" ManuallyRouted="false" />
         <AssociationConnector Association="CripcoModel.FK_Horario_Persona" ManuallyRouted="false" />
         <AssociationConnector Association="CripcoModel.FK_PersonaEspecialidad_Persona" ManuallyRouted="false" />
         <AssociationConnector Association="CripcoModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CripcoModel.Expediente" Width="1.5" PointX="12" PointY="12.125" />
+        <AssociationConnector Association="CripcoModel.FK_Expediente_Cita" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

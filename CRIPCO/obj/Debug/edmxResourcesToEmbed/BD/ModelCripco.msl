@@ -95,20 +95,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Expediente">
-      <EntityTypeMapping TypeName="CripcoModel.Expediente">
-        <MappingFragment StoreEntitySet="Expediente">
-          <ScalarProperty Name="ExpedienteID" ColumnName="ExpedienteID" />
-          <ScalarProperty Name="CitaID" ColumnName="CitaID" />
-          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-          <ScalarProperty Name="Documento" ColumnName="Documento" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Horario">
       <EntityTypeMapping TypeName="CripcoModel.Horario">
         <MappingFragment StoreEntitySet="Horario">
@@ -182,5 +168,20 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Expediente">
+      <EntityTypeMapping TypeName="CripcoModel.Expediente">
+        <MappingFragment StoreEntitySet="Expediente">
+          <ScalarProperty Name="ExtensionDocumento" ColumnName="ExtensionDocumento" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="CitaID" ColumnName="CitaID" />
+          <ScalarProperty Name="ExpedienteID" ColumnName="ExpedienteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

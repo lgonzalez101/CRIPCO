@@ -33,13 +33,11 @@ namespace CRIPCO.BD
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Cita> Cita { get; set; }
         public virtual DbSet<Especialidad> Especialidad { get; set; }
-        public virtual DbSet<Expediente> Expediente { get; set; }
         public virtual DbSet<Horario> Horario { get; set; }
         public virtual DbSet<Persona> Persona { get; set; }
         public virtual DbSet<PersonaEspecialidad> PersonaEspecialidad { get; set; }
         public virtual DbSet<Sala> Sala { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-
-        public System.Data.Entity.DbSet<CRIPCO.Models.Expedientes.ExpedientesViewModel> ExpedientesViewModels { get; set; }
+        public virtual DbSet<Expediente> Expediente { get; set; }
     }
 }

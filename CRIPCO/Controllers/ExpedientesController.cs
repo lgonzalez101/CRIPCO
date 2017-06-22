@@ -2,6 +2,7 @@
 using CRIPCO.Models.Expedientes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,7 +21,8 @@ namespace CRIPCO.Controllers
                     Comentario = x.Comentario,
                     Documento = x.Documento,
                     Activo = x.Activo,
-                    Paciente = x.Cita.Persona.Nombre +" "+ x.Cita.Persona.Apellido
+                    Paciente = x.Cita.Persona.Nombre +" "+ x.Cita.Persona.Apellido,
+                    Extension = x.ExtensionDocumento
 
                 }).ToList();
                 return View(listaExpediente);
@@ -35,19 +37,30 @@ namespace CRIPCO.Controllers
                 return PartialView(new ExpedientesViewModel { CitaID = cita.CitaID});
             }
         }
+        public FileResult DescargarArchivo(int Id)
+        {
+            using (var context = new CripcoEntities())
+            {
+                var expediente = context.Expediente.Find(Id);
+
+                byte[] fileBytes = expediente.Documento;
+                return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, expediente.ExtensionDocumento);
+                 
+            }
+            
+        }
 
         [HttpPost]
         public ActionResult CrearExpediente(ExpedientesViewModel model)
         {
             using (var context = new CripcoEntities())
             {
-                byte[] uploadedFile = new byte[model.Documento2.InputStream.Length];
-                model.Documento2.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
-
-
+                byte[] uploadedFile = new byte[model.Documento.InputStream.Length];
+                
                 context.Expediente.Add(new Expediente {
                     CitaID = model.CitaID,
                     Activo = true,
+                    ExtensionDocumento = model.Documento.FileName,
                     Comentario = model.Comentario,
                     Documento = uploadedFile,
                     CreadoPor = User.Identity.Name,
