@@ -1,0 +1,74 @@
+﻿@model CRIPCO.BD.Cita
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cita</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreadoPor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreadoPor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModificadoPor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModificadoPor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horario.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horario.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.IdAspnetUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.IdAspnetUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sala.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sala.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CitaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
