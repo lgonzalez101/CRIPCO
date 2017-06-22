@@ -22,7 +22,6 @@ namespace CRIPCO.BD
     
         public int CitaID { get; set; }
         public int HorarioID { get; set; }
-        public int SalaID { get; set; }
         public int PersonaPacienteID { get; set; }
         public string CreadoPor { get; set; }
         public System.DateTime FechaCreado { get; set; }
@@ -31,7 +30,6 @@ namespace CRIPCO.BD
     
         public virtual Horario Horario { get; set; }
         public virtual Persona Persona { get; set; }
-        public virtual Sala Sala { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expediente> Expediente { get; set; }
     }

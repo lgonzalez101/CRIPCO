@@ -22,6 +22,7 @@ namespace CRIPCO.BD
         public System.DateTime FechaCreado { get; set; }
         public string ModificadoPor { get; set; }
         public bool Activo { get; set; }
+        public string ExtensionDocumento { get; set; }
     
         public virtual Cita Cita { get; set; }
     }

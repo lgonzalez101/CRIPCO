@@ -79,7 +79,6 @@
     </Key>
     <Property Name="CitaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="HorarioID" Type="int" Nullable="false" />
-    <Property Name="SalaID" Type="int" Nullable="false" />
     <Property Name="PersonaPacienteID" Type="int" Nullable="false" />
     <Property Name="CreadoPor" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="FechaCreado" Type="date" Nullable="false" />
@@ -109,6 +108,7 @@
     <Property Name="FechaCreado" Type="date" Nullable="false" />
     <Property Name="ModificadoPor" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="ExtensionDocumento" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Horario">
     <Key>
@@ -122,6 +122,7 @@
     <Property Name="FechaCreado" Type="date" Nullable="false" />
     <Property Name="ModificadoPor" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="IdSala" Type="int" />
   </EntityType>
   <EntityType Name="Persona">
     <Key>
@@ -218,18 +219,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Cita_Sala">
-    <End Role="Sala" Type="Self.Sala" Multiplicity="1" />
-    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sala">
-        <PropertyRef Name="SalaID" />
-      </Principal>
-      <Dependent Role="Cita">
-        <PropertyRef Name="SalaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -279,6 +268,18 @@
       </Principal>
       <Dependent Role="Horario">
         <PropertyRef Name="PersonaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Horario_Sala">
+    <End Role="Sala" Type="Self.Sala" Multiplicity="0..1" />
+    <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="SalaID" />
+      </Principal>
+      <Dependent Role="Horario">
+        <PropertyRef Name="IdSala" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -362,10 +363,6 @@
       <End Role="Persona" EntitySet="Persona" />
       <End Role="Cita" EntitySet="Cita" />
     </AssociationSet>
-    <AssociationSet Name="FK_Cita_Sala" Association="Self.FK_Cita_Sala">
-      <End Role="Sala" EntitySet="Sala" />
-      <End Role="Cita" EntitySet="Cita" />
-    </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -380,6 +377,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Horario_Persona" Association="Self.FK_Horario_Persona">
       <End Role="Persona" EntitySet="Persona" />
+      <End Role="Horario" EntitySet="Horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Horario_Sala" Association="Self.FK_Horario_Sala">
+      <End Role="Sala" EntitySet="Sala" />
       <End Role="Horario" EntitySet="Horario" />
     </AssociationSet>
     <AssociationSet Name="FK_Persona_AspNetUsers" Association="Self.FK_Persona_AspNetUsers">

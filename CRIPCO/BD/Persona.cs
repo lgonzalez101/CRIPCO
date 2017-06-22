@@ -17,9 +17,9 @@ namespace CRIPCO.BD
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Persona()
         {
+            this.PersonaEspecialidad = new HashSet<PersonaEspecialidad>();
             this.Cita = new HashSet<Cita>();
             this.Horario = new HashSet<Horario>();
-            this.PersonaEspecialidad = new HashSet<PersonaEspecialidad>();
         }
     
         public int PersonaID { get; set; }
@@ -36,10 +36,10 @@ namespace CRIPCO.BD
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonaEspecialidad> PersonaEspecialidad { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cita> Cita { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Horario> Horario { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonaEspecialidad> PersonaEspecialidad { get; set; }
     }
 }

@@ -28,9 +28,11 @@ namespace CRIPCO.BD
         public System.DateTime FechaCreado { get; set; }
         public string ModificadoPor { get; set; }
         public bool Activo { get; set; }
+        public Nullable<int> IdSala { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cita> Cita { get; set; }
         public virtual Persona Persona { get; set; }
+        public virtual Sala Sala { get; set; }
     }
 }

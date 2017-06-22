@@ -69,20 +69,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Cita">
-      <EntityTypeMapping TypeName="CripcoModel.Cita">
-        <MappingFragment StoreEntitySet="Cita">
-          <ScalarProperty Name="CitaID" ColumnName="CitaID" />
-          <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
-          <ScalarProperty Name="SalaID" ColumnName="SalaID" />
-          <ScalarProperty Name="PersonaPacienteID" ColumnName="PersonaPacienteID" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Especialidad">
       <EntityTypeMapping TypeName="CripcoModel.Especialidad">
         <MappingFragment StoreEntitySet="Especialidad">
@@ -98,24 +84,11 @@
     <EntitySetMapping Name="Expediente">
       <EntityTypeMapping TypeName="CripcoModel.Expediente">
         <MappingFragment StoreEntitySet="Expediente">
+          <ScalarProperty Name="ExtensionDocumento" ColumnName="ExtensionDocumento" />
           <ScalarProperty Name="ExpedienteID" ColumnName="ExpedienteID" />
           <ScalarProperty Name="CitaID" ColumnName="CitaID" />
           <ScalarProperty Name="Comentario" ColumnName="Comentario" />
           <ScalarProperty Name="Documento" ColumnName="Documento" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Horario">
-      <EntityTypeMapping TypeName="CripcoModel.Horario">
-        <MappingFragment StoreEntitySet="Horario">
-          <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
-          <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
-          <ScalarProperty Name="Hora" ColumnName="Hora" />
-          <ScalarProperty Name="Reservado" ColumnName="Reservado" />
           <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
           <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
           <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
@@ -149,20 +122,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Sala">
-      <EntityTypeMapping TypeName="CripcoModel.Sala">
-        <MappingFragment StoreEntitySet="Sala">
-          <ScalarProperty Name="SalaID" ColumnName="SalaID" />
-          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="CripcoModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -182,5 +141,47 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Cita">
+      <EntityTypeMapping TypeName="CripcoModel.Cita">
+        <MappingFragment StoreEntitySet="Cita">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="PersonaPacienteID" ColumnName="PersonaPacienteID" />
+          <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
+          <ScalarProperty Name="CitaID" ColumnName="CitaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Horario">
+      <EntityTypeMapping TypeName="CripcoModel.Horario">
+        <MappingFragment StoreEntitySet="Horario">
+          <ScalarProperty Name="IdSala" ColumnName="IdSala" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Reservado" ColumnName="Reservado" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
+          <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sala">
+      <EntityTypeMapping TypeName="CripcoModel.Sala">
+        <MappingFragment StoreEntitySet="Sala">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="SalaID" ColumnName="SalaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
