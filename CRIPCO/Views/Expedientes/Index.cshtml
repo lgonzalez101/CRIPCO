@@ -1,0 +1,106 @@
+﻿@model IEnumerable<CRIPCO.Models.Expedientes.ListaExpedienteViewModel>
+
+@{
+    ViewBag.Title = "Expediente";
+}
+
+
+<div class="col-md-12 ui-sortable">
+    <!-- begin panel -->
+    <div class="panel panel-inverse">
+        <div class="panel-heading">
+            <div class="panel-heading-btn">
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand" data-original-title="" title="" data-init="true"><i class="fa fa-expand"></i></a>
+                @*<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>*@
+
+            </div>
+            <h4 class="panel-title"> Expedientes</h4>
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-bordered table-responsive table-hover" id="IdTabla" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Paciente)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Comentario)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Activo)
+                        </th>
+                        <th>Acciones</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Paciente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Comentario)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Activo)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    <!-- end panel -->
+</div>
+<!-- end col-10 -->
+
+
+
+
+@section Scripts {
+
+    <script>
+
+    function MostrarEditar(id)
+    {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Area/Edit",
+            type: 'get',
+            data: { Id: id },
+            success: function (data) {
+                $("#MyModalTitle").html("Editar Area");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+    }
+
+
+        $(document).ready(function () {
+
+            $("#IdTabla").dataTable({
+                responsive: true,
+            });
+        });
+
+    </script>
+
+}
