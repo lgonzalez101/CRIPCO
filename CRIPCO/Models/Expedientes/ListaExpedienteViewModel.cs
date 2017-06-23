@@ -12,5 +12,6 @@ namespace CRIPCO.Models.Expedientes
         public string Comentario { get; set; }
         public byte[] Documento { get; set; }
         public bool Activo { get; set; }
+        public string Extension { get; set; }
 }
 }
