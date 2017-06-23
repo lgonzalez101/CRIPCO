@@ -258,6 +258,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CitaController.cs" />
     <Compile Include="Controllers\ExpedientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorarioController.cs" />
@@ -272,6 +273,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Base\MensajeRespuestaViewModel.cs" />
     <Compile Include="Models\Calendario\CalendarioViewModel.cs" />
+    <Compile Include="Models\Citas\CitaViewModel.cs" />
+    <Compile Include="Models\Citas\ListaEspecialidadesViewModel.cs" />
     <Compile Include="Models\Expedientes\ExpedientesViewModel.cs" />
     <Compile Include="Models\Expedientes\ListaExpedienteViewModel.cs" />
     <Compile Include="Models\Horario\CrearHorarioViewModel.cs" />
@@ -6576,6 +6579,12 @@
     <Content Include="Views\Home\VerHorariosDelDia.cshtml" />
     <Content Include="Views\Expedientes\Index.cshtml" />
     <Content Include="Views\Expedientes\MostrarCrearExpediente.cshtml" />
+    <Content Include="Views\Cita\ListaEspecialidades.cshtml" />
+    <Content Include="Views\Cita\Create.cshtml" />
+    <Content Include="Views\Cita\Delete.cshtml" />
+    <Content Include="Views\Cita\Details.cshtml" />
+    <Content Include="Views\Cita\Edit.cshtml" />
+    <Content Include="Views\Cita\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
