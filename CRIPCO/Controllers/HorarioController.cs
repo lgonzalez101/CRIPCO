@@ -59,6 +59,7 @@ namespace CRIPCO.Controllers
                         FechaCreado = DateTime.Now,
                         ModificadoPor = User.Identity.Name,
                         Activo = true,
+                        IdSala = model.IdSala
                     });
                     return Json(EnviarResultado(context.SaveChanges() > 0, "Crear Horario"), JsonRequestBehavior.AllowGet);
                 }
@@ -97,6 +98,7 @@ namespace CRIPCO.Controllers
                                 FechaCreado = DateTime.Now,
                                 ModificadoPor = User.Identity.Name,
                                 Activo = true,
+                                IdSala = model.IdSala
                             });                           
                         }
                        Hora= Hora.AddHours(1);

@@ -6,8 +6,8 @@
 }
 </style>
 
-<div class="panel">
-    <div class="form-group" style="margin:20px; margin-top:5px;">
+<div class="panel" style="box-shadow:none;">
+    <div class="form-group" style="margin-bottom:10px; margin-top:5px;">
         @Html.LabelFor(model => model.IdSala, htmlAttributes: new { @class = "control-label" })
         <div class="">
             @Html.DropDownListFor(model => model.IdSala, new SelectList(ViewBag.ListaSalas, "Value", "Text"), "", new { @class = "form-control select2", style = "width:100%;" })
@@ -116,7 +116,8 @@
     });
 
     function CrearHorarioSimple() {
-        var obj = { FechaInicio: moment(FechaInicioSimple.data('DateTimePicker').date()).format("DD/MM/YY HH:mm") };
+        if ($("#IdSala").val() == "") { ShowNotification(false, "Seleccione una Sala", "Ls Sala es requerida"); return;}
+        var obj = { FechaInicio: moment(FechaInicioSimple.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"), IdSala: $("#IdSala").val() };
 
         LoadWaitNotification();
         $.ajax({
@@ -141,11 +142,14 @@
     }
 
     function CrearHorarioRango() {
+
+        if ($("#IdSala").val() == "") { ShowNotification(false, "Seleccione una Sala", "Ls Sala es requerida"); return;}
         var obj = {
             FechaInicio: moment(RangoFechaInicial.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
             FechaFinal: moment(RangoFechaFinal.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
             HoraInicio: moment(RangoHoraInicial.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
-            HoraFinal: moment(RangoHoraFinal.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),         
+            HoraFinal: moment(RangoHoraFinal.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
+            IdSala: $("#IdSala").val()
         };
 
         LoadWaitNotification();

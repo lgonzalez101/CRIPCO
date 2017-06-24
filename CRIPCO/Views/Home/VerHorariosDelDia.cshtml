@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<CRIPCO.Models.Horario.ListaHorarioViewModel>
 
-
-
-<h1 class="page-header">@DateTime.Now.ToLongDateString().ToUpper() @*<small class="">header small text goes here...</small>*@</h1>
+<h1 class="page-header">@DateTime.Now.ToLongDateString().ToUpper() @*<small class="">header small text goes here...</small>*@  <button class="btn btn-primary pull-right" onclick="MostrarCrearHorario()"><i class="fa fa-clock-o"></i>  Agregar Horario</button></h1>
 
     <div class="row">
         @if (Model != null)
@@ -94,5 +92,25 @@
         });
 
     }
+
+
+    function MostrarCrearHorario() {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Horario/MostrarCrearHorario",
+            type: 'get',
+            success: function (data) {
+                $("#MyModalTitle").html("Crear Horario");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+    }
+
 
     </script>
