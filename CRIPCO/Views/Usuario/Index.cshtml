@@ -136,9 +136,9 @@
         });
         LoadWaitNotification();
         $.ajax({
-            url: "/Especialidades/" + ActionName,
+            url: "/Usuario/Index",
             type: "POST",
-            data: { Lista: listcheckedrows, EspecialidadID: idEspecialidad },
+            data: { Lista: listcheckedrows, EspecialID: idEspecialidad },
             success: function (data) {
                 if (data.Estado) {
                     ShowboxSuccess(data.Mensaje, data.Titulo);
