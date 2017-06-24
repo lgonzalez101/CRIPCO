@@ -84,8 +84,7 @@ namespace CRIPCO.Models
     public class ResetPasswordViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Nombre de Usuario")]
         public string Email { get; set; }
 
         [Required]
@@ -105,8 +104,7 @@ namespace CRIPCO.Models
     public class ForgotPasswordViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Nombre de Usuario")]
         public string Email { get; set; }
     }
 }
