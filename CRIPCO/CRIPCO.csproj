@@ -257,6 +257,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EspecialidadesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorarioController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -6557,6 +6558,11 @@
     <Content Include="Views\Role\Editar.cshtml" />
     <Content Include="Views\Horario\Index.cshtml" />
     <Content Include="Views\Horario\MostrarCrearHorario.cshtml" />
+    <Content Include="Views\Especialidades\Create.cshtml" />
+    <Content Include="Views\Especialidades\Delete.cshtml" />
+    <Content Include="Views\Especialidades\Details.cshtml" />
+    <Content Include="Views\Especialidades\Edit.cshtml" />
+    <Content Include="Views\Especialidades\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
