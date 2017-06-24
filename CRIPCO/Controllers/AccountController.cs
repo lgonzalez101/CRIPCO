@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CRIPCO.Models;
+using System.Net.Mail;
+using System.Net.Mime;
 
 namespace CRIPCO.Controllers
 {
@@ -411,6 +413,7 @@ namespace CRIPCO.Controllers
             return View();
         }
 
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
