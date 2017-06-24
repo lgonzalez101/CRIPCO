@@ -1,0 +1,118 @@
+﻿@model IEnumerable<CRIPCO.BD.Especialidad>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="col-md-12 ui-sortable">
+    <!-- begin panel -->
+    <div class="panel panel-inverse">
+        <div class="panel-heading">
+            <div class="panel-heading-btn">
+                <a href="javascript:;" onclick="MostrarCrear()" class="btn btn-xs btn-primary" data-original-title="Crear Especialidad" title="Crear Especialidad"><i class="fa fa-plus"></i>Crear Especialidad</a>
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand" data-original-title="" title="" data-init="true"><i class="fa fa-expand"></i></a>
+                @*<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>*@
+
+            </div>
+            <h4 class="panel-title"> Especialidades</h4>
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-bordered table-responsive table-hover" id="IdTabla" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </th>
+                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.Activo)
+                        </th>
+                        <th></th>
+                    </tr>
+
+
+                </thead>
+                <tbody>
+                   @foreach (var item in Model)
+                   {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Activo)
+                        </td>
+                        <td>
+                            <button type="button" onclick="MostrarEditar(@item.EspecialidadID)" class="btn btn-warning btn-xs">Editar</button>
+
+                        </td>
+                    </tr>
+                   }
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    <!-- end panel -->
+</div>
+<!-- end col-10 -->
+
+@section Scripts {
+
+    <script>
+
+    function MostrarEditar(id)
+    {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Especialidades/Edit",
+            type: 'get',
+            data: { Id: id },
+            success: function (data) {
+                $("#MyModalTitle").html("Editar Especialidad");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+        }
+
+        function MostrarCrear() {
+            LoadWaitNotification();
+            $.ajax({
+                url: "/Especialidades/Create",
+                type: 'get',
+                success: function (data) {
+                    $("#MyModalTitle").html("Crear Especialidad");
+                    $("#MyModalBody").html(data);
+                    $("#MyModal").modal("show");
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    UnloadWaitNotification();
+                },
+                complete: function () { UnloadWaitNotification(); }
+            });
+        }
+
+
+    $(document).ready(function () {
+
+        $("#IdTabla").dataTable({
+        responsive: true,
+        });
+
+
+    })
+
+    </script>
+
+}

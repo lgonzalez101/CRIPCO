@@ -108,6 +108,53 @@
 
     }
 
+    function AgregarEspecialidad(id) {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Usuario/ObtenerListaEspecialidades",
+            type: 'get',
+            data: { Id: id },
+            success: function (data) {
+                $("#MyModalTitle").html("Seleccionar Especialidades");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+    }
+
+    function GuardarSeleccion(idEspecialidad, IdTabla, ActionName) {
+        var listcheckedrows = [];
+        var table = new $.fn.dataTable.Api("#" + IdTabla);
+        table.rows().every(function (rowIdx, tableLoop, rowLoop) {
+            var nodo = this.node();
+            if ($(nodo).find('input').is(':checked')) listcheckedrows.push($(nodo).attr("id"));
+        });
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Usuario/Index",
+            type: "POST",
+            data: { Lista: listcheckedrows, EspecialID: idEspecialidad },
+            success: function (data) {
+                if (data.Estado) {
+                    ShowboxSuccess(data.Mensaje, data.Titulo);
+                    $("#MyModal").modal("hide");
+                } else ShowboxError(data.Mensaje, data.Titulo);
+
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                ShowboxError(textStatus, "Error"); alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+
+    }
+
     function DeshabilitarUsuario()
     {
 
@@ -132,6 +179,8 @@
                     opciones += ('<li><a href="javascript:void(0);" onclick="MostrarEditarCuenta(!' + data.Id + '!)"> Editar Cuenta</a></li>').replace(new RegExp("!", 'g'), "'");
                     opciones += ('<li><a href="javascript:void(0);" onclick="MostrarEditarInfo(!' + data.Id + '!)"> Editar Perfil</a></li>').replace(new RegExp("!", 'g'), "'");
                     opciones += ('<li><a href="javascript:void(0);" onclick="MostrarResetContrasena(!' + data.Id + '!)"> Cambiar Contraseña</a></li>').replace(new RegExp("!", 'g'), "'");          
+                    opciones += data.esDoctor ? ('<li><a href="javascript:void(0);" onclick="AgregarEspecialidad(!' + data.Id + '!)"> Agregar Especialidad</a></li>').replace(new RegExp("!", 'g'), "'") : "";
+
                     opciones += '</ul></div>';
                     return opciones;
                 }

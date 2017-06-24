@@ -9,6 +9,7 @@ namespace CRIPCO.Models.Usuario
     public class ListaUsuarioViewModel
     {
         public int Id { get; set; }
+        public bool esDoctor { get; set; }
 
         [Display(Name = "Perfil")]
         public string Perfil { get; set; }
