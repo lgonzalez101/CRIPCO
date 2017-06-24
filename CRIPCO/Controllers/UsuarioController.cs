@@ -44,7 +44,8 @@ namespace CRIPCO.Controllers
                         Email = x.AspNetUsers.Email,
                         Estado = x.Activo,
                         Perfil = x.AspNetUsers.AspNetRoles.Any() ? x.AspNetUsers.AspNetRoles.FirstOrDefault().Name : "",
-                        UserName = x.AspNetUsers.UserName
+                        UserName = x.AspNetUsers.UserName,
+                        esDoctor = x.AspNetUsers.AspNetRoles.Any(z=>z.Name=="Doctor")
                     }).ToList();
 
                     var jsonResult = Json(listaUsuarios, JsonRequestBehavior.AllowGet);
@@ -58,6 +59,59 @@ namespace CRIPCO.Controllers
             }
         }
 
+        public ActionResult ObtenerListaEspecialidades(int Id)
+        {
+            try
+            {
+                using (var context = new CripcoEntities())
+                {
+                    ViewBag.IdPersona = Id;
+                    var listarEspecialidades = context.Especialidad.Select(x => new SeleccionEspecialidadesViewModel {
+
+                        id = x.EspecialidadID,
+                        nombre=x.Nombre,
+                        especialidadSeleccionada= x.PersonaEspecialidad.Any(y => y.PersonaID == Id)
+                    }).ToList();
+
+                    return PartialView(listarEspecialidades);
+
+                }
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
+        }
+
+        public ActionResult GuardarEspecialidadesEnUsuario(List<int> Lista, int IdPersona)
+        {
+            try
+            {
+                using (var context = new CripcoEntities())
+                {
+                    if (Lista != null) Lista.ForEach(x =>
+                    { if (!context.PersonaEspecialidad.Any(y => y.EspecialidadID == x && y.PersonaID == IdPersona)) context.PersonaEspecialidad.Add(new PersonaEspecialidad { EspecialidadID = x, PersonaID = IdPersona }); }
+                    );
+                    var resultado = context.SaveChanges() > 0;
+                    return Json(new MensajeRespuestaViewModel
+                    {
+                        Titulo = "Asignar Especialidad Al Usuario",
+                        Mensaje = resultado ? "Se guardo Satisfactoriamente" : "Error al guardar",
+                        Estado = resultado
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception e)
+            {
+                return Json(new MensajeRespuestaViewModel
+                {
+                    Titulo = "Error al asignar especialidad al usuario",
+                    Mensaje = e.InnerException.Message,
+                    Estado = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
 
         [HttpGet]
         public ActionResult CrearUsuario()
