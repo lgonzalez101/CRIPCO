@@ -1,71 +1,117 @@
 ﻿@model IEnumerable<CRIPCO.BD.Cita>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
 }
+<div class="col-md-12 ui-sortable">
+    <!-- begin panel -->
+    <div class="panel panel-inverse">
+        <div class="panel-heading">
+            <div class="panel-heading-btn">
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand" data-original-title="" title="" data-init="true"><i class="fa fa-expand"></i></a>
+            </div>
+            <h4 class="panel-title"> Salas</h4>
+        </div>
 
-<!DOCTYPE html>
+        <div class="panel-body">
+            <table class="table table-bordered table-responsive table-hover" id="IdTabla" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Creado Por </th>
+                        <th>Horario </th>
+                        <th>Fecha que se creo </th>
+                        <th>Activo </th>
+                        <th>Modificado Por </th>
+                        <th>ID Usuario </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CreadoPor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaCreado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModificadoPor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Activo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Horario.CreadoPor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Persona.IdAspnetUser)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreadoPor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCreado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModificadoPor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Activo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Horario.CreadoPor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Persona.IdAspnetUser)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.CitaID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.CitaID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.CitaID })
-            </td>
-        </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreadoPor)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaCreado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModificadoPor)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Activo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Horario.CreadoPor)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Persona.IdAspnetUser)
+                            </td>
+                            <td>
+                                <button type="button" onclick="MostrarEditar(@item.CitaID)" class="btn btn-warning btn-xs">Editar</button>
+                                <button type="button" onclick="MostrarEditar(@item.CitaID)" class="btn btn-ff0000 btn-xs">Detalles</button>
+                           </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+    function MostrarEditar(id)
+    {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Cita/Edit",
+            type: 'get',
+            data: { Id: id },
+            success: function (data) {
+                $("#MyModalTitle").html("Editar Cita");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+        }
+
+
+    function MostrarDetalles(id) {
+        LoadWaitNotification();
+        $.ajax({
+            url: " Expedientes/MostrarCrearExpediente",
+            type: 'get',
+            data: { Id: id },
+            success: function (data) {
+                $("#MyModalTitle").html("Detalles Cita");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
     }
-    
-    </table>
-</body>
-</html>
+
+    $(document).ready(function () {
+
+        $("#IdTabla").dataTable({
+        responsive: true,
+        });
+
+
+    })
+    </script>
+}

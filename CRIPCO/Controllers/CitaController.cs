@@ -10,8 +10,8 @@ using CRIPCO.BD;
 
 namespace CRIPCO.Controllers
 {
-    [Authorize(Roles = "Doctor")]
-    [Authorize(Roles = "Administrador")]
+  //  [Authorize(Roles = "Doctor")]
+   // [Authorize(Roles = "Administrador")]
     public class CitaController : Controller
     {
         private CripcoEntities db = new CripcoEntities();
