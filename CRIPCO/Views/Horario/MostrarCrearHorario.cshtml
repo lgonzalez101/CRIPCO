@@ -7,12 +7,21 @@
 </style>
 
 <div class="panel">
+    <div class="form-group" style="margin:20px; margin-top:5px;">
+        @Html.LabelFor(model => model.IdSala, htmlAttributes: new { @class = "control-label" })
+        <div class="">
+            @Html.DropDownListFor(model => model.IdSala, new SelectList(ViewBag.ListaSalas, "Value", "Text"), "", new { @class = "form-control select2", style = "width:100%;" })
+            @Html.ValidationMessageFor(model => model.IdSala, null, new { @class = "text-danger" })
+        </div>
+    </div>
     <ul class="nav nav-pills">
         <li class="active"><a href="#default-tab-1" data-toggle="tab" aria-expanded="false">Horario Simple</a></li>
         <li class=""><a href="#default-tab-2" data-toggle="tab" aria-expanded="false">Rango de Horarios</a></li>    
     </ul>
     <div class="tab-content">
-        <div class="tab-pane fade active in" id="default-tab-1">
+
+        
+         <div class="tab-pane fade active in" id="default-tab-1">
             <h4 class="m-t-10 text-primary text-center"><i class="fa fa-clock-o"></i> Seleccione el Dia y la Hora: </h4>
             <hr />
             <div class="form-group">
@@ -58,6 +67,8 @@
 </div>
 
 <script>
+
+    $(".select2").select2();
 
     var FechaInicioSimple = $("#FechaInicio").datetimepicker({
         inline: true,

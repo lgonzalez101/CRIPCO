@@ -12,5 +12,6 @@ namespace CRIPCO.Models.Horario
         public DateTime FechaFinal { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFinal { get; set; }
+        public int IdSala { get; set; }
     }
 }

@@ -33,7 +33,11 @@ namespace CRIPCO.Controllers
         [HttpGet]
         public ActionResult MostrarCrearHorario()
         {
-            return PartialView(new CrearHorarioViewModel { FechaInicio = DateTime.Now, FechaFinal = DateTime.Now });
+            using (var context = new CripcoEntities())
+            {
+                ViewBag.ListaSalas = context.Sala.Where(x => x.Activo ?? false).Select(x => new SelectListItem { Value = x.SalaID.ToString(), Text = x.Area.Nombre + " / " + x.Nombre }).ToList();
+                return PartialView(new CrearHorarioViewModel { FechaInicio = DateTime.Now, FechaFinal = DateTime.Now });
+            }
 
         }
 
