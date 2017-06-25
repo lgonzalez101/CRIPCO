@@ -79,7 +79,7 @@ namespace CRIPCO.Controllers
             }
             ViewBag.HorarioID = new SelectList(db.Horario, "HorarioID", "CreadoPor", cita.HorarioID);
             ViewBag.PersonaPacienteID = new SelectList(db.Persona, "PersonaID", "IdAspnetUser", cita.PersonaPacienteID);
-            return View(cita);
+            return PartialView(cita);
         }
 
         // POST: Cita/Edit/5
