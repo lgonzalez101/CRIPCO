@@ -6583,7 +6583,6 @@
     <Content Include="Views\Especialidades\Details.cshtml" />
     <Content Include="Views\Especialidades\Edit.cshtml" />
     <Content Include="Views\Especialidades\Index.cshtml" />
-    <Content Include="Views\Usuario\ObtenerListarEspecialidades.cshtml" />
     <Content Include="Views\Usuario\ObtenerListaEspecialidades.cshtml" />
   </ItemGroup>
   <ItemGroup>

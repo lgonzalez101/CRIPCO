@@ -127,7 +127,7 @@
         });
     }
 
-    function GuardarSeleccion(idEspecialidad, IdTabla, ActionName) {
+    function GuardarSeleccion(idPersona, IdTabla, ActionName) {
         var listcheckedrows = [];
         var table = new $.fn.dataTable.Api("#" + IdTabla);
         table.rows().every(function (rowIdx, tableLoop, rowLoop) {
@@ -136,18 +136,19 @@
         });
         LoadWaitNotification();
         $.ajax({
-            url: "/Usuario/Index",
+            url: "/Usuario/"+ActionName,
             type: "POST",
-            data: { Lista: listcheckedrows, EspecialID: idEspecialidad },
+            data: { Lista: listcheckedrows, IdPersona: idPersona },
             success: function (data) {
                 if (data.Estado) {
-                    ShowboxSuccess(data.Mensaje, data.Titulo);
+                    ShowNotification(data.Estado, data.Titulo, data.Mensaje);
+                    new $.fn.dataTable.Api("#IdTabla").ajax.reload();
                     $("#MyModal").modal("hide");
-                } else ShowboxError(data.Mensaje, data.Titulo);
+                } else ShowNotification(data.Estado, data.Titulo, data.Mensaje);
 
             },
             error: function (xhr, textStatus, errorThrown) {
-                ShowboxError(textStatus, "Error"); alert(textStatus);
+                ShowNotification(false, textStatus, ""); alert(textStatus);
                 UnloadWaitNotification();
             },
             complete: function () { UnloadWaitNotification(); }

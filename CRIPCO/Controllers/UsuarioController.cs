@@ -89,14 +89,18 @@ namespace CRIPCO.Controllers
             {
                 using (var context = new CripcoEntities())
                 {
-                    if (Lista != null) Lista.ForEach(x =>
-                    { if (!context.PersonaEspecialidad.Any(y => y.EspecialidadID == x && y.PersonaID == IdPersona)) context.PersonaEspecialidad.Add(new PersonaEspecialidad { EspecialidadID = x, PersonaID = IdPersona }); }
-                    );
+                    if (Lista != null)
+                    {
+                        var listaborrar= context.PersonaEspecialidad.Where(x => x.PersonaID == IdPersona).ToList();
+                        if(listaborrar !=null) context.PersonaEspecialidad.RemoveRange(listaborrar);
+                        Lista.ForEach(x => {  context.PersonaEspecialidad.Add(new PersonaEspecialidad { EspecialidadID = x, PersonaID = IdPersona }); } );   
+                    }
+
                     var resultado = context.SaveChanges() > 0;
                     return Json(new MensajeRespuestaViewModel
                     {
                         Titulo = "Asignar Especialidad Al Usuario",
-                        Mensaje = resultado ? "Se guardo Satisfactoriamente" : "Error al guardar",
+                        Mensaje = resultado ? "Se guardo Satisfactoriamente" : "No se asignaron especialidades al usuario",
                         Estado = resultado
                     }, JsonRequestBehavior.AllowGet);
                 }
@@ -105,7 +109,7 @@ namespace CRIPCO.Controllers
             {
                 return Json(new MensajeRespuestaViewModel
                 {
-                    Titulo = "Error al asignar especialidad al usuario",
+                    Titulo = "No se asignaron especialidades al usuario",
                     Mensaje = e.InnerException.Message,
                     Estado = false
                 }, JsonRequestBehavior.AllowGet);
