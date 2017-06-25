@@ -1,0 +1,101 @@
+﻿@model IEnumerable<CRIPCO.BD.Cita>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="col-md-12 ui-sortable">
+    <div class="panel panel-inverse">
+        <div class="panel-heading">
+            <div class="panel-heading-btn">
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand" data-original-title="" title="" data-init="true"><i class="fa fa-expand"></i></a>
+            </div>
+            <h4 class="panel-title"> Citas</h4>
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-bordered table-responsive table-hover" id="IdTabla" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Horario </th>
+                        <th>Activo </th>
+                         <th>ID Usuario </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Activo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Horario.CreadoPor)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Persona.IdAspnetUser)
+                            </td>
+                            <td>
+                                <button type="button" onclick="MostrarEditar(@item.CitaID)" class="btn btn-warning btn-xs">Editar</button>
+                                <button type="button" onclick="MostrarDetalles(@item.CitaID)" class="btn btn-ff0000 btn-xs">Detalles</button>
+                           </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+    function MostrarEditar(id)
+    {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Cita/Edit",
+            type: 'get',
+            data: { id: id },
+            success: function (data) {
+                $("#MyModalTitle").html("Editar Cita");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+        }
+
+
+    function MostrarDetalles(id) {
+        LoadWaitNotification();
+        $.ajax({
+            url: "/Expedientes/MostrarCrearExpediente",
+            type: 'get',
+            data: { Id: id },
+            success: function (data) {
+                $("#MyModalTitle").html("Detalles Cita");
+                $("#MyModalBody").html(data);
+                $("#MyModal").modal("show");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+                UnloadWaitNotification();
+            },
+            complete: function () { UnloadWaitNotification(); }
+        });
+    }
+    $(document).ready(function () {
+
+        $("#IdTabla").dataTable({
+        responsive: true,
+        });
+    })
+    </script>
+}
