@@ -1,7 +1,9 @@
 ﻿using CRIPCO.Models.Base;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,6 +11,12 @@ namespace CRIPCO.Controllers
 {
     public class BaseController : Controller
     {
+
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
+            base.OnActionExecuted(filterContext);
+        }
 
 
         public MensajeRespuestaViewModel  EnviarResultado(bool resultado, string Titulo)

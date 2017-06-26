@@ -104,10 +104,10 @@
             LoadWaitNotification();
             $.ajax({
                 url: "/Cita/ReservarCita",
-                type: 'get',
+                type: 'POST',
                 data: { IdHorario: idHorario },
                 success: function (data) {
-                    
+                    alert(data.Estado);
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert("No funca: " + textStatus);

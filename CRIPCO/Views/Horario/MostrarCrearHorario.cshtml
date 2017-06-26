@@ -73,7 +73,7 @@
     var FechaInicioSimple = $("#FechaInicio").datetimepicker({
         inline: true,
         sideBySide: true,
-        format: 'dd/MM/yy H'
+        format: 'DD/MM/YYYY H'
     });
 
    var RangoFechaInicial= $("#RangoFechaInicio").datetimepicker({
@@ -118,7 +118,7 @@
     function CrearHorarioSimple() {
         if ($("#IdSala").val() == "") { ShowNotification(false, "Seleccione una Sala", "Ls Sala es requerida"); return;}
         var obj = { FechaInicio: moment(FechaInicioSimple.data('DateTimePicker').date()).format(), IdSala: $("#IdSala").val() };
-
+        console.log(obj);
         LoadWaitNotification();
         $.ajax({
             url: "/Horario/CrearHorarioSimple",

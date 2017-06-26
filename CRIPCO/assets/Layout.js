@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-  //  moment.locale("es");
+    moment.locale("es");
 
 
     $.extend($.gritter.options, {

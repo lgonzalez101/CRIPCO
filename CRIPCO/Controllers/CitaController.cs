@@ -12,7 +12,7 @@ namespace CRIPCO.Controllers
 {
     //  [Authorize(Roles = "Doctor")]
     // [Authorize(Roles = "Administrador")]
-    public class CitaController : Controller
+    public class CitaController : BaseController
     {
         private CripcoEntities db = new CripcoEntities();
 
@@ -61,6 +61,32 @@ namespace CRIPCO.Controllers
 
             return PartialView(list);
           //  return PartialView(db.Horario.Where(x=> DateTime.Compare(Fecha.Date, x.Hora.Date)==0 && x.Persona.PersonaEspecialidad.Any(y=>y.EspecialidadID==IdEspecialidad) && x.Activo && x.Reservado==false).ToList());
+        }
+
+        [HttpPost]
+        public ActionResult ReservarCita(int IdHorario, int? IdUsuario)
+        {
+            using (var context = new CripcoEntities())
+            {
+                context.Cita.Add(new Cita {
+                    Activo=true,
+                    CreadoPor= User.Identity.Name,
+                    ModificadoPor = User.Identity.Name,
+                    FechaCreado = DateTime.Now,
+                    HorarioID = IdHorario,
+                    PersonaPacienteID = IdUsuario.HasValue?IdUsuario??0: ObtenerIdUsuario(), 
+                });
+
+                var horario = context.Horario.Find(IdHorario);
+                horario.Reservado = true;
+
+                var result= context.SaveChanges()>0;
+
+                return Json(EnviarResultado(result, "Reservar Cita"), JsonRequestBehavior.AllowGet);
+
+
+            }
+
         }
 
         // GET: Cita/Create

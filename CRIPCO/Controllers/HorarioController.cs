@@ -48,7 +48,7 @@ namespace CRIPCO.Controllers
         {
             using (var context = new CripcoEntities())
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+              
                 var idUsuario = ObtenerIdUsuario();
                 var HorarioNuevo = new DateTime(model.FechaInicio.Year, model.FechaInicio.Month, model.FechaInicio.Day, model.FechaInicio.Hour,0,0);
                 if (HorarioExistente(HorarioNuevo, idUsuario)) return Json(EnviarResultado(true, "El horario ya existe", "Si estaba inactivo se cambio a activo",""), JsonRequestBehavior.AllowGet);
