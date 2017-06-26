@@ -20,7 +20,7 @@
                 <div class="col-md-5">
                     <div class="well">
                             <fieldset>
-                                <legend class="pull-left width-full">Busqueda</legend>
+                                @*<legend class="pull-left width-full">Busqueda</legend>*@
                                 <div class="row">
                                     <div class="col-md-12">                                   
                                          <div class="form-group">
@@ -92,6 +92,25 @@
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert("No funca: "+textStatus);
+                    UnloadWaitNotification();
+                },
+                complete: function () { UnloadWaitNotification(); }
+            });
+        }
+
+
+        function ReservarCita(idHorario)
+        {
+            LoadWaitNotification();
+            $.ajax({
+                url: "/Cita/ReservarCita",
+                type: 'get',
+                data: { IdHorario: idHorario },
+                success: function (data) {
+                    
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert("No funca: " + textStatus);
                     UnloadWaitNotification();
                 },
                 complete: function () { UnloadWaitNotification(); }
