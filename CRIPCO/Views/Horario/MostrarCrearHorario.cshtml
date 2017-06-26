@@ -117,7 +117,7 @@
 
     function CrearHorarioSimple() {
         if ($("#IdSala").val() == "") { ShowNotification(false, "Seleccione una Sala", "Ls Sala es requerida"); return;}
-        var obj = { FechaInicio: moment(FechaInicioSimple.data('DateTimePicker').date()).format(), IdSala: $("#IdSala").val() };
+        var obj = { FechaInicio: moment(FechaInicioSimple.data('DateTimePicker').date()).utc().format(), IdSala: $("#IdSala").val() };
         console.log(obj);
         LoadWaitNotification();
         $.ajax({
