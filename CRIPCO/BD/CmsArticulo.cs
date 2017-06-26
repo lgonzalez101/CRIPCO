@@ -12,25 +12,21 @@ namespace CRIPCO.BD
     using System;
     using System.Collections.Generic;
     
-    public partial class Cita
+    public partial class CmsArticulo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cita()
+        public CmsArticulo()
         {
-            this.Expedientes = new HashSet<Expediente>();
+            this.CmsArticulosDetalles = new HashSet<CmsArticulosDetalle>();
         }
     
-        public int CitaID { get; set; }
-        public int HorarioID { get; set; }
-        public int PersonaPacienteID { get; set; }
-        public string CreadoPor { get; set; }
-        public System.DateTime FechaCreado { get; set; }
-        public string ModificadoPor { get; set; }
-        public bool Activo { get; set; }
+        public int ArticuloId { get; set; }
+        public string Titulo { get; set; }
+        public string Descripcion { get; set; }
+        public int PadreArticuloId { get; set; }
+        public string Tipo { get; set; }
     
-        public virtual Horario Horario { get; set; }
-        public virtual Persona Persona { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Expediente> Expedientes { get; set; }
+        public virtual ICollection<CmsArticulosDetalle> CmsArticulosDetalles { get; set; }
     }
 }

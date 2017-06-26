@@ -1,61 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="GCModel.C__MigrationHistory" />
+    <EntitySet Name="Areas" EntityType="GCModel.Area" />
+    <EntitySet Name="AspNetRoles" EntityType="GCModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="GCModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="GCModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="GCModel.AspNetUser" />
+    <EntitySet Name="Citas" EntityType="GCModel.Cita" />
+    <EntitySet Name="CmsArticulos" EntityType="GCModel.CmsArticulo" />
+    <EntitySet Name="CmsArticulosDetalles" EntityType="GCModel.CmsArticulosDetalle" />
+    <EntitySet Name="Especialidads" EntityType="GCModel.Especialidad" />
+    <EntitySet Name="Expedientes" EntityType="GCModel.Expediente" />
+    <EntitySet Name="Horarios" EntityType="GCModel.Horario" />
+    <EntitySet Name="Personas" EntityType="GCModel.Persona" />
+    <EntitySet Name="PersonaEspecialidads" EntityType="GCModel.PersonaEspecialidad" />
+    <EntitySet Name="Salas" EntityType="GCModel.Sala" />
+    <EntitySet Name="sysdiagrams" EntityType="GCModel.sysdiagram" />
+    <AssociationSet Name="FK_Sala_Area" Association="GCModel.FK_Sala_Area">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="Sala" EntitySet="Salas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="GCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="GCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_AspNetUsers" Association="GCModel.FK_Persona_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Persona" EntitySet="Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cita_Horario" Association="GCModel.FK_Cita_Horario">
+      <End Role="Horario" EntitySet="Horarios" />
+      <End Role="Cita" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cita_Persona" Association="GCModel.FK_Cita_Persona">
+      <End Role="Persona" EntitySet="Personas" />
+      <End Role="Cita" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Expediente_Cita" Association="GCModel.FK_Expediente_Cita">
+      <End Role="Cita" EntitySet="Citas" />
+      <End Role="Expediente" EntitySet="Expedientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CmsArticulosDetalle_CmsArticulos" Association="GCModel.FK_CmsArticulosDetalle_CmsArticulos">
+      <End Role="CmsArticulo" EntitySet="CmsArticulos" />
+      <End Role="CmsArticulosDetalle" EntitySet="CmsArticulosDetalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonaEspecialidad_Especialidad" Association="GCModel.FK_PersonaEspecialidad_Especialidad">
+      <End Role="Especialidad" EntitySet="Especialidads" />
+      <End Role="PersonaEspecialidad" EntitySet="PersonaEspecialidads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Horario_Persona" Association="GCModel.FK_Horario_Persona">
+      <End Role="Persona" EntitySet="Personas" />
+      <End Role="Horario" EntitySet="Horarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Horario_Sala" Association="GCModel.FK_Horario_Sala">
+      <End Role="Sala" EntitySet="Salas" />
+      <End Role="Horario" EntitySet="Horarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonaEspecialidad_Persona" Association="GCModel.FK_PersonaEspecialidad_Persona">
+      <End Role="Persona" EntitySet="Personas" />
+      <End Role="PersonaEspecialidad" EntitySet="PersonaEspecialidads" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="GCModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
       <PropertyRef Name="MigrationId" />
       <PropertyRef Name="ContextKey" />
     </Key>
-    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Area">
     <Key>
       <PropertyRef Name="AreaID" />
     </Key>
     <Property Name="AreaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreado" Type="DateTime" Precision="0" />
-    <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="Sala" Relationship="Self.FK_Sala_Area" FromRole="Area" ToRole="Sala" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ModificadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Salas" Relationship="GCModel.FK_Sala_Area" FromRole="Area" ToRole="Sala" />
   </EntityType>
-  <EntityType Name="AspNetRoles">
+  <EntityType Name="AspNetRole">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" />
+    <NavigationProperty Name="AspNetUsers" Relationship="GCModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
   </EntityType>
-  <EntityType Name="AspNetUserClaims">
+  <EntityType Name="AspNetUserClaim">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+    <NavigationProperty Name="AspNetUser" Relationship="GCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
   </EntityType>
-  <EntityType Name="AspNetUserLogins">
+  <EntityType Name="AspNetUserLogin">
     <Key>
       <PropertyRef Name="LoginProvider" />
       <PropertyRef Name="ProviderKey" />
       <PropertyRef Name="UserId" />
     </Key>
-    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="GCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
   </EntityType>
-  <EntityType Name="AspNetUsers">
+  <EntityType Name="AspNetUser">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
     <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -66,91 +137,111 @@
     <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
     <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
     <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-    <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_AspNetUsers" FromRole="AspNetUsers" ToRole="Persona" />
-    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="GCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="GCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="Personas" Relationship="GCModel.FK_Persona_AspNetUsers" FromRole="AspNetUser" ToRole="Persona" />
+    <NavigationProperty Name="AspNetRoles" Relationship="GCModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
   </EntityType>
   <EntityType Name="Cita">
     <Key>
       <PropertyRef Name="CitaID" />
     </Key>
     <Property Name="CitaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="HorarioID" Type="Int32" />
-    <Property Name="SalaID" Type="Int32" />
-    <Property Name="PersonaPacienteID" Type="Int32" />
-    <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreado" Type="DateTime" Precision="0" />
-    <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="Horario" Relationship="Self.FK_Cita_Horario" FromRole="Cita" ToRole="Horario" />
-    <NavigationProperty Name="Persona" Relationship="Self.FK_Cita_Persona" FromRole="Cita" ToRole="Persona" />
-    <NavigationProperty Name="Sala" Relationship="Self.FK_Cita_Sala" FromRole="Cita" ToRole="Sala" />
-    <NavigationProperty Name="Expediente" Relationship="Self.FK_Expediente_Cita" FromRole="Cita" ToRole="Expediente" />
+    <Property Name="HorarioID" Type="Int32" Nullable="false" />
+    <Property Name="PersonaPacienteID" Type="Int32" Nullable="false" />
+    <Property Name="CreadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ModificadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Horario" Relationship="GCModel.FK_Cita_Horario" FromRole="Cita" ToRole="Horario" />
+    <NavigationProperty Name="Persona" Relationship="GCModel.FK_Cita_Persona" FromRole="Cita" ToRole="Persona" />
+    <NavigationProperty Name="Expedientes" Relationship="GCModel.FK_Expediente_Cita" FromRole="Cita" ToRole="Expediente" />
+  </EntityType>
+  <EntityType Name="CmsArticulo">
+    <Key>
+      <PropertyRef Name="ArticuloId" />
+    </Key>
+    <Property Name="ArticuloId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PadreArticuloId" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="CmsArticulosDetalles" Relationship="GCModel.FK_CmsArticulosDetalle_CmsArticulos" FromRole="CmsArticulo" ToRole="CmsArticulosDetalle" />
+  </EntityType>
+  <EntityType Name="CmsArticulosDetalle">
+    <Key>
+      <PropertyRef Name="ArticuloDetalleId" />
+    </Key>
+    <Property Name="ArticuloDetalleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArticuloId" Type="Int32" Nullable="false" />
+    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UrlVideo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CmsArticulo" Relationship="GCModel.FK_CmsArticulosDetalle_CmsArticulos" FromRole="CmsArticulosDetalle" ToRole="CmsArticulo" />
   </EntityType>
   <EntityType Name="Especialidad">
     <Key>
       <PropertyRef Name="EspecialidadID" />
     </Key>
     <Property Name="EspecialidadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreado" Type="DateTime" Precision="0" />
-    <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="PersonaEspecialidad" Relationship="Self.FK_PersonaEspecialidad_Especialidad" FromRole="Especialidad" ToRole="PersonaEspecialidad" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ModificadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PersonaEspecialidads" Relationship="GCModel.FK_PersonaEspecialidad_Especialidad" FromRole="Especialidad" ToRole="PersonaEspecialidad" />
   </EntityType>
   <EntityType Name="Expediente">
     <Key>
       <PropertyRef Name="ExpedienteID" />
     </Key>
     <Property Name="ExpedienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CitaID" Type="Int32" />
-    <Property Name="Comentario" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-    <Property Name="Documento" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-    <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreado" Type="DateTime" Precision="0" />
-    <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="Cita" Relationship="Self.FK_Expediente_Cita" FromRole="Expediente" ToRole="Cita" />
+    <Property Name="CitaID" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Documento" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="CreadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ModificadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="ExtensionDocumento" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cita" Relationship="GCModel.FK_Expediente_Cita" FromRole="Expediente" ToRole="Cita" />
   </EntityType>
   <EntityType Name="Horario">
     <Key>
       <PropertyRef Name="HorarioID" />
     </Key>
     <Property Name="HorarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PersonaID" Type="Int32" />
-    <Property Name="Hora" Type="DateTime" Precision="0" />
-    <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreado" Type="DateTime" Precision="0" />
-    <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Horario" FromRole="Horario" ToRole="Cita" />
-    <NavigationProperty Name="Persona" Relationship="Self.FK_Horario_Persona" FromRole="Horario" ToRole="Persona" />
+    <Property Name="PersonaID" Type="Int32" Nullable="false" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Reservado" Type="Boolean" Nullable="false" />
+    <Property Name="CreadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ModificadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="IdSala" Type="Int32" />
+    <NavigationProperty Name="Citas" Relationship="GCModel.FK_Cita_Horario" FromRole="Horario" ToRole="Cita" />
+    <NavigationProperty Name="Persona" Relationship="GCModel.FK_Horario_Persona" FromRole="Horario" ToRole="Persona" />
+    <NavigationProperty Name="Sala" Relationship="GCModel.FK_Horario_Sala" FromRole="Horario" ToRole="Sala" />
   </EntityType>
   <EntityType Name="Persona">
     <Key>
       <PropertyRef Name="PersonaID" />
     </Key>
-    <Property Name="PersonaID" Type="Int32" Nullable="false" />
-    <Property Name="IdAspnetUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Identidad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="FechaNac" Type="DateTime" Precision="0" />
-    <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Perfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreado" Type="DateTime" Precision="0" />
-    <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Persona_AspNetUsers" FromRole="Persona" ToRole="AspNetUsers" />
-    <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Persona" FromRole="Persona" ToRole="Cita" />
-    <NavigationProperty Name="Horario" Relationship="Self.FK_Horario_Persona" FromRole="Persona" ToRole="Horario" />
-    <NavigationProperty Name="PersonaEspecialidad" Relationship="Self.FK_PersonaEspecialidad_Persona" FromRole="Persona" ToRole="PersonaEspecialidad" />
+    <Property Name="PersonaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdAspnetUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Identidad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNac" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CreadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreado" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ModificadoPor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="GCModel.FK_Persona_AspNetUsers" FromRole="Persona" ToRole="AspNetUser" />
+    <NavigationProperty Name="Citas" Relationship="GCModel.FK_Cita_Persona" FromRole="Persona" ToRole="Cita" />
+    <NavigationProperty Name="Horarios" Relationship="GCModel.FK_Horario_Persona" FromRole="Persona" ToRole="Horario" />
+    <NavigationProperty Name="PersonaEspecialidads" Relationship="GCModel.FK_PersonaEspecialidad_Persona" FromRole="Persona" ToRole="PersonaEspecialidad" />
   </EntityType>
   <EntityType Name="PersonaEspecialidad">
     <Key>
@@ -159,8 +250,8 @@
     <Property Name="PersonaEspecialidadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PersonaID" Type="Int32" />
     <Property Name="EspecialidadID" Type="Int32" />
-    <NavigationProperty Name="Especialidad" Relationship="Self.FK_PersonaEspecialidad_Especialidad" FromRole="PersonaEspecialidad" ToRole="Especialidad" />
-    <NavigationProperty Name="Persona" Relationship="Self.FK_PersonaEspecialidad_Persona" FromRole="PersonaEspecialidad" ToRole="Persona" />
+    <NavigationProperty Name="Especialidad" Relationship="GCModel.FK_PersonaEspecialidad_Especialidad" FromRole="PersonaEspecialidad" ToRole="Especialidad" />
+    <NavigationProperty Name="Persona" Relationship="GCModel.FK_PersonaEspecialidad_Persona" FromRole="PersonaEspecialidad" ToRole="Persona" />
   </EntityType>
   <EntityType Name="Sala">
     <Key>
@@ -174,22 +265,22 @@
     <Property Name="FechaCreado" Type="DateTime" Precision="0" />
     <Property Name="ModificadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="Area" Relationship="Self.FK_Sala_Area" FromRole="Sala" ToRole="Area" />
-    <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Sala" FromRole="Sala" ToRole="Cita" />
+    <NavigationProperty Name="Area" Relationship="GCModel.FK_Sala_Area" FromRole="Sala" ToRole="Area" />
+    <NavigationProperty Name="Horarios" Relationship="GCModel.FK_Horario_Sala" FromRole="Sala" ToRole="Horario" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
+  <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="principal_id" Type="Int32" Nullable="false" />
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_Sala_Area">
-    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
-    <End Role="Sala" Type="Self.Sala" Multiplicity="*" />
+    <End Type="GCModel.Area" Role="Area" Multiplicity="0..1" />
+    <End Type="GCModel.Sala" Role="Sala" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Area">
         <PropertyRef Name="AreaID" />
@@ -200,38 +291,38 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+    <End Type="GCModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <End Type="GCModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
+      <Principal Role="AspNetUser">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="AspNetUserClaims">
+      <Dependent Role="AspNetUserClaim">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+    <End Type="GCModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <End Type="GCModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
+      <Principal Role="AspNetUser">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="AspNetUserLogins">
+      <Dependent Role="AspNetUserLogin">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Persona_AspNetUsers">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <End Type="GCModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="GCModel.Persona" Role="Persona" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
+      <Principal Role="AspNetUser">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Persona">
@@ -240,8 +331,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Cita_Horario">
-    <End Role="Horario" Type="Self.Horario" Multiplicity="0..1" />
-    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <End Type="GCModel.Horario" Role="Horario" Multiplicity="1" />
+    <End Type="GCModel.Cita" Role="Cita" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Horario">
         <PropertyRef Name="HorarioID" />
@@ -252,8 +343,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Cita_Persona">
-    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
-    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <End Type="GCModel.Persona" Role="Persona" Multiplicity="1" />
+    <End Type="GCModel.Cita" Role="Cita" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Persona">
         <PropertyRef Name="PersonaID" />
@@ -263,21 +354,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Cita_Sala">
-    <End Role="Sala" Type="Self.Sala" Multiplicity="0..1" />
-    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sala">
-        <PropertyRef Name="SalaID" />
-      </Principal>
-      <Dependent Role="Cita">
-        <PropertyRef Name="SalaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Expediente_Cita">
-    <End Role="Cita" Type="Self.Cita" Multiplicity="0..1" />
-    <End Role="Expediente" Type="Self.Expediente" Multiplicity="*" />
+    <End Type="GCModel.Cita" Role="Cita" Multiplicity="1" />
+    <End Type="GCModel.Expediente" Role="Expediente" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cita">
         <PropertyRef Name="CitaID" />
@@ -287,9 +366,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_CmsArticulosDetalle_CmsArticulos">
+    <End Type="GCModel.CmsArticulo" Role="CmsArticulo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GCModel.CmsArticulosDetalle" Role="CmsArticulosDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CmsArticulo">
+        <PropertyRef Name="ArticuloId" />
+      </Principal>
+      <Dependent Role="CmsArticulosDetalle">
+        <PropertyRef Name="ArticuloId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PersonaEspecialidad_Especialidad">
-    <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
-    <End Role="PersonaEspecialidad" Type="Self.PersonaEspecialidad" Multiplicity="*" />
+    <End Type="GCModel.Especialidad" Role="Especialidad" Multiplicity="0..1" />
+    <End Type="GCModel.PersonaEspecialidad" Role="PersonaEspecialidad" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Especialidad">
         <PropertyRef Name="EspecialidadID" />
@@ -300,8 +393,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Horario_Persona">
-    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
-    <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+    <End Type="GCModel.Persona" Role="Persona" Multiplicity="1" />
+    <End Type="GCModel.Horario" Role="Horario" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Persona">
         <PropertyRef Name="PersonaID" />
@@ -311,9 +404,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Horario_Sala">
+    <End Type="GCModel.Sala" Role="Sala" Multiplicity="0..1" />
+    <End Type="GCModel.Horario" Role="Horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="SalaID" />
+      </Principal>
+      <Dependent Role="Horario">
+        <PropertyRef Name="IdSala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PersonaEspecialidad_Persona">
-    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
-    <End Role="PersonaEspecialidad" Type="Self.PersonaEspecialidad" Multiplicity="*" />
+    <End Type="GCModel.Persona" Role="Persona" Multiplicity="0..1" />
+    <End Type="GCModel.PersonaEspecialidad" Role="PersonaEspecialidad" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Persona">
         <PropertyRef Name="PersonaID" />
@@ -324,71 +429,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="AspNetUserRoles">
-    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <End Type="GCModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="GCModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="CripcoEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-    <EntitySet Name="Area" EntityType="Self.Area" />
-    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
-    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
-    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
-    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-    <EntitySet Name="Cita" EntityType="Self.Cita" />
-    <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
-    <EntitySet Name="Expediente" EntityType="Self.Expediente" />
-    <EntitySet Name="Horario" EntityType="Self.Horario" />
-    <EntitySet Name="Persona" EntityType="Self.Persona" />
-    <EntitySet Name="PersonaEspecialidad" EntityType="Self.PersonaEspecialidad" />
-    <EntitySet Name="Sala" EntityType="Self.Sala" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <AssociationSet Name="FK_Sala_Area" Association="Self.FK_Sala_Area">
-      <End Role="Area" EntitySet="Area" />
-      <End Role="Sala" EntitySet="Sala" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Persona_AspNetUsers" Association="Self.FK_Persona_AspNetUsers">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="Persona" EntitySet="Persona" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cita_Horario" Association="Self.FK_Cita_Horario">
-      <End Role="Horario" EntitySet="Horario" />
-      <End Role="Cita" EntitySet="Cita" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cita_Persona" Association="Self.FK_Cita_Persona">
-      <End Role="Persona" EntitySet="Persona" />
-      <End Role="Cita" EntitySet="Cita" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cita_Sala" Association="Self.FK_Cita_Sala">
-      <End Role="Sala" EntitySet="Sala" />
-      <End Role="Cita" EntitySet="Cita" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Expediente_Cita" Association="Self.FK_Expediente_Cita">
-      <End Role="Cita" EntitySet="Cita" />
-      <End Role="Expediente" EntitySet="Expediente" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PersonaEspecialidad_Especialidad" Association="Self.FK_PersonaEspecialidad_Especialidad">
-      <End Role="Especialidad" EntitySet="Especialidad" />
-      <End Role="PersonaEspecialidad" EntitySet="PersonaEspecialidad" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Horario_Persona" Association="Self.FK_Horario_Persona">
-      <End Role="Persona" EntitySet="Persona" />
-      <End Role="Horario" EntitySet="Horario" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PersonaEspecialidad_Persona" Association="Self.FK_PersonaEspecialidad_Persona">
-      <End Role="Persona" EntitySet="Persona" />
-      <End Role="PersonaEspecialidad" EntitySet="PersonaEspecialidad" />
-    </AssociationSet>
-    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

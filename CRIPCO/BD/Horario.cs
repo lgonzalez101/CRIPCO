@@ -17,20 +17,22 @@ namespace CRIPCO.BD
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Horario()
         {
-            this.Cita = new HashSet<Cita>();
+            this.Citas = new HashSet<Cita>();
         }
     
         public int HorarioID { get; set; }
-        public Nullable<int> PersonaID { get; set; }
-        public Nullable<System.DateTime> Hora { get; set; }
-        public string Estado { get; set; }
+        public int PersonaID { get; set; }
+        public System.DateTime Hora { get; set; }
+        public bool Reservado { get; set; }
         public string CreadoPor { get; set; }
-        public Nullable<System.DateTime> FechaCreado { get; set; }
+        public System.DateTime FechaCreado { get; set; }
         public string ModificadoPor { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public bool Activo { get; set; }
+        public Nullable<int> IdSala { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cita> Cita { get; set; }
+        public virtual ICollection<Cita> Citas { get; set; }
         public virtual Persona Persona { get; set; }
+        public virtual Sala Sala { get; set; }
     }
 }

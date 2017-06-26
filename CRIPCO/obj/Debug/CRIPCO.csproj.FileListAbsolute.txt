@@ -241,6 +241,6 @@ C:\Users\ap250360\Documents\Visual Studio 2013\Projects\CRIPCO\CRIPCO\CRIPCO\bin
 C:\Users\ap250360\Documents\Visual Studio 2013\Projects\CRIPCO\CRIPCO\CRIPCO\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\ap250360\Documents\Visual Studio 2013\Projects\CRIPCO\CRIPCO\CRIPCO\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\ap250360\Documents\Visual Studio 2013\Projects\CRIPCO\CRIPCO\CRIPCO\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\ap250360\Documents\Visual Studio 2013\Projects\CRIPCO\CRIPCO\CRIPCO\obj\Debug\CRIPCO.csprojResolveAssemblyReference.cache
 C:\Users\ap250360\Documents\Visual Studio 2013\Projects\CRIPCO\CRIPCO\CRIPCO\obj\Debug\CRIPCO.dll
 C:\Users\ap250360\Documents\Visual Studio 2013\Projects\CRIPCO\CRIPCO\CRIPCO\obj\Debug\CRIPCO.pdb
+C:\Users\ap250360\Documents\Visual Studio 2013\Projects\CRIPCO\CRIPCO\CRIPCO\obj\Debug\CRIPCO.csprojResolveAssemblyReference.cache

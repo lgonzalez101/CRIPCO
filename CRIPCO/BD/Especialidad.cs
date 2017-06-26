@@ -17,17 +17,17 @@ namespace CRIPCO.BD
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Especialidad()
         {
-            this.PersonaEspecialidad = new HashSet<PersonaEspecialidad>();
+            this.PersonaEspecialidads = new HashSet<PersonaEspecialidad>();
         }
     
         public int EspecialidadID { get; set; }
         public string Nombre { get; set; }
         public string CreadoPor { get; set; }
-        public Nullable<System.DateTime> FechaCreado { get; set; }
+        public System.DateTime FechaCreado { get; set; }
         public string ModificadoPor { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public bool Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonaEspecialidad> PersonaEspecialidad { get; set; }
+        public virtual ICollection<PersonaEspecialidad> PersonaEspecialidads { get; set; }
     }
 }

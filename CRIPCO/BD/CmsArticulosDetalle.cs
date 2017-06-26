@@ -12,18 +12,13 @@ namespace CRIPCO.BD
     using System;
     using System.Collections.Generic;
     
-    public partial class Expediente
+    public partial class CmsArticulosDetalle
     {
-        public int ExpedienteID { get; set; }
-        public int CitaID { get; set; }
-        public string Comentario { get; set; }
-        public byte[] Documento { get; set; }
-        public string CreadoPor { get; set; }
-        public System.DateTime FechaCreado { get; set; }
-        public string ModificadoPor { get; set; }
-        public bool Activo { get; set; }
-        public string ExtensionDocumento { get; set; }
+        public int ArticuloDetalleId { get; set; }
+        public int ArticuloId { get; set; }
+        public byte[] Imagen { get; set; }
+        public string UrlVideo { get; set; }
     
-        public virtual Cita Cita { get; set; }
+        public virtual CmsArticulo CmsArticulo { get; set; }
     }
 }

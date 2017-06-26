@@ -1,186 +1,207 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GCModelStoreContainer" CdmEntityContainer="CripcoEntities">
+  <EntityContainerMapping StorageEntityContainer="GCModelStoreContainer" CdmEntityContainer="GCEntities">
     <EntitySetMapping Name="C__MigrationHistory">
       <EntityTypeMapping TypeName="GCModel.C__MigrationHistory">
         <MappingFragment StoreEntitySet="__MigrationHistory">
-          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
           <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Area">
+    <EntitySetMapping Name="Areas">
       <EntityTypeMapping TypeName="GCModel.Area">
         <MappingFragment StoreEntitySet="Area">
-          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="GCModel.AspNetRoles">
+      <EntityTypeMapping TypeName="GCModel.AspNetRole">
         <MappingFragment StoreEntitySet="AspNetRoles">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserClaims">
-      <EntityTypeMapping TypeName="GCModel.AspNetUserClaims">
+      <EntityTypeMapping TypeName="GCModel.AspNetUserClaim">
         <MappingFragment StoreEntitySet="AspNetUserClaims">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
           <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserLogins">
-      <EntityTypeMapping TypeName="GCModel.AspNetUserLogins">
+      <EntityTypeMapping TypeName="GCModel.AspNetUserLogin">
         <MappingFragment StoreEntitySet="AspNetUserLogins">
-          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="GCModel.AspNetUsers">
+      <EntityTypeMapping TypeName="GCModel.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Cita">
+    <EntitySetMapping Name="Citas">
       <EntityTypeMapping TypeName="GCModel.Cita">
         <MappingFragment StoreEntitySet="Cita">
-          <ScalarProperty Name="CitaID" ColumnName="CitaID" />
-          <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
-          <ScalarProperty Name="SalaID" ColumnName="SalaID" />
-          <ScalarProperty Name="PersonaPacienteID" ColumnName="PersonaPacienteID" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="PersonaPacienteID" ColumnName="PersonaPacienteID" />
+          <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
+          <ScalarProperty Name="CitaID" ColumnName="CitaID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Especialidad">
+    <EntitySetMapping Name="CmsArticulos">
+      <EntityTypeMapping TypeName="GCModel.CmsArticulo">
+        <MappingFragment StoreEntitySet="CmsArticulos">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="PadreArticuloId" ColumnName="PadreArticuloId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="ArticuloId" ColumnName="ArticuloId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CmsArticulosDetalles">
+      <EntityTypeMapping TypeName="GCModel.CmsArticulosDetalle">
+        <MappingFragment StoreEntitySet="CmsArticulosDetalle">
+          <ScalarProperty Name="UrlVideo" ColumnName="UrlVideo" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="ArticuloId" ColumnName="ArticuloId" />
+          <ScalarProperty Name="ArticuloDetalleId" ColumnName="ArticuloDetalleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Especialidads">
       <EntityTypeMapping TypeName="GCModel.Especialidad">
         <MappingFragment StoreEntitySet="Especialidad">
-          <ScalarProperty Name="EspecialidadID" ColumnName="EspecialidadID" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="EspecialidadID" ColumnName="EspecialidadID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Expediente">
+    <EntitySetMapping Name="Expedientes">
       <EntityTypeMapping TypeName="GCModel.Expediente">
         <MappingFragment StoreEntitySet="Expediente">
-          <ScalarProperty Name="ExpedienteID" ColumnName="ExpedienteID" />
-          <ScalarProperty Name="CitaID" ColumnName="CitaID" />
-          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-          <ScalarProperty Name="Documento" ColumnName="Documento" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="ExtensionDocumento" ColumnName="ExtensionDocumento" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="CitaID" ColumnName="CitaID" />
+          <ScalarProperty Name="ExpedienteID" ColumnName="ExpedienteID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Horario">
+    <EntitySetMapping Name="Horarios">
       <EntityTypeMapping TypeName="GCModel.Horario">
         <MappingFragment StoreEntitySet="Horario">
-          <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
-          <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
-          <ScalarProperty Name="Hora" ColumnName="Hora" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="IdSala" ColumnName="IdSala" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Reservado" ColumnName="Reservado" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
+          <ScalarProperty Name="HorarioID" ColumnName="HorarioID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Persona">
+    <EntitySetMapping Name="Personas">
       <EntityTypeMapping TypeName="GCModel.Persona">
         <MappingFragment StoreEntitySet="Persona">
-          <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
-          <ScalarProperty Name="IdAspnetUser" ColumnName="IdAspnetUser" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="Identidad" ColumnName="Identidad" />
-          <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Perfil" ColumnName="Perfil" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+          <ScalarProperty Name="Identidad" ColumnName="Identidad" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdAspnetUser" ColumnName="IdAspnetUser" />
+          <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PersonaEspecialidad">
+    <EntitySetMapping Name="PersonaEspecialidads">
       <EntityTypeMapping TypeName="GCModel.PersonaEspecialidad">
         <MappingFragment StoreEntitySet="PersonaEspecialidad">
-          <ScalarProperty Name="PersonaEspecialidadID" ColumnName="PersonaEspecialidadID" />
-          <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
           <ScalarProperty Name="EspecialidadID" ColumnName="EspecialidadID" />
+          <ScalarProperty Name="PersonaID" ColumnName="PersonaID" />
+          <ScalarProperty Name="PersonaEspecialidadID" ColumnName="PersonaEspecialidadID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Sala">
+    <EntitySetMapping Name="Salas">
       <EntityTypeMapping TypeName="GCModel.Sala">
         <MappingFragment StoreEntitySet="Sala">
-          <ScalarProperty Name="SalaID" ColumnName="SalaID" />
-          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
-          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="SalaID" ColumnName="SalaID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="GCModel.sysdiagrams">
+      <EntityTypeMapping TypeName="GCModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="AspNetUserRoles" TypeName="GCModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-      <EndProperty Name="AspNetRoles">
-        <ScalarProperty Name="Id" ColumnName="RoleId" />
-      </EndProperty>
-      <EndProperty Name="AspNetUsers">
+      <EndProperty Name="AspNetUser">
         <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

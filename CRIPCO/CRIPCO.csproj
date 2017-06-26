@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CRIPCO</RootNamespace>
     <AssemblyName>CRIPCO</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -81,6 +81,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -88,12 +89,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -134,6 +132,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -202,19 +201,25 @@
     <Compile Include="BD\Area.cs">
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\AspNetRoles.cs">
+    <Compile Include="BD\AspNetRole.cs">
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\AspNetUserClaims.cs">
+    <Compile Include="BD\AspNetUser.cs">
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\AspNetUserLogins.cs">
+    <Compile Include="BD\AspNetUserClaim.cs">
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\AspNetUsers.cs">
+    <Compile Include="BD\AspNetUserLogin.cs">
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\Cita.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\CmsArticulo.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\CmsArticulosDetalle.cs">
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="BD\C__MigrationHistory.cs">
@@ -253,10 +258,11 @@
     <Compile Include="BD\Sala.cs">
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
-    <Compile Include="BD\sysdiagrams.cs">
+    <Compile Include="BD\sysdiagram.cs">
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CmsArticulosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -265,9 +271,12 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Base\MensajeRespuestaViewModel.cs" />
+    <Compile Include="Models\CmsArticulosModels.cs" />
+    <Compile Include="Models\DetalleArticuloModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Roles\CrearRolViewModel.cs" />
+    <Compile Include="Models\TreeNodeModels .cs" />
     <Compile Include="Models\Usuario\CrearUsuarioViewModel.cs" />
     <Compile Include="Models\Usuario\ListaUsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -6456,6 +6465,9 @@
       <DependentUpon>ModelCripco.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Cms\ImageInsert.js" />
+    <Content Include="Scripts\Cms\RemoveDetalleImagenes.js" />
+    <Content Include="Scripts\Cms\OcultarControlesTipoMenu.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -6508,6 +6520,12 @@
     <Content Include="Views\Usuario\CrearUsuario.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\CrearRol.cshtml" />
+    <Content Include="Views\CmsArticulos\Create.cshtml" />
+    <Content Include="Views\CmsArticulos\Delete.cshtml" />
+    <Content Include="Views\CmsArticulos\Details.cshtml" />
+    <Content Include="Views\CmsArticulos\Edit.cshtml" />
+    <Content Include="Views\CmsArticulos\Index.cshtml" />
+    <Content Include="Views\CmsArticulos\DetalleArticulo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -6541,16 +6559,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54597</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3000/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

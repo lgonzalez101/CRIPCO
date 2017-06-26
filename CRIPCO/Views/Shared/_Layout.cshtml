@@ -11,11 +11,11 @@
     <meta content="" name="author" />
 
     @Styles.Render("~/bundles/CSS")
-    @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/modernizr")*@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    z
 </head>
 <body>
     <!-- begin #page-loader -->
@@ -162,13 +162,13 @@
                     <li>
                         <ul class="nav nav-profile">
                             <li><a href="#"><i class="material-icons">settings</i> Perfil</a></li>
-       
+
                         </ul>
                     </li>
                 </ul>
                 <!-- end sidebar user -->
                 <!-- begin sidebar nav -->
-                <ul class="nav">                 
+                <ul class="nav">
                     <li class="has-sub">
                         <a href="javascript:;">
                             <b class="caret pull-right"></b><i class="material-icons">home</i> <span>Home</span>
@@ -180,7 +180,16 @@
                         </ul>
 
                     </li>
-                                     
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret pull-right"></b><i class="material-icons">cms</i> <span>Admin Pagina Web</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("Index","CmsArticulos")" title="Home"><span>Articulos</span></a></li>
+                        </ul>
+
+                    </li>
+
                     <!-- begin sidebar minify button -->
                     <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
                     <!-- end sidebar minify button -->
@@ -196,7 +205,7 @@
             <!-- begin breadcrumb -->
             @RenderBody()
 
-           <!-- end row -->
+            <!-- end row -->
         </div>
         <!-- end #content -->
         <!-- begin theme-panel -->
@@ -270,20 +279,30 @@
         <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         <!-- end scroll to top btn -->
     </div>
-
     @Scripts.Render("~/bundles/ColorAdmin")
     @Scripts.Render("~/bundles/personalized")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Cms/OcultarControlesTipoMenu.js"></script>
+        <script src="~/Scripts/Cms/ImageInsert.js"></script>
+        <script src="~/Scripts/Cms/RemoveDetalleImagenes.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-    <script>
-		$(document).ready(function() {
-			App.init();
-			DashboardV2.init();
-		});
+            if ($("#SelectedTipo :selected").val() == "M") {
+                $("#Descripcion").hide();
+                $("#CargarImagenes").hide();
+                $("#ImagenesCargadas").hide();
+            }
+            else {
+
+                $("#Descripcion").show();
+                $("#CargarImagenes").show();
+                $("#ImagenesCargadas").show();
+            }
+            App.init();
+            DashboardV2.init();
+
+        });
     </script>
-
-
-    
-
 </body>
 </html>

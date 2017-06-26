@@ -26,18 +26,20 @@ namespace CRIPCO.BD
         }
     
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<Area> Area { get; set; }
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Cita> Cita { get; set; }
-        public virtual DbSet<Especialidad> Especialidad { get; set; }
-        public virtual DbSet<Expediente> Expediente { get; set; }
-        public virtual DbSet<Horario> Horario { get; set; }
-        public virtual DbSet<Persona> Persona { get; set; }
-        public virtual DbSet<PersonaEspecialidad> PersonaEspecialidad { get; set; }
-        public virtual DbSet<Sala> Sala { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Area> Areas { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Cita> Citas { get; set; }
+        public virtual DbSet<CmsArticulo> CmsArticulos { get; set; }
+        public virtual DbSet<CmsArticulosDetalle> CmsArticulosDetalles { get; set; }
+        public virtual DbSet<Especialidad> Especialidads { get; set; }
+        public virtual DbSet<Expediente> Expedientes { get; set; }
+        public virtual DbSet<Horario> Horarios { get; set; }
+        public virtual DbSet<Persona> Personas { get; set; }
+        public virtual DbSet<PersonaEspecialidad> PersonaEspecialidads { get; set; }
+        public virtual DbSet<Sala> Salas { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace CRIPCO.BD
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sala()
         {
-            this.Cita = new HashSet<Cita>();
+            this.Horarios = new HashSet<Horario>();
         }
     
         public int SalaID { get; set; }
@@ -31,6 +31,6 @@ namespace CRIPCO.BD
     
         public virtual Area Area { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cita> Cita { get; set; }
+        public virtual ICollection<Horario> Horarios { get; set; }
     }
 }

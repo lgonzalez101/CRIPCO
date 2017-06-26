@@ -17,9 +17,9 @@ namespace CRIPCO.BD
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Persona()
         {
-            this.Cita = new HashSet<Cita>();
-            this.Horario = new HashSet<Horario>();
-            this.PersonaEspecialidad = new HashSet<PersonaEspecialidad>();
+            this.Citas = new HashSet<Cita>();
+            this.Horarios = new HashSet<Horario>();
+            this.PersonaEspecialidads = new HashSet<PersonaEspecialidad>();
         }
     
         public int PersonaID { get; set; }
@@ -27,21 +27,19 @@ namespace CRIPCO.BD
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Identidad { get; set; }
-        public Nullable<System.DateTime> FechaNac { get; set; }
+        public System.DateTime FechaNac { get; set; }
         public string Telefono { get; set; }
-        public string Perfil { get; set; }
-        public string Estado { get; set; }
         public string CreadoPor { get; set; }
-        public Nullable<System.DateTime> FechaCreado { get; set; }
+        public System.DateTime FechaCreado { get; set; }
         public string ModificadoPor { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public bool Activo { get; set; }
     
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cita> Cita { get; set; }
+        public virtual ICollection<Cita> Citas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Horario> Horario { get; set; }
+        public virtual ICollection<Horario> Horarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonaEspecialidad> PersonaEspecialidad { get; set; }
+        public virtual ICollection<PersonaEspecialidad> PersonaEspecialidads { get; set; }
     }
 }
