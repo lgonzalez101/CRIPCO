@@ -6595,6 +6595,8 @@
     <Content Include="Views\Cita\Index.cshtml" />
     <Content Include="Views\Cita\ListaEspecialidades.cshtml" />
     <Content Include="Views\Usuario\DetalleUsuario.cshtml" />
+    <Content Include="Views\Cita\CrearCita.cshtml" />
+    <Content Include="Views\Cita\CargaHorariosDisponibles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,101 @@
+﻿@model IEnumerable<CRIPCO.BD.Horario>
+
+<div class="well">
+    <fieldset>
+        @if (Model != null && Model.Any())
+        {
+
+            <div class="row">
+                <div class="email-content">
+                    <table class="table table-email">
+                        <thead>
+                            @*<tr>
+                                <th class="email-select"><a href="#" data-click="email-select-all"><i class="fa fa-square-o fa-fw"></i></a></th>
+                                <th colspan="2">
+                                    <div class="dropdown">
+                                        <a href="#" class="email-header-link" data-toggle="dropdown">Ver<i class="fa fa-angle-down m-l-5"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li class="active"><a href="#">All</a></li>
+                                            <li><a href="#">Unread</a></li>
+                                            <li><a href="#">Contacts</a></li>
+                                            <li><a href="#">Groups</a></li>
+                                            <li><a href="#">Newsletters</a></li>
+                                            <li><a href="#">Social updates</a></li>
+                                            <li><a href="#">Everything else</a></li>
+                                        </ul>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="dropdown">
+                                        <a href="#" class="email-header-link" data-toggle="dropdown">Filtro <i class="fa fa-angle-down m-l-5"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li class="active"><a href="#">Date</a></li>
+                                            <li><a href="#">From</a></li>
+                                            <li><a href="#">Subject</a></li>
+                                            <li><a href="#">Size</a></li>
+                                            <li><a href="#">Conversation</a></li>
+                                        </ul>
+                                    </div>
+                                </th>
+                            </tr>*@
+                            <tr>
+                                <th style="width:1%"></th>
+                                <th>Hora</th>
+                                <th>Doctor</th>
+                                <th style="width:100%">Sala</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="#" class="btn btn-primary btn-xs"> Reservar</a>
+                                    </td>
+                                    <td style="width:30%">@item.Hora.ToShortTimeString()</td>
+                                    <td style="width:100%">
+                                        Dr. @item.Persona.Nombre  @item.Persona.Apellido
+                                    </td>
+                                    <td>@*@item.Sala?.Nombre??"Pendiente"*@</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    @*<div class="email-footer clearfix">
+                        737 messages
+                        <ul class="pagination pagination-sm m-t-0 m-b-0 pull-right">
+                            <li class="disabled"><a href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li class="disabled"><a href="javascript:;"><i class="fa fa-angle-left"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-angle-double-right"></i></a></li>
+                        </ul>
+                    </div>*@
+                </div>
+
+
+            </div>
+    <!-- end row -->
+
+
+
+        }
+        else
+        {
+            <h3 class="text-center text-danger"> No hay Horarios Disponibles.</h3>
+        }
+
+
+
+    </fieldset>
+
+
+</div>
+<!-- begin row -->
+
+<script>
+    
+
+
+</script>

@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "CrearCita";
+}
+
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                   
+                </div>
+                <h4 class="panel-title">Crear Cita</h4>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-5">
+                    <div class="well">
+                            <fieldset>
+                                <legend class="pull-left width-full">Busqueda</legend>
+                                <div class="row">
+                                    <div class="col-md-12">                                   
+                                         <div class="form-group">
+                                            <label class="text-primary">Seleccionar Especialidad</label>
+                                             @Html.DropDownList("ListaEspecialidades", null, htmlAttributes: new { @class = "form-control" })
+
+                                         </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="text-primary">Seleccione Fecha</label>
+                                            <div id="FechaInicio"></div>   
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                           <button class="btn btn-primary pull-right" onclick="MostrarHorariosDisponibles()"> Buscar
+                                           </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>         
+                    </div>
+
+                </div>
+                <div class="col-md-7" id="ContenedorHorarios">
+
+
+                </div>
+               
+                   
+                </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+
+
+@section Scripts{
+    
+    <script>
+
+        $("select").select2();
+
+        var FechaInicioSimple = $("#FechaInicio").datepicker({
+            inline: true,
+            sideBySide: true,
+           // format: 'dd/MM/yy'
+        });
+
+
+        function MostrarHorariosDisponibles() {
+            console.log($('#FechaInicio').datepicker('getDate').toISOString());
+            console.log($("#ListaEspecialidades").val());
+            LoadWaitNotification();
+            $.ajax({
+                url: "/Cita/CargaHorariosDisponibles",
+                type: 'get',
+                data: { Fecha: $('#FechaInicio').datepicker('getDate').toISOString(), IdEspecialidad: $("#ListaEspecialidades").val() },
+                success: function (data) {
+                    $("#ContenedorHorarios").html(data);
+                   
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert("No funca: "+textStatus);
+                    UnloadWaitNotification();
+                },
+                complete: function () { UnloadWaitNotification(); }
+            });
+        }
+
+    </script>
+    
+    }

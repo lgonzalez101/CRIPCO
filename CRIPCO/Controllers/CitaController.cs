@@ -38,6 +38,30 @@ namespace CRIPCO.Controllers
             return View(cita);
         }
 
+        [HttpGet]
+        public ActionResult CrearCita()
+        {
+            ViewBag.ListaEspecialidades = new SelectList(db.Especialidad.Where(x => x.Activo), "EspecialidadID", "Nombre");
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult CargaHorariosDisponibles(DateTime Fecha, int IdEspecialidad)
+        {
+            var list = new List<Horario>();
+            foreach (var horario in db.Horario.Where(x => x.Activo && x.Reservado == false && x.Persona.PersonaEspecialidad.Any(y => y.EspecialidadID == IdEspecialidad)).ToList())
+            {
+                if (horario.Hora.Date == Fecha.Date)
+                {
+                    list.Add(horario);
+                }
+
+            }
+
+            return PartialView(list);
+          //  return PartialView(db.Horario.Where(x=> DateTime.Compare(Fecha.Date, x.Hora.Date)==0 && x.Persona.PersonaEspecialidad.Any(y=>y.EspecialidadID==IdEspecialidad) && x.Activo && x.Reservado==false).ToList());
+        }
+
         // GET: Cita/Create
         public ActionResult Create()
         {
@@ -78,7 +102,7 @@ namespace CRIPCO.Controllers
                 return HttpNotFound();
             }
             ViewBag.HorarioID = new SelectList(db.Horario, "HorarioID", "CreadoPor", cita.HorarioID);
-            ViewBag.PersonaPacienteID = new SelectList(db.Persona, "PersonaID", "IdAspnetUser", cita.PersonaPacienteID);
+            ViewBag.PersonaPacienteID = new SelectList(db.Persona, "PersonaID", "Nombre", cita.PersonaPacienteID);
             return PartialView(cita);
         }
 
@@ -90,13 +114,16 @@ namespace CRIPCO.Controllers
         public ActionResult Edit([Bind(Include = "CitaID,HorarioID,PersonaPacienteID,CreadoPor,FechaCreado,ModificadoPor,Activo")] Cita cita)
         {
             if (ModelState.IsValid)
-            {
-                db.Entry(cita).State = EntityState.Modified;
+            {   
+                var citamodel = db.Cita.Find(cita.CitaID);
+                citamodel.PersonaPacienteID = cita.PersonaPacienteID;
+                db.Entry(citamodel).State = EntityState.Modified;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.HorarioID = new SelectList(db.Horario, "HorarioID", "CreadoPor", cita.HorarioID);
-            ViewBag.PersonaPacienteID = new SelectList(db.Persona, "PersonaID", "IdAspnetUser", cita.PersonaPacienteID);
+            //ViewBag.HorarioID = new SelectList(db.Horario, "HorarioID", "CreadoPor", cita.HorarioID);
+            ViewBag.PersonaPacienteID = new SelectList(db.Persona, "PersonaID", "Nombre", cita.PersonaPacienteID);
             return View(cita);
         }
 
