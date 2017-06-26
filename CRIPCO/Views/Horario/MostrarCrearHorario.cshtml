@@ -68,17 +68,12 @@
 
 <script>
 
-    $(document).ready(function () {
-          moment.locale("en");
-
-    });
-
     $(".select2").select2();
 
     var FechaInicioSimple = $("#FechaInicio").datetimepicker({
         inline: true,
         sideBySide: true,
-        format: 'dd/MM/yy H'
+        format: 'DD/MM/YYYY H'
     });
 
    var RangoFechaInicial= $("#RangoFechaInicio").datetimepicker({
