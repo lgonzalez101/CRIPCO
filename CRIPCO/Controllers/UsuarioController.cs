@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -116,7 +117,7 @@ namespace CRIPCO.Controllers
             }
 
         }
-
+        
         [HttpGet]
         public ActionResult CrearUsuario()
         {
@@ -319,7 +320,28 @@ namespace CRIPCO.Controllers
             }
         }
 
+        
+        [HttpGet]
+        public ActionResult DetalleUsuario()
+        {
+            using (var context = new CripcoEntities())
+            {
+                int idUsuario = ObtenerIdUsuario();
+                var Usuario = context.Persona.FirstOrDefault(x => x.PersonaID == idUsuario);
 
+                var  detalleUsuario = new DetalleUsuarioViewModel { PersonaID = Usuario.PersonaID,
+                                                                    Nombre = Usuario.Nombre,
+                                                                    Apellido=Usuario.Apellido,
+                                                                    Identidad=Usuario.Identidad,
+                                                                    FechaNac= Usuario.FechaNac,
+                                                                    Telefono=Usuario.Telefono,
+                                                                     };
+
+                return View(detalleUsuario);
+               
+            }
+
+        }
 
 
 

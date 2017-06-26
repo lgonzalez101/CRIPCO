@@ -158,8 +158,11 @@
                             @*<li><a href="javascript:;">Edit Profile</a></li>
                             <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
                             <li><a href="javascript:;">Calendar</a></li>*@
-                            <li><a href="javascript:;">Perfil</a></li>
-                            <li class="divider"></li>    
+                            <li><a href="@Url.Action("DetalleUsuario", "Usuario")">Perfil</a></li>
+                  @*          <li><a href="javascript:;">Perfil</a></li>*@
+                           
+                            
+                             <li class="divider"></li>    
                             <li><a href="@Url.Action("LogOff", "Account")">Cerrar Sesion</a></li>
                         </ul>
                     </li>
@@ -237,6 +240,7 @@
                             <li><a href="@Url.Action("Index","Sala")" title="Sala"><span>Salas</span></a></li>
                             <li><a href="@Url.Action("Index","Area")" title="Area"><span>Areas</span></a></li>
                             <li><a href="@Url.Action("Index","Especialidades")" title="Area"><span>Especialidades</span></a></li>
+                            <li><a href="@Url.Action("Index","Cita")" title="Area"><span>Citas</span></a></li>
 
                         </ul>
                     </li>
@@ -249,6 +253,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li><a href="@Url.Action("Index","Horario")" title="Horarios"> <span>Lista de Horarios</span></a></li>
+                                <li><a href="@Url.Action("Index","Cita")" title="Area"><span>Citas</span></a></li>
                                 @*<li><a href="@Url.Action("Index","Horario")" title="Calendario"> <span>Calendario</span></a></li>*@
                             </ul>
                         </li>

@@ -258,6 +258,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CitaController.cs" />
     <Compile Include="Controllers\EspecialidadesController.cs" />
     <Compile Include="Controllers\ExpedientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -273,6 +274,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Base\MensajeRespuestaViewModel.cs" />
     <Compile Include="Models\Calendario\CalendarioViewModel.cs" />
+    <Compile Include="Models\Citas\CitaViewModel.cs" />
+    <Compile Include="Models\Citas\ListaEspecialidadesViewModel.cs" />
     <Compile Include="Models\Expedientes\ExpedientesViewModel.cs" />
     <Compile Include="Models\Expedientes\ListaExpedienteViewModel.cs" />
     <Compile Include="Models\Horario\CrearHorarioViewModel.cs" />
@@ -283,6 +286,7 @@
     <Compile Include="Models\SeleccionEspecialidadesViewModel.cs" />
     <Compile Include="Models\Usuario\CambiarContrasenaViewModel.cs" />
     <Compile Include="Models\Usuario\CrearUsuarioViewModel.cs" />
+    <Compile Include="Models\Usuario\DetalleUsuarioViewModel.cs" />
     <Compile Include="Models\Usuario\ListaUsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -6584,6 +6588,13 @@
     <Content Include="Views\Especialidades\Edit.cshtml" />
     <Content Include="Views\Especialidades\Index.cshtml" />
     <Content Include="Views\Usuario\ObtenerListaEspecialidades.cshtml" />
+    <Content Include="Views\Cita\Create.cshtml" />
+    <Content Include="Views\Cita\Delete.cshtml" />
+    <Content Include="Views\Cita\Details.cshtml" />
+    <Content Include="Views\Cita\Edit.cshtml" />
+    <Content Include="Views\Cita\Index.cshtml" />
+    <Content Include="Views\Cita\ListaEspecialidades.cshtml" />
+    <Content Include="Views\Usuario\DetalleUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
