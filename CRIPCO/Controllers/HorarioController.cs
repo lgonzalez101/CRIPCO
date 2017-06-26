@@ -37,6 +37,7 @@ namespace CRIPCO.Controllers
         {
             using (var context = new CripcoEntities())
             {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
                 ViewBag.ListaSalas = context.Sala.Where(x => x.Activo ?? false).Select(x => new SelectListItem { Value = x.SalaID.ToString(), Text = x.Area.Nombre + " / " + x.Nombre }).ToList();
                 return PartialView(new CrearHorarioViewModel { FechaInicio = DateTime.Now, FechaFinal = DateTime.Now });
             }
@@ -48,8 +49,9 @@ namespace CRIPCO.Controllers
         {
             using (var context = new CripcoEntities())
             {
-              
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
                 var idUsuario = ObtenerIdUsuario();
+                model.FechaInicio = model.FechaInicio.ToLocalTime();
                 var HorarioNuevo = new DateTime(model.FechaInicio.Year, model.FechaInicio.Month, model.FechaInicio.Day, model.FechaInicio.Hour,0,0);
                 if (HorarioExistente(HorarioNuevo, idUsuario)) return Json(EnviarResultado(true, "El horario ya existe", "Si estaba inactivo se cambio a activo",""), JsonRequestBehavior.AllowGet);
                 else 

@@ -15,6 +15,7 @@ namespace CRIPCO.Controllers
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
+
             base.OnActionExecuted(filterContext);
         }
 
