@@ -49,6 +49,7 @@ namespace CRIPCO.Controllers
         public ActionResult CargaHorariosDisponibles(DateTime Fecha, int IdEspecialidad)
         {
             var list = new List<Horario>();
+            if(Fecha<DateTime.Now) return PartialView(list);
             foreach (var horario in db.Horario.Where(x => x.Activo && x.Reservado == false && x.Persona.PersonaEspecialidad.Any(y => y.EspecialidadID == IdEspecialidad)).ToList())
             {
                 if (horario.Hora.Date == Fecha.Date)

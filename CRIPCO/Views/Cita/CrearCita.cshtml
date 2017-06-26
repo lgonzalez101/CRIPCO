@@ -65,22 +65,27 @@
     <script>
 
         $("select").select2();
-
+        $.datepicker.setDefaults($.datepicker.regional['en']);
         var FechaInicioSimple = $("#FechaInicio").datepicker({
             inline: true,
             sideBySide: true,
-           // format: 'dd/MM/yy'
+            minDate: moment()
         });
 
+        $("#FechaInicio").on("dp.change", function (a) {
+            MostrarHorariosDisponibles();
+        });
 
+        var FechaSeleccionada = "";
         function MostrarHorariosDisponibles() {
-            console.log($('#FechaInicio').datepicker('getDate').toISOString());
-            console.log($("#ListaEspecialidades").val());
+            if ($('#FechaInicio').datepicker('getDate') == null) { ShowNotification(false, "Seleccione una Fecha", "La fecha es requerida"); return; }
+            FechaSeleccionada = $('#FechaInicio').datepicker('getDate').toLocaleDateString();
+
             LoadWaitNotification();
             $.ajax({
                 url: "/Cita/CargaHorariosDisponibles",
                 type: 'get',
-                data: { Fecha: $('#FechaInicio').datepicker('getDate').toISOString(), IdEspecialidad: $("#ListaEspecialidades").val() },
+                data: { Fecha: $('#FechaInicio').datepicker('getDate').toUTCString(), IdEspecialidad: $("#ListaEspecialidades").val() },
                 success: function (data) {
                     $("#ContenedorHorarios").html(data);
                    

@@ -2,6 +2,7 @@
 
 <div class="well">
     <fieldset>
+        <legend class="pull-left width-full" id="LabelFecha">Fecha</legend>
         @if (Model != null && Model.Any())
         {
 
@@ -95,7 +96,7 @@
 <!-- begin row -->
 
 <script>
-    
+    $("#LabelFecha").html(FechaSeleccionada);
 
 
 </script>
