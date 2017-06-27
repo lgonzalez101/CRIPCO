@@ -2,7 +2,23 @@
 @{
     ViewBag.Title = "CrearCita";
 }
+<div id="MyModalConfirmacion" class="modal fade" role="dialog" data-backdrop='static' data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" id="MyModalBodyConfirmacion">
+                <h4 class="text-center">Esta seguro de Reservar la cita?</h4>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success" onclick="ConfirmarCita()">Si</button>
+                <button class="btn btn-default" onclick="CancelarCita()">No</button>
+                <br />
+                <br />
+            </div>
 
+        </div>
+
+    </div>
+</div>
 <div class="row">
     <!-- begin col-12 -->
     <div class="col-md-12 ui-sortable">
@@ -112,19 +128,27 @@
 
         function ReservarCita(idHorario)
         {
+            $("#MyModalConfirmacion").modal("show");
+           
+            idHorarioSeleccionado = idHorario;
+        }
+
+        var idHorarioSeleccionado = "";
+        function ConfirmarCita()
+        {
+            $("#MyModalConfirmacion").modal("hide");
             LoadWaitNotification();
             $.ajax({
                 url: "/Cita/ReservarCita",
                 type: 'POST',
-                data: { IdHorario: idHorario, IdUsuario: $("#ListaUsuarios").val() },
+                data: { IdHorario: idHorarioSeleccionado, IdUsuario: $("#ListaUsuarios").val() },
                 success: function (data) {
                     ShowNotification(data.Estado, data.Titulo, data.Mensaje);
-                    if (data.Estado)
-                    {
-                        $("#ContenedorHorarios").html("");
+                    if (data.Estado) {
 
+                        $("#ContenedorHorarios").html("");
                     }
-                  
+
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert("No funca: " + textStatus);
@@ -132,6 +156,11 @@
                 },
                 complete: function () { UnloadWaitNotification(); }
             });
+        }
+
+        function CancelarCita()
+        {
+            $("#MyModalConfirmacion").modal("hide");
         }
 
     </script>
