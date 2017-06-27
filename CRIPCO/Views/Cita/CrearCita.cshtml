@@ -10,11 +10,12 @@
         <div class="panel panel-inverse">
             <div class="panel-heading">
                 <div class="panel-heading-btn">
+                 
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                    @*<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>*@
                    
                 </div>
-                <h4 class="panel-title">Crear Cita</h4>
+                <h4 class="panel-title">Reservar Cita</h4>
             </div>
             <div class="panel-body">
                 <div class="col-md-5">
@@ -22,6 +23,16 @@
                             <fieldset>
                                 @*<legend class="pull-left width-full">Busqueda</legend>*@
                                 <div class="row">
+                                    @if (User.IsInRole("Asistente"))
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="text-primary">Seleccionar Paciente</label>
+                                                @Html.DropDownList("ListaUsuarios", null, htmlAttributes: new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    }
                                     <div class="col-md-12">                                   
                                          <div class="form-group">
                                             <label class="text-primary">Seleccionar Especialidad</label>
@@ -105,9 +116,15 @@
             $.ajax({
                 url: "/Cita/ReservarCita",
                 type: 'POST',
-                data: { IdHorario: idHorario },
+                data: { IdHorario: idHorario, IdUsuario: $("#ListaUsuarios").val() },
                 success: function (data) {
-                    alert(data.Estado);
+                    ShowNotification(data.Estado, data.Titulo, data.Mensaje);
+                    if (data.Estado)
+                    {
+                        $("#ContenedorHorarios").html("");
+
+                    }
+                  
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert("No funca: " + textStatus);

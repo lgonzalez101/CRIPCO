@@ -74,8 +74,28 @@ namespace CRIPCO.Controllers
             }
 
         }
+        
 
+      public ActionResult VerCitasDelPaciente()
+        {
+            using (var context = new CripcoEntities())
+            {
+                var IdUsuario = ObtenerIdUsuario();
+                var listaHorarios = context.Cita.Any(x => x.PersonaPacienteID == IdUsuario && x.Activo) ? context.Cita.Where(x => x.PersonaPacienteID == IdUsuario && x.Activo)?.Select(x => new ListaHorarioViewModel { Id = x.HorarioID, Fecha = x.Horario.Hora, Estado = x.Activo, Reservado = x.Horario.Reservado }).ToList() : new List<ListaHorarioViewModel>();
+                var listfinal = new List<ListaHorarioViewModel>();
+                listaHorarios.ForEach(x =>
+                {
+                    if (x.Fecha.Date > DateTime.Now.Date)
+                    {
+                        listfinal.Add(x);
+                    }
+                });
 
+                return PartialView(listfinal);
+
+            }
+
+        }
 
 
     }

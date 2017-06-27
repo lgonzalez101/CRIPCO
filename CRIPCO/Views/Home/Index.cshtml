@@ -7,3 +7,8 @@
 {
     { Html.RenderAction("VerHorariosDelDia"); }
 }
+
+@if (User.IsInRole("Paciente"))
+{
+    { Html.RenderAction("VerCitasDelPaciente"); }
+}

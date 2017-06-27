@@ -2,9 +2,23 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System;
 
 namespace CRIPCO.Models
 {
+    public class PerfilUsuarioViewModel
+    {
+        public int IdUsuario { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public string Identidad { get; set; }
+        public string NombreUsuario { get; set; }
+        public string CorreoElectronico { get; set; }
+        public string TipoUsuario { get; set; }
+    }
+
+
     public class IndexViewModel
     {
         public bool HasPassword { get; set; }

@@ -117,7 +117,7 @@
 
     function CrearHorarioSimple() {
         if ($("#IdSala").val() == "") { ShowNotification(false, "Seleccione una Sala", "Ls Sala es requerida"); return;}
-        var obj = { FechaInicio: moment(FechaInicioSimple.data('DateTimePicker').date()).utc().format(), IdSala: $("#IdSala").val() };
+        var obj = { FechaInicio: moment(FechaInicioSimple.data('DateTimePicker').date()).format(), IdSala: $("#IdSala").val() };
         console.log(obj);
         LoadWaitNotification();
         $.ajax({
@@ -127,8 +127,10 @@
             success: function (data) {
                 ShowNotification(data.Estado, data.Titulo, data.Mensaje);
                 if (data.Estado) {
-                    new $.fn.dataTable.Api("#IdTabla").ajax.reload();
+                  
+                   // new $.fn.dataTable.Api("#IdTabla").ajax.reload();
                     $("#MyModal").modal("hide");
+                    location.reload();
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -145,10 +147,10 @@
 
         if ($("#IdSala").val() == "") { ShowNotification(false, "Seleccione una Sala", "Ls Sala es requerida"); return;}
         var obj = {
-            FechaInicio: moment(RangoFechaInicial.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
-            FechaFinal: moment(RangoFechaFinal.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
-            HoraInicio: moment(RangoHoraInicial.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
-            HoraFinal: moment(RangoHoraFinal.data('DateTimePicker').date()).format("DD/MM/YY HH:mm"),
+            FechaInicio: moment(RangoFechaInicial.data('DateTimePicker').date()).format(),
+            FechaFinal: moment(RangoFechaFinal.data('DateTimePicker').date()).format(),
+            HoraInicio: moment(RangoHoraInicial.data('DateTimePicker').date()).format(),
+            HoraFinal: moment(RangoHoraFinal.data('DateTimePicker').date()).format(),
             IdSala: $("#IdSala").val()
         };
 
@@ -160,8 +162,11 @@
             success: function (data) {
                 ShowNotification(data.Estado, data.Titulo, data.Mensaje);
                 if (data.Estado) {
-                    new $.fn.dataTable.Api("#IdTabla").ajax.reload();
+                 
+                    //new $.fn.dataTable.Api("#IdTabla").ajax.reload();
                     $("#MyModal").modal("hide");
+                     location.reload();
+
                 }
             },
             error: function (xhr, textStatus, errorThrown) {

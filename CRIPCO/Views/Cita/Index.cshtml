@@ -3,23 +3,27 @@
 @{
     ViewBag.Title = "Index";
 }
+
 <div class="col-md-12 ui-sortable">
     <div class="panel panel-inverse">
         <div class="panel-heading">
             <div class="panel-heading-btn">
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand" data-original-title="" title="" data-init="true"><i class="fa fa-expand"></i></a>
             </div>
-            <h4 class="panel-title"> Citas</h4>
+            <h4 class="panel-title">Citas</h4>
         </div>
 
         <div class="panel-body">
             <table class="table table-bordered table-responsive table-hover" id="IdTabla" style="width: 100%;">
                 <thead>
                     <tr>
-                        <th>Horario </th>
+                        <th>Paciente</th>
+                        <th>Fecha </th>
+                        <th>Hora</th>
+                        <th>Doctor</th>
+                        <th>Sala</th>
                         <th>Activo </th>
-                         <th>ID Usuario </th>
-                        <th></th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,19 +31,24 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>@item.Persona.Nombre  @item.Persona.Apellido</td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Activo)
+                                @item.Horario.Hora.ToShortDateString()
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Horario.CreadoPor)
+                                @item.Horario.Hora.ToShortTimeString()
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Persona.IdAspnetUser)
+                                Dr. @item.Horario.Persona.Nombre   @item.Horario.Persona.Apellido
                             </td>
                             <td>
-                                <button type="button" onclick="MostrarEditar(@item.CitaID)" class="btn btn-warning btn-xs">Editar</button>
-                                <button type="button" onclick="MostrarDetalles(@item.CitaID)" class="btn btn-ff0000 btn-xs">Detalles</button>
-                           </td>
+                                @item.Horario.Sala.Nombre
+                            </td>
+                            <td>@item.Activo</td>
+                            <td>
+                                    <button type="button" onclick="MostrarEditar(@item.CitaID)" class="btn btn-warning btn-xs">Editar</button>
+                                    @*<button type="button" onclick="MostrarDetalles(@item.CitaID)" class="btn btn-ff0000 btn-xs">Detalles</button>*@
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -48,6 +57,8 @@
         </div>
     </div>
 </div>
+
+
 
 @section Scripts {
     <script>

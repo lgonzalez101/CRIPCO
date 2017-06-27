@@ -348,6 +348,7 @@
     <Content Include="assets\img\gallery\gallery-7.jpg" />
     <Content Include="assets\img\gallery\gallery-8.jpg" />
     <Content Include="assets\img\gallery\gallery-9.jpg" />
+    <Content Include="assets\img\logfondo.jpg" />
     <Content Include="assets\img\login-bg\bg-1.jpg" />
     <Content Include="assets\img\login-bg\bg-2.jpg" />
     <Content Include="assets\img\login-bg\bg-3.jpg" />
@@ -357,6 +358,7 @@
     <Content Include="assets\img\login-bg\bg-7.jpg" />
     <Content Include="assets\img\login-bg\bg-8.jpg" />
     <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\logocripco.png" />
     <Content Include="assets\img\pattern-cover.png" />
     <Content Include="assets\img\product\product-1.png" />
     <Content Include="assets\img\product\product-2.png" />
@@ -6597,6 +6599,9 @@
     <Content Include="Views\Usuario\DetalleUsuario.cshtml" />
     <Content Include="Views\Cita\CrearCita.cshtml" />
     <Content Include="Views\Cita\CargaHorariosDisponibles.cshtml" />
+    <Content Include="Views\Home\VerCitasDelPaciente.cshtml" />
+    <Content Include="Views\Manage\VerPerfilUsuario.cshtml" />
+    <Content Include="Views\Cita\HistorialCitasPaciente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -6631,7 +6636,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54597</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

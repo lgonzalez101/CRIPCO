@@ -41,6 +41,7 @@ namespace CRIPCO.Controllers
         [HttpGet]
         public ActionResult CrearCita()
         {
+            ViewBag.ListaUsuarios = new SelectList(db.Persona.Where(x => x.Activo && x.AspNetUsers.AspNetRoles.Any(y=>y.Name=="Paciente")), "PersonaID", "Nombre");
             ViewBag.ListaEspecialidades = new SelectList(db.Especialidad.Where(x => x.Activo), "EspecialidadID", "Nombre");
             return View();
         }
@@ -84,9 +85,16 @@ namespace CRIPCO.Controllers
                 var result= context.SaveChanges()>0;
 
                 return Json(EnviarResultado(result, "Reservar Cita"), JsonRequestBehavior.AllowGet);
-
-
             }
+
+        }
+
+        [HttpGet]
+        public ActionResult HistorialCitasPaciente()
+        {
+                var idusuario = ObtenerIdUsuario();
+                var lista = db.Cita.Where(x => x.PersonaPacienteID == idusuario).ToList();
+                return View(lista);
 
         }
 
@@ -144,7 +152,8 @@ namespace CRIPCO.Controllers
             if (ModelState.IsValid)
             {   
                 var citamodel = db.Cita.Find(cita.CitaID);
-                citamodel.PersonaPacienteID = cita.PersonaPacienteID;
+                citamodel.Activo = cita.Activo;
+               // citamodel.PersonaPacienteID = cita.PersonaPacienteID;
                 db.Entry(citamodel).State = EntityState.Modified;
 
                 db.SaveChanges();

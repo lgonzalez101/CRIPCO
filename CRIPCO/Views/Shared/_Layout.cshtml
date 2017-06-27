@@ -158,7 +158,7 @@
                             @*<li><a href="javascript:;">Edit Profile</a></li>
                             <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
                             <li><a href="javascript:;">Calendar</a></li>*@
-                            <li><a href="@Url.Action("DetalleUsuario", "Usuario")">Perfil</a></li>
+                            @*<li><a href="@Url.Action("VerPerfilUsuario", "Manage")">Perfil</a></li>*@
                   @*          <li><a href="javascript:;">Perfil</a></li>*@
                            
                             
@@ -192,13 +192,13 @@
                             <div class="info">
                                 <b class="caret pull-right"></b>
                                @User.Identity.Name
-                                <small>.....</small>
+                                <small></small>
                             </div>
                         </a>
                     </li>
                     <li>
                         <ul class="nav nav-profile">
-                            <li><a href="#"><i class="material-icons">settings</i> Perfil</a></li>
+                            <li><a href="/Manage/VerPerfilUsuario"><i class="material-icons">face</i> Perfil</a></li>
        
                         </ul>
                     </li>
@@ -239,9 +239,9 @@
 
                             <li><a href="@Url.Action("Index","Sala")" title="Sala"><span>Salas</span></a></li>
                             <li><a href="@Url.Action("Index","Area")" title="Area"><span>Areas</span></a></li>
-                            <li><a href="@Url.Action("Index","Especialidades")" title="Area"><span>Especialidades</span></a></li>
-                            <li><a href="@Url.Action("Index","Cita")" title="Area"><span>Citas</span></a></li>
-
+                            <li><a href="@Url.Action("Index","Especialidades")" title="Especialidades"><span>Especialidades</span></a></li>
+                            <li><a href="@Url.Action("Index","Cita")" title="Citas"><span>Citas</span></a></li>
+                            
                         </ul>
                     </li>
                     }
@@ -252,9 +252,9 @@
                                 <b class="caret pull-right"></b><i class="material-icons">access_alarm</i> <span>Horarios</span>
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="@Url.Action("Index","Horario")" title="Horarios"> <span>Lista de Horarios</span></a></li>
-                                <li><a href="@Url.Action("Index","Cita")" title="Area"><span>Citas</span></a></li>
-                                @*<li><a href="@Url.Action("Index","Horario")" title="Calendario"> <span>Calendario</span></a></li>*@
+                                
+                                @*<li><a href="@Url.Action("Index","Cita")" title="Area"><span>Citas</span></a></li>*@
+                                <li><a href="@Url.Action("Index","Horario")" title="Calendario"> <span>Ver Horarios</span></a></li>
                             </ul>
                         </li>
                         <li class="has-sub">
@@ -267,9 +267,29 @@
                             </ul>
                         </li>
                     }
-                    
-                    
-                        
+                    @if (User.IsInRole("Paciente") || User.IsInRole("Asistente"))
+                    {
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b><i class="material-icons">access_alarm</i> <span>Citas</span>
+                            </a>
+                            <ul class="sub-menu">
+                               
+                                <li><a href="@Url.Action("CrearCita","Cita")" title="Cita"><span>Reservar Cita</span></a></li>
+                                @if (User.IsInRole("Paciente"))
+                                {
+                                   
+                                    <li><a href="@Url.Action("HistorialCitasPaciente", "Cita")" title="Cita"><span> Historial de Citas</span ></a ></li >
+                                }
+
+                                @*<li><a href="@Url.Action("Index","Horario")" title="Calendario"> <span>Calendario</span></a></li>*@
+                            </ul>
+                        </li>
+
+                    }
+
+
+
                     <!-- begin sidebar minify button -->
                     <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
                     <!-- end sidebar minify button -->

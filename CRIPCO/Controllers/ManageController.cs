@@ -11,7 +11,7 @@ using CRIPCO.Models;
 namespace CRIPCO.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -48,6 +48,26 @@ namespace CRIPCO.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        public ActionResult VerPerfilUsuario()
+        {
+            using (var context = new CRIPCO.BD.CripcoEntities())
+            {
+                var usuario = context.Persona.Find(ObtenerIdUsuario());
+                return View(new PerfilUsuarioViewModel {
+                    IdUsuario = usuario.PersonaID,
+                    Nombre = usuario.Nombre,
+                    Apellido = usuario.Apellido,
+                    CorreoElectronico = usuario.AspNetUsers.Email,
+                    FechaNacimiento = usuario.FechaNac,
+                    Identidad = usuario.Identidad,
+                    NombreUsuario = usuario.AspNetUsers.UserName,
+                    TipoUsuario = usuario.AspNetUsers.AspNetRoles.FirstOrDefault().Name
+                });
+
+            }
+
         }
 
         //

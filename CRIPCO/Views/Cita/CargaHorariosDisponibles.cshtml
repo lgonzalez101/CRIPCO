@@ -2,7 +2,7 @@
 
 <div class="well">
     <fieldset>
-        <legend class="pull-left width-full" id="LabelFecha">Fecha</legend>
+        <legend class="text-center width-full" id="LabelFecha">Fecha</legend>
         @if (Model != null && Model.Any())
         {
 
@@ -43,7 +43,7 @@
                                 <th style="width:1%"></th>
                                 <th>Hora</th>
                                 <th>Doctor</th>
-                                <th style="width:100%">Sala</th>
+                                <th>Sala</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,13 +52,13 @@
                             {
                                 <tr>
                                     <td>
-                                        <a href="#" onclick="ReservarCita(@item.HorarioID)" class="btn btn-primary btn-xs"> Reservar</a>
+                                        <a href="#" onclick="ReservarCita(@item.HorarioID)" class="btn btn-info btn-xs"> Reservar</a>
                                     </td>
                                     <td style="width:30%">@item.Hora.ToShortTimeString()</td>
-                                    <td style="width:100%">
+                                    <td style="width:50%">
                                         Dr. @item.Persona.Nombre  @item.Persona.Apellido
                                     </td>
-                                    <td>@*@item.Sala?.Nombre??"Pendiente"*@</td>
+                                    <td style="width:50%">@item.Sala.Nombre"</td>
                                 </tr>
                             }
 

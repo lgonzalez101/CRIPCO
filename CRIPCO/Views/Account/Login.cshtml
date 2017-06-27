@@ -22,7 +22,6 @@
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 </head>
 <body class="pace-top bg-white">
     <!-- begin #page-loader -->
@@ -42,7 +41,14 @@
             <!-- begin news-feed -->
             <div class="news-feed">
                 <div class="news-image">
-                    <img src="~/assets/img/login-bg/bg-9.jpg" data-id="login-cover-image" alt="" />
+                    @*<img src="~/assets/img/login-bg/bg-9.jpg" data-id="login-cover-image" alt="" />*@
+                    <img  src="~/assets/img/logfondo.jpg" data-id="login-cover-image" alt="" />
+                </div>
+                <div class="news-caption">
+                    <h4 class="caption-title"><img style="width:40px;height:50px;" src="~/assets/img/logocripco.png" /> Centro de Rehabilitación Integral de Puerto Cortés</h4>
+                    @*<p>
+                        Download the Color Admin app for iPhone®, iPad®, and Android™. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>*@
                 </div>
                
             </div>
@@ -50,14 +56,15 @@
             <!-- begin right-content -->
             <div class="right-content">
                 <!-- begin login-header -->
-                <div class="login-header">
+                <div class="login-header text-center" style="width:auto !important">
                     <div class="brand">
-                        <span class="logo"></span> Cripco Planner
-                       
+                        @*<span class="logo"></span>*@
+
+                        <img style="width:70px;height:90px;" src="~/assets/img/logocripco.png" /> <br />Cripco Planner
                     </div>
-                    <div class="icon">
+                    @*<div class="icon">
                         <i class="material-icons">lock</i>
-                    </div>
+                    </div>*@
                 </div>
                 <!-- end login-header -->
                 <!-- begin login-content -->
@@ -85,11 +92,12 @@
                         <div class="login-buttons">
                             <button type="submit" class="btn btn-info btn-block btn-lg">Iniciar Sesion</button>
                         </div>
-                        <div class="m-t-20 m-b-40 p-b-40 text-inverse">
+                       <br />
+                        <hr />
+                        <div class="m-t-20 m-b-40 p-b-40 text-center">
                             <a href="/Account/ForgotPassword">Olvidó su contraseña?</a>
                         </div>
-                        <hr />
-                        
+
 
                     }
 

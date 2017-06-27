@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<CRIPCO.Models.Horario.ListaHorarioViewModel>
 
-<h1 class="page-header">@DateTime.Now.ToLongDateString().ToUpper()  @DateTime.Now. @*<small class="">header small text goes here...</small>*@  <button class="btn btn-primary pull-right" onclick="MostrarCrearHorario()"><i class="fa fa-clock-o"></i>  Agregar Horario</button></h1>
+<h1 class="page-header">@DateTime.Now.ToLongDateString().ToUpper()  @*<small class="">header small text goes here...</small>*@  <button class="btn btn-primary pull-right" onclick="MostrarCrearHorario()"><i class="fa fa-clock-o"></i>  Agregar Horario</button></h1>
 
     <div class="row">
         @if (Model != null)
@@ -17,7 +17,7 @@
                                 <p>@item.Fecha.ToShortTimeString()</p>
                             </div>
                             <div class="stats-link">
-                                <a href="javascript:;" onclick="VerDetalles(@item.Id)">Ver Detalles <i class="fa fa-arrow-circle-o-right"></i></a>
+                                <a href="javascript:;" onclick="VerDetalles(@item.Id)">Agregar Expediente <i class="fa fa-arrow-circle-o-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                                 <p>@item.Fecha.ToShortTimeString()</p>
                             </div>
                             <div class="stats-link">
-                                <a href="javascript:;" onclick="">Ver Detalles <i class="fa fa-arrow-circle-o-right"></i></a>
+                                <a href="javascript:;" onclick=""> <i class="fa fa-arrow-circle-o-right"></i></a>
                             </div>
                         </div>
                     </div>
