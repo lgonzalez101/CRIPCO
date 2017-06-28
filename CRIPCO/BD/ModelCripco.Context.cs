@@ -39,5 +39,7 @@ namespace CRIPCO.BD
         public virtual DbSet<Cita> Cita { get; set; }
         public virtual DbSet<Horario> Horario { get; set; }
         public virtual DbSet<Sala> Sala { get; set; }
+        public virtual DbSet<CmsArticulos> CmsArticulos { get; set; }
+        public virtual DbSet<CmsArticulosDetalle> CmsArticulosDetalle { get; set; }
     }
 }

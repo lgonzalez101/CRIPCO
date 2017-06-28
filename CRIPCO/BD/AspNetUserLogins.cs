@@ -12,12 +12,12 @@ namespace CRIPCO.BD
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class AspNetUserLogins
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
+    
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

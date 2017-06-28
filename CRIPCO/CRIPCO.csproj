@@ -216,6 +216,12 @@
     <Compile Include="BD\Cita.cs">
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
+    <Compile Include="BD\CmsArticulos.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD\CmsArticulosDetalle.cs">
+      <DependentUpon>ModelCripco.tt</DependentUpon>
+    </Compile>
     <Compile Include="BD\C__MigrationHistory.cs">
       <DependentUpon>ModelCripco.tt</DependentUpon>
     </Compile>
@@ -259,6 +265,7 @@
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CitaController.cs" />
+    <Compile Include="Controllers\CmsArticulosController.cs" />
     <Compile Include="Controllers\EspecialidadesController.cs" />
     <Compile Include="Controllers\ExpedientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -276,6 +283,8 @@
     <Compile Include="Models\Calendario\CalendarioViewModel.cs" />
     <Compile Include="Models\Citas\CitaViewModel.cs" />
     <Compile Include="Models\Citas\ListaEspecialidadesViewModel.cs" />
+    <Compile Include="Models\CmsArticulosModels.cs" />
+    <Compile Include="Models\DetalleArticuloModels.cs" />
     <Compile Include="Models\Expedientes\ExpedientesViewModel.cs" />
     <Compile Include="Models\Expedientes\ListaExpedienteViewModel.cs" />
     <Compile Include="Models\Horario\CrearHorarioViewModel.cs" />
@@ -284,6 +293,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Roles\CrearRolViewModel.cs" />
     <Compile Include="Models\SeleccionEspecialidadesViewModel.cs" />
+    <Compile Include="Models\TreeNodeModels .cs" />
     <Compile Include="Models\Usuario\CambiarContrasenaViewModel.cs" />
     <Compile Include="Models\Usuario\CrearUsuarioViewModel.cs" />
     <Compile Include="Models\Usuario\DetalleUsuarioViewModel.cs" />
@@ -6602,6 +6612,12 @@
     <Content Include="Views\Home\VerCitasDelPaciente.cshtml" />
     <Content Include="Views\Manage\VerPerfilUsuario.cshtml" />
     <Content Include="Views\Cita\HistorialCitasPaciente.cshtml" />
+    <Content Include="Views\CmsArticulos\Create.cshtml" />
+    <Content Include="Views\CmsArticulos\Delete.cshtml" />
+    <Content Include="Views\CmsArticulos\Details.cshtml" />
+    <Content Include="Views\CmsArticulos\DetalleArticulo.cshtml" />
+    <Content Include="Views\CmsArticulos\Edit.cshtml" />
+    <Content Include="Views\CmsArticulos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

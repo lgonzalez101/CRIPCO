@@ -12,19 +12,21 @@ namespace CRIPCO.BD
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetRole
+    public partial class CmsArticulos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AspNetRole()
+        public CmsArticulos()
         {
-            this.AspNetUsers = new HashSet<AspNetUser>();
+            this.CmsArticulosDetalle = new HashSet<CmsArticulosDetalle>();
         }
     
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public int ArticuloId { get; set; }
+        public string Titulo { get; set; }
+        public string Descripcion { get; set; }
+        public int PadreArticuloId { get; set; }
+        public string Tipo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+        public virtual ICollection<CmsArticulosDetalle> CmsArticulosDetalle { get; set; }
     }
 }

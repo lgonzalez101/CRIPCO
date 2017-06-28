@@ -11,18 +11,16 @@ namespace CRIPCO.BD
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Especialidad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Especialidad()
         {
-            this.PersonaEspecialidads = new HashSet<PersonaEspecialidad>();
+            this.PersonaEspecialidad = new HashSet<PersonaEspecialidad>();
         }
     
         public int EspecialidadID { get; set; }
-        [Required]
         public string Nombre { get; set; }
         public string CreadoPor { get; set; }
         public System.DateTime FechaCreado { get; set; }
@@ -30,6 +28,6 @@ namespace CRIPCO.BD
         public bool Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonaEspecialidad> PersonaEspecialidads { get; set; }
+        public virtual ICollection<PersonaEspecialidad> PersonaEspecialidad { get; set; }
     }
 }

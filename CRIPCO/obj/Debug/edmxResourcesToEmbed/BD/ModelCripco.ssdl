@@ -85,6 +85,25 @@
     <Property Name="ModificadoPor" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="CmsArticulos">
+    <Key>
+      <PropertyRef Name="ArticuloId" />
+    </Key>
+    <Property Name="ArticuloId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PadreArticuloId" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CmsArticulosDetalle">
+    <Key>
+      <PropertyRef Name="ArticuloDetalleId" />
+    </Key>
+    <Property Name="ArticuloDetalleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArticuloId" Type="int" Nullable="false" />
+    <Property Name="Imagen" Type="image" />
+    <Property Name="UrlVideo" Type="nvarchar" MaxLength="200" />
+  </EntityType>
   <EntityType Name="Especialidad">
     <Key>
       <PropertyRef Name="EspecialidadID" />
@@ -219,6 +238,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_CmsArticulosDetalle_CmsArticulos">
+    <End Role="CmsArticulos" Type="Self.CmsArticulos" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CmsArticulosDetalle" Type="Self.CmsArticulosDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CmsArticulos">
+        <PropertyRef Name="ArticuloId" />
+      </Principal>
+      <Dependent Role="CmsArticulosDetalle">
+        <PropertyRef Name="ArticuloId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -340,6 +373,8 @@
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CmsArticulos" EntityType="Self.CmsArticulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CmsArticulosDetalle" EntityType="Self.CmsArticulosDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Expediente" EntityType="Self.Expediente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
@@ -362,6 +397,10 @@
     <AssociationSet Name="FK_Cita_Persona" Association="Self.FK_Cita_Persona">
       <End Role="Persona" EntitySet="Persona" />
       <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CmsArticulosDetalle_CmsArticulos" Association="Self.FK_CmsArticulosDetalle_CmsArticulos">
+      <End Role="CmsArticulos" EntitySet="CmsArticulos" />
+      <End Role="CmsArticulosDetalle" EntitySet="CmsArticulosDetalle" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />

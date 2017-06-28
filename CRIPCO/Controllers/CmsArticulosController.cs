@@ -227,14 +227,14 @@ namespace CRIPCO.Controllers
                     cmsArticulosDetalle.Add(new CmsArticulosDetalle { Imagen = buffer, UrlVideo = file.FileName, ArticuloId = cmsArticulosModels.ArticuloId });
                 }
 
-                var _cmsArticulos = new CmsArticulo
+                var _cmsArticulos = new CRIPCO.BD.CmsArticulos
                 {
                     ArticuloId = cmsArticulosModels.ArticuloId,
                     Descripcion = cmsArticulosModels.Descripcion,
                     PadreArticuloId = (int)cmsArticulosModels.ParentArticuloId,
                     Tipo = cmsArticulosModels.SelectedTipo,
                     Titulo = cmsArticulosModels.ArticuloName,
-                    CmsArticulosDetalles = cmsArticulosDetalle
+                    CmsArticulosDetalle = cmsArticulosDetalle
 
                 };
                 db.CmsArticulos.Add(_cmsArticulos);
@@ -252,7 +252,7 @@ namespace CRIPCO.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var cmsArticulo = db.CmsArticulos.Include(x=>x.CmsArticulosDetalles).SingleOrDefault(x => x.ArticuloId == id);
+            var cmsArticulo = db.CmsArticulos.Include(x=>x.CmsArticulosDetalle).SingleOrDefault(x => x.ArticuloId == id);
 
             if (cmsArticulo == null)
             {
@@ -271,7 +271,7 @@ namespace CRIPCO.Controllers
             };
 
 
-            foreach (var r in cmsArticulo.CmsArticulosDetalles)
+            foreach (var r in cmsArticulo.CmsArticulosDetalle)
             {
                 string base64String = Convert.ToBase64String(r.Imagen);
 
@@ -322,11 +322,11 @@ namespace CRIPCO.Controllers
                 }
 
 
-                var query = (from p in db.CmsArticulosDetalles
+                var query = (from p in db.CmsArticulosDetalle
                              where p.ArticuloId == _cmsArticulos.ArticuloId
                              select p);
 
-                db.CmsArticulosDetalles.RemoveRange(query);
+                db.CmsArticulosDetalle.RemoveRange(query);
                 db.SaveChanges();
 
 
@@ -335,7 +335,7 @@ namespace CRIPCO.Controllers
                 _cmsArticulos.PadreArticuloId = (int)cmsArticulosModels.ParentArticuloId;
                 _cmsArticulos.Tipo = cmsArticulosModels.SelectedTipo;
                 _cmsArticulos.Titulo = cmsArticulosModels.ArticuloName;
-                _cmsArticulos.CmsArticulosDetalles = cmsArticulosDetalle;
+                _cmsArticulos.CmsArticulosDetalle = cmsArticulosDetalle;
 
                 db.Entry(_cmsArticulos).State = EntityState.Modified;
                 db.SaveChanges();
@@ -353,7 +353,7 @@ namespace CRIPCO.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CmsArticulo cmsArticulos = db.CmsArticulos.Find(id);
+            CmsArticulos cmsArticulos = db.CmsArticulos.Find(id);
             if (cmsArticulos == null)
             {
                 return HttpNotFound();
@@ -364,7 +364,7 @@ namespace CRIPCO.Controllers
         // POST: CmsArticulos/Delete/5
         public ActionResult DeleteConfirmed(int id)
         {
-            CmsArticulo cmsArticulos = db.CmsArticulos.Find(id);
+            CmsArticulos cmsArticulos = db.CmsArticulos.Find(id);
             db.CmsArticulos.Remove(cmsArticulos);
             db.SaveChanges();
             return RedirectToAction("Index");

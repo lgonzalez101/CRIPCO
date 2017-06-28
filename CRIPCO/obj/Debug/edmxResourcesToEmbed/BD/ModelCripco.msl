@@ -183,5 +183,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CmsArticulos">
+      <EntityTypeMapping TypeName="CripcoModel.CmsArticulos">
+        <MappingFragment StoreEntitySet="CmsArticulos">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="PadreArticuloId" ColumnName="PadreArticuloId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="ArticuloId" ColumnName="ArticuloId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CmsArticulosDetalle">
+      <EntityTypeMapping TypeName="CripcoModel.CmsArticulosDetalle">
+        <MappingFragment StoreEntitySet="CmsArticulosDetalle">
+          <ScalarProperty Name="UrlVideo" ColumnName="UrlVideo" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="ArticuloId" ColumnName="ArticuloId" />
+          <ScalarProperty Name="ArticuloDetalleId" ColumnName="ArticuloDetalleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

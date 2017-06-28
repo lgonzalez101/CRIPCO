@@ -19,6 +19,6 @@ namespace CRIPCO.BD
         public byte[] Imagen { get; set; }
         public string UrlVideo { get; set; }
     
-        public virtual CmsArticulo CmsArticulo { get; set; }
+        public virtual CmsArticulos CmsArticulos { get; set; }
     }
 }

@@ -271,6 +271,12 @@
       <End Role="Sala" EntitySet="Sala" />
       <End Role="Horario" EntitySet="Horario" />
     </AssociationSet>
+    <EntitySet Name="CmsArticulos" EntityType="CripcoModel.CmsArticulos" />
+    <EntitySet Name="CmsArticulosDetalle" EntityType="CripcoModel.CmsArticulosDetalle" />
+    <AssociationSet Name="FK_CmsArticulosDetalle_CmsArticulos" Association="CripcoModel.FK_CmsArticulosDetalle_CmsArticulos">
+      <End Role="CmsArticulos" EntitySet="CmsArticulos" />
+      <End Role="CmsArticulosDetalle" EntitySet="CmsArticulosDetalle" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Cita">
     <Key>
@@ -388,6 +394,41 @@
       </Principal>
       <Dependent Role="Horario">
         <PropertyRef Name="IdSala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CmsArticulos">
+    <Key>
+      <PropertyRef Name="ArticuloId" />
+    </Key>
+    <Property Name="ArticuloId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PadreArticuloId" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="CmsArticulosDetalle" Relationship="CripcoModel.FK_CmsArticulosDetalle_CmsArticulos" FromRole="CmsArticulos" ToRole="CmsArticulosDetalle" />
+  </EntityType>
+  <EntityType Name="CmsArticulosDetalle">
+    <Key>
+      <PropertyRef Name="ArticuloDetalleId" />
+    </Key>
+    <Property Name="ArticuloDetalleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArticuloId" Type="Int32" Nullable="false" />
+    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UrlVideo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CmsArticulos" Relationship="CripcoModel.FK_CmsArticulosDetalle_CmsArticulos" FromRole="CmsArticulosDetalle" ToRole="CmsArticulos" />
+  </EntityType>
+  <Association Name="FK_CmsArticulosDetalle_CmsArticulos">
+    <End Type="CripcoModel.CmsArticulos" Role="CmsArticulos" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CripcoModel.CmsArticulosDetalle" Role="CmsArticulosDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CmsArticulos">
+        <PropertyRef Name="ArticuloId" />
+      </Principal>
+      <Dependent Role="CmsArticulosDetalle">
+        <PropertyRef Name="ArticuloId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
