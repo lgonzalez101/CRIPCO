@@ -335,8 +335,7 @@ namespace CRIPCO.Controllers
                                                                     Identidad=Usuario.Identidad,
                                                                     FechaNac= Usuario.FechaNac,
                                                                     Telefono=Usuario.Telefono,
-                                                                     };
-
+                                                                  };
                 return View(detalleUsuario);
                
             }
