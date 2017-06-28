@@ -2,13 +2,17 @@
     ViewBag.Title = "Inicio";
 }
 
+<div class="panel">
+    <div class="panel-body">
+        @if (User.IsInRole("Doctor"))
+            {
+                { Html.RenderAction("VerHorariosDelDia"); }
+            }
 
-@if (User.IsInRole("Doctor"))
-{
-    { Html.RenderAction("VerHorariosDelDia"); }
-}
+        @if (User.IsInRole("Paciente"))
+            {
+                { Html.RenderAction("VerCitasDelPaciente"); }
+            }
 
-@if (User.IsInRole("Paciente"))
-{
-    { Html.RenderAction("VerCitasDelPaciente"); }
-}
+    </div>
+</div>

@@ -1,0 +1,190 @@
+﻿
+@{
+    ViewBag.Title = "Calendario";
+}
+
+
+<div class="panel">
+    <div class="panel-body">
+        <div id='calendar'></div>
+
+    </div>
+    
+
+</div>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+
+            //$("#calendar").fullCalendar();
+
+       var data = [];
+        $.ajax({
+            url: "@Url.Action("GetCalendarioHorarios", "Calendario")",
+            cache: false,
+            async: false,
+            beforeSend: function () {
+                LoadWaitNotification();
+            },
+            success: function (resp) {
+                data.push(resp);
+            }, complete: function () {
+                UnloadWaitNotification();
+            }
+        });
+        //var date = new Date();
+        //var d = date.getDate();
+        //var m = date.getMonth();
+        //var y = date.getFullYear();
+
+        //var hdr = {
+        //    left: 'title',
+        //    center: 'month,agendaWeek,agendaDay',
+        //    right: 'prev,today,next'
+        //};
+
+        //var initDrag = function (e) {
+        //    var eventObject = {
+        //        title: $.trim(e.children().text()),
+        //        description: $.trim(e.children('span').attr('data-description')),
+        //        icon: $.trim(e.children('span').attr('data-icon')),
+        //        className: $.trim(e.children('span').attr('class'))
+        //    };
+        //    e.data('eventObject', eventObject);
+        //    e.draggable({
+        //        zIndex: 999,
+        //        revert: true,
+        //        revertDuration: 0
+        //    });
+        //};
+
+        //var addEvent = function (title, priority, description, icon) {
+        //    title = title.length === 0 ? "Untitled Event" : title;
+        //    description = description.length === 0 ? "No Description" : description;
+        //    icon = icon.length === 0 ? " " : icon;
+        //    priority = priority.length === 0 ? "label label-default" : priority;
+
+        //    var html = $('<li><span class="' + priority + '" data-description="' + description + '" data-icon="' +
+        //        icon + '">' + title + '</span></li>').prependTo('ul#external-events').hide().fadeIn();
+
+        //    $("#event-container").effect("highlight", 800);
+
+        //    initDrag(html);
+        //};
+        //$('#external-events > li').each(function () {
+        //    initDrag($(this));
+        //});
+
+        //$('#add-event').click(function () {
+        //    var title = $('#title').val(),
+        //        priority = $('input:radio[name=priority]:checked').val(),
+        //        description = $('#description').val(),
+        //        icon = $('input:radio[name=iconselect]:checked').val();
+
+        //    addEvent(title, priority, description, icon);
+        //});
+        $('#calendar').fullCalendar({
+            //lang: 'es',
+            eventLimit: true,
+            navLinks: true,
+            header: {
+                left: "month,agendaWeek,agendaDay",
+                center: "title",
+                right: "prev,today,next "
+            },
+         //   header: hdr,
+         //   editable: false,
+          //  droppable: false,
+            //drop: function (date, allDay) {
+            //    var originalEventObject = $(this).data('eventObject');
+            //    var copiedEventObject = $.extend({}, originalEventObject);
+            //    copiedEventObject.start = date;
+            //    copiedEventObject.allDay = allDay;
+            //    $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+            //    if ($('#drop-remove').is(':checked')) {
+            //        $(this).remove();
+            //    }
+            //},
+            select: function (start, end, allDay) {
+                var title = prompt('Event Title:');
+                if (title) {
+                    calendar.fullCalendar('renderEvent', {
+                        title: title,
+                        start: start,
+                        end: end,
+                        allDay: allDay
+                    }, true // make the event "stick"
+                    );
+                }
+                calendar.fullCalendar('unselect');
+            },
+            eventSources: data,
+            eventRender: function (event, element, icon) {
+                if (!event.description == "") {
+                    element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.description +
+                        "</span>");
+                }
+                if (!event.icon == "") {
+                    element.find('.fc-title').append("<i class='air air-top-right fa " + event.icon +
+                        " '></i>");
+                }
+            },
+            windowResize: function (event, ui) {
+                $('#calendar').fullCalendar('render');
+            },
+            eventClick: function (event) {
+                if (event.id) {
+                    LoadWaitNotification();
+                    $.ajax({
+                        url: "@Url.Action("Details","Contract")",
+                        type: "GET",
+                        data: { idContract: event.id },
+                        success: function (resp) {
+                            $("#ModalInformacionDeContrato").modal().show();
+                            $("#BodyInformacionDeContrato").html(resp);
+                        },
+                        complete: function () {
+                            UnloadWaitNotification();
+                        }
+                    });
+                }
+            }
+        });
+        //$('.fc-right, .fc-center').hide();
+        //$('#calendar-buttons #btn-prev').click(function () {
+        //    $('.fc-prev-button').click();
+        //    return false;
+        //});
+
+        //$('#calendar-buttons #btn-next').click(function () {
+        //    $('.fc-next-button').click();
+        //    return false;
+        //});
+
+        //$('#calendar-buttons #btn-today').click(function () {
+        //    $('.fc-today-button').click();
+        //    return false;
+        //});
+
+        //$('#mt').click(function () {
+        //    $('#calendar').fullCalendar('changeView', 'month');
+        //});
+
+        //$('#ag').click(function () {
+        //    $('#calendar').fullCalendar('changeView', 'agendaWeek');
+        //});
+
+        //$('#td').click(function () {
+        //    $('#calendar').fullCalendar('changeView', 'agendaDay');
+        //});
+
+        });
+
+
+    </script>
+
+}
+
+

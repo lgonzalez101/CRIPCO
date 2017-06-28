@@ -264,6 +264,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CalendarioController.cs" />
     <Compile Include="Controllers\CitaController.cs" />
     <Compile Include="Controllers\CmsArticulosController.cs" />
     <Compile Include="Controllers\EspecialidadesController.cs" />
@@ -6618,6 +6619,7 @@
     <Content Include="Views\CmsArticulos\DetalleArticulo.cshtml" />
     <Content Include="Views\CmsArticulos\Edit.cshtml" />
     <Content Include="Views\CmsArticulos\Index.cshtml" />
+    <Content Include="Views\Calendario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
