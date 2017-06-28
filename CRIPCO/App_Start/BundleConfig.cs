@@ -8,14 +8,7 @@ namespace CRIPCO
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
-
-
-            bundles.Add(new StyleBundle("~/bundles/CSS").Include(
+           bundles.Add(new StyleBundle("~/bundles/CSS").Include(
                 "~/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css",
                 "~/assets/plugins/bootstrap/css/bootstrap.min.css",
                 "~/assets/plugins/font-awesome/css/font-awesome.min.css",
@@ -41,6 +34,7 @@ namespace CRIPCO
                 "~/assets/plugins/fullcalendar/fullcalendar.print.css"
 
                 ));
+                     
 
             bundles.Add(new ScriptBundle("~/bundles/ColorAdmin").Include(
                        "~/assets/plugins/jquery/jquery-1.9.1.min.js",
@@ -74,6 +68,15 @@ namespace CRIPCO
                        "~/assets/Layout.js "
                        
                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                      "~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/personalized").Include(
                         "~/js/Layout.js"));

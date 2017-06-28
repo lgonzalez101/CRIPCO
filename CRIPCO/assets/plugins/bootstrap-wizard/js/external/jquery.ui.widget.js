@@ -228,7 +228,7 @@ $.Widget.prototype = {
 			this._getCreateOptions(),
 			options );
 
-		this.bindings = $();
+		this. = $();
 		this.hoverable = $();
 		this.focusable = $();
 
@@ -264,7 +264,7 @@ $.Widget.prototype = {
 	destroy: function() {
 		this._destroy();
 		// we can probably remove the unbind calls in 2.0
-		// all event bindings should go through this._on()
+		// all event  should go through this._on()
 		this.element
 			.unbind( this.eventNamespace )
 			// 1.9 BC for #7810
@@ -282,7 +282,7 @@ $.Widget.prototype = {
 				"ui-state-disabled" );
 
 		// clean up events and states
-		this.bindings.unbind( this.eventNamespace );
+		this..unbind( this.eventNamespace );
 		this.hoverable.removeClass( "ui-state-hover" );
 		this.focusable.removeClass( "ui-state-focus" );
 	},
@@ -369,7 +369,7 @@ $.Widget.prototype = {
 		} else {
 			// accept selectors, DOM elements
 			element = $( element );
-			this.bindings = this.bindings.add( element );
+			this. = this..add( element );
 		}
 
 		var instance = this;

@@ -1,0 +1,133 @@
+﻿@model CRIPCO.Models.CmsArticulosModels
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+@if (!string.IsNullOrEmpty(ViewBag.ErroMgs))
+{
+    <div class="alert alert-danger">@ViewBag.ErroMgs</div>
+}
+
+
+<div class="col-md-10 ui-sortable">
+    <div class="panel panel-inverse" data-sortable-id="form-validation-1">
+        <div class="panel-heading">
+            <h4 class="panel-title">Modificar Articulo</h4>
+        </div>
+        <div class="panel-body panel-form">
+            @using (Html.BeginForm("Edit", "CmsArticulos", FormMethod.Post, new { @class = "form-horizontal form-bordered", @encType = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @*<form class="form-horizontal form-bordered" data-parsley-validate="true" name="demo-form">*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ArticuloId)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ArticuloName, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+                    <div class=col-md-9 col-sm-6">
+                        @Html.EditorFor(model => model.ArticuloName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ArticuloName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" id="Coporate">
+                    @Html.LabelFor(model => model.SelectedTipo, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+                    <div class=col-md-9 col-sm-6">
+                        @Html.DropDownListFor(x => x.SelectedTipo, Model.Tipos, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SelectedTipo)
+                    </div>
+                </div>
+
+                <div class="form-group" id="Coporate">
+                    @Html.LabelFor(model => model.ParentArticuloId, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+                    <div class=col-md-9 col-sm-6">
+                        @Html.DropDownListFor(x => x.ParentArticuloId, Model.ListParent, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ParentArticuloId)
+                    </div>
+                </div>
+
+                <div class="form-group" id="Descripcion">
+                    @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+                    <div class=col-md-9 col-sm-6">
+                        @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control", @rows = "10" })
+                        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <div class="form-group" id="CargarImagenes" name="CargarImagenes">
+                    @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+                    <div class=col-md-9 col-sm-6">
+                        <input id="add_field_buttonJobs" type="button" class="btn btn-success" name="add_field_buttonJobs" value="Agregar Imagen">
+                        <table class="table table-striped" id="input_fields_wrapJobs">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="form-group" id="ImagenesCargadas" name="ImagenesCargadas">
+                    @Html.LabelFor(model => model.detalleArticuloModels, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+                    <div class=col-md-9 col-sm-6">
+                        <table class="table table-striped" id="input_fields_wrapDetalle">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.detalleArticuloModels != null)
+                                {
+                                    int i = 0;
+                                    foreach (var item in Model.detalleArticuloModels)
+                                    {
+                                        <tr>
+                                            <input type="hidden" autocomplete="off" name="detalleArticuloModels.index" value="@i">
+                                            <input type="hidden" name="detalleArticuloModels[@i].ArticuloDetalleId" readonly="" value="@item.ArticuloDetalleId">
+                                            <input type="hidden" name="detalleArticuloModels[@i].ArticuloId" readonly="" value="@item.ArticuloId">
+                                            <input type="hidden" name="detalleArticuloModels[@i].Imagen" readonly="" value="@item.Imagen">
+                                            <input type="hidden" name="detalleArticuloModels[@i].UrlVideo" readonly="" value="@item.UrlVideo">
+                                            <td>@item.UrlVideo</td>
+                                            <td><a href="#" class="remove_fieldDetalle">      Eliminar</a></td>
+                                        </tr>
+                                        i++;
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+                
+                      
+
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2"></label>
+                    <div class="col-md-9 col-sm-6">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        @Html.ActionLink("Cancelar", "Index", "CmsArticulos", new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Eliminar", "DeleteConfirmed", new { id = Model.ArticuloId }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
