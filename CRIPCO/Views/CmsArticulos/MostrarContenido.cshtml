@@ -1,0 +1,20 @@
+﻿@model CRIPCO.BD.CmsArticulos
+
+
+
+  
+        <ul class="media-list media-list-with-divider">
+            <li class="media media-lg">
+                <a href="javascript:;" class="pull-left">
+                    <img  class="media-object" src="data:image;base64,@System.Convert.ToBase64String(Model.CmsArticulosDetalle.FirstOrDefault().Imagen)" alt="" />
+
+                    @*<img src="assets/img/gallery/gallery-10.jpg" alt="">*@
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">@Model.Titulo</h4>
+                    @Model.Descripcion
+                </div>
+            </li>
+        </ul>
+
+

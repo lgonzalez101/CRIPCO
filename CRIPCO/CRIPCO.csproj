@@ -6620,6 +6620,8 @@
     <Content Include="Views\CmsArticulos\Edit.cshtml" />
     <Content Include="Views\CmsArticulos\Index.cshtml" />
     <Content Include="Views\Calendario\Index.cshtml" />
+    <Content Include="Views\CmsArticulos\VerContenido.cshtml" />
+    <Content Include="Views\CmsArticulos\MostrarContenido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

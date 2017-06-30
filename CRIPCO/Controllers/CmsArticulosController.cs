@@ -38,7 +38,6 @@ namespace CRIPCO.Controllers
             return Parents;
         }
 
-
         private List<TreeNodeModels> FillRecursive(List<CmsArticulosModels> flatObjects, int? parentId = null)
         {
             return flatObjects.Where(x => x.ParentArticuloId.Equals(parentId)).Select(item => new TreeNodeModels
@@ -79,6 +78,31 @@ namespace CRIPCO.Controllers
             }
         }
 
+        public void RecursiveLectura(ref string root_li , List<TreeNodeModels> headerTree)
+        {
+
+            foreach (var item in headerTree)
+            { 
+                if (item.Tipo.Trim() == "M")
+                {
+
+                    root_li += "<li class=\"dropdown\">< a href=\"#home\" data-click=\"scroll-to-target\" data-target=\"#\" data-toggle=\"dropdown\" >" + item.ArticuloName + "<b class=\"caret\"></b></a>";
+                        }
+                else
+                {
+                    root_li += "<li><a href=\"index.html\"> "+item.ArticuloName+" </a ></li>";
+                }
+                if (item.Children.Count > 0)
+                {
+                    root_li += "  <ul class=\"dropdown-menu dropdown-menu-left animated fadeInDown\">";
+
+                    RecursiveLectura(ref root_li, item.Children);
+                    root_li += "</ul>";
+                }
+                root_li += "</li>";
+            }
+        }
+
         [HttpGet]
         public ActionResult DetalleArticulo()
         {
@@ -113,7 +137,6 @@ namespace CRIPCO.Controllers
             return PartialView();
         }
 
-
         public string GetAllCategoriesForTree()
         {
             List<CmsArticulosModels> articulos = new List<CmsArticulosModels>();
@@ -147,6 +170,34 @@ namespace CRIPCO.Controllers
         private CripcoEntities db = new CripcoEntities();
 
         public string Descripcion { get; private set; }
+
+        public ActionResult VerContenido()
+        {
+            List<CmsArticulosModels> articulos = new List<CmsArticulosModels>();
+   
+                foreach (var row in db.CmsArticulos.ToList())
+                {
+                    articulos.Add(
+                        new CmsArticulosModels
+                        {
+                            ArticuloId = row.ArticuloId,
+                            ArticuloName = row.Titulo,
+                            SelectedTipo = row.Tipo,
+                            ParentArticuloId = (row.PadreArticuloId != 0) ? row.PadreArticuloId : (int?)null
+                        });
+                }
+                List<TreeNodeModels> headerTree = FillRecursive(articulos, null);
+           // string root_li = string.Empty;
+        //    RecursiveLectura(ref root_li, headerTree);
+         //   ViewBag.Menu = root_li;
+            return View(headerTree);
+        }
+
+        public ActionResult MostrarContenido(int Id)
+        {
+            var articulo = db.CmsArticulos.Find(Id);
+            return PartialView(articulo);
+        }
 
         // GET: CmsArticulos
         public ActionResult Index()

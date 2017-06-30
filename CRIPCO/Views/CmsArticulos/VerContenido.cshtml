@@ -1,0 +1,87 @@
+﻿@model IEnumerable<CRIPCO.Models.TreeNodeModels>
+
+@{
+    ViewBag.Title = "VerContenido";
+}
+
+@helper ShowTree(IEnumerable<CRIPCO.Models.TreeNodeModels> foos)
+{
+    foreach (var foo in foos)
+    {
+        if (foo.Tipo.Trim() == "M")
+        {          
+                <li class="dropdown">
+                    <a href="#" data-click="scroll-to-target" data-target="#" data-toggle="dropdown">@foo.ArticuloName <b class="caret"></b></a>
+                   
+                        @if (foo.Children.Any())
+                        {
+                            <ul class="dropdown-menu dropdown-menu-left animated fadeInDown droptest">
+                                @ShowTree(foo.Children)
+                            </ul>
+                        }
+                          
+                </li>
+        }
+        else
+        {
+                <li><a href="#" onclick="MostrarContentido(@foo.ArticuloId)" data-click="scroll-to-target">@foo.ArticuloName</a></li>
+        }
+    }
+}
+
+<div class="panel">
+<div class="panel-body p-0">
+    <div id="header" class="navbar navbar-default" data-state-change="disabled">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="header-navbar">         
+                <ul class="nav navbar-nav ">
+                     @ShowTree(Model)                             
+                </ul>
+            </div>
+        </div>
+    </div>
+   
+        <div class="panel-body">
+            <div id="Contenido"></div>
+        </div>
+ 
+  
+</div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $('.droptest a').on("click", function (e) {
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+          });
+        });
+
+        function MostrarContentido(IdArticulo)
+        {
+            $(".droptest").dropdown("toggle");
+            LoadWaitNotification();
+            $.ajax({
+                url: "@Url.Action("MostrarContenido", "CmsArticulos")",
+                type: "GET",
+                data: { Id: IdArticulo },
+            success: function (resp) {
+                $("#Contenido").html(resp);
+            },
+            complete: function () {
+                UnloadWaitNotification();
+            },
+            error: function () {
+                UnloadWaitNotification();
+               alert("error");
+            }
+        });
+
+        }
+
+
+    </script>    
+}
+
